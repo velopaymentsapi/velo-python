@@ -121,8 +121,8 @@ class Individual(object):
         :param date_of_birth: The date_of_birth of this Individual.  # noqa: E501
         :type: str
         """
-        if date_of_birth is None:
-            raise ValueError("Invalid value for `date_of_birth`, must not be `None`")  # noqa: E501
+        # if date_of_birth is None:
+        #     raise ValueError("Invalid value for `date_of_birth`, must not be `None`")  # noqa: E501
 
         self._date_of_birth = date_of_birth
 

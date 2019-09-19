@@ -38,9 +38,11 @@ info:
 client: clean python-client trim info
 
 build:
-	@echo "Client lib already built in the /velo_payments dir."
+	python setup.py sdist
 
 publish:
 	## make version=2.14.90 publish
 	git tag $(version)
 	git push origin tag $(version)
+	# pip install twine
+	# twine upload dist/*
