@@ -572,14 +572,14 @@ class PaymentResponseV3(object):
         :param funding_status: The funding_status of this PaymentResponseV3.  # noqa: E501
         :type: str
         """
-        if funding_status is None:
-            raise ValueError("Invalid value for `funding_status`, must not be `None`")  # noqa: E501
-        allowed_values = ["FUNDED", "INSTRUCTED", "UNFUNDED"]  # noqa: E501
-        if funding_status not in allowed_values:
-            raise ValueError(
-                "Invalid value for `funding_status` ({0}), must be one of {1}"  # noqa: E501
-                .format(funding_status, allowed_values)
-            )
+        # if funding_status is None:
+        #     raise ValueError("Invalid value for `funding_status`, must not be `None`")  # noqa: E501
+        # allowed_values = ["FUNDED", "INSTRUCTED", "UNFUNDED"]  # noqa: E501
+        # if funding_status not in allowed_values:
+        #     raise ValueError(
+        #         "Invalid value for `funding_status` ({0}), must be one of {1}"  # noqa: E501
+        #         .format(funding_status, allowed_values)
+        #     )
 
         self._funding_status = funding_status
 
