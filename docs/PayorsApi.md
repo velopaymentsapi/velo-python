@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payor_links**
-> PayorLinksResponse payor_links(descendants_of_payor, fields=fields)
+> PayorLinksResponse payor_links(descendants_of_payor=descendants_of_payor, parent_of_payor=parent_of_payor, fields=fields)
 
 List Payor Links
 
@@ -346,12 +346,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-descendants_of_payor = 'descendants_of_payor_example' # str | The Payor ID from which to start the query to show all descendants
+descendants_of_payor = 'descendants_of_payor_example' # str | The Payor ID from which to start the query to show all descendants (optional)
+parent_of_payor = 'parent_of_payor_example' # str | Look for the parent payor details for this payor id (optional)
 fields = 'fields_example' # str | List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - 'fields' allows you to add to this. Example: ```fields=primaryContactEmail,kycState``` - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState               (optional)
 
 try:
     # List Payor Links
-    api_response = api_instance.payor_links(descendants_of_payor, fields=fields)
+    api_response = api_instance.payor_links(descendants_of_payor=descendants_of_payor, parent_of_payor=parent_of_payor, fields=fields)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PayorsApi->payor_links: %s\n" % e)
@@ -361,7 +362,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **descendants_of_payor** | [**str**](.md)| The Payor ID from which to start the query to show all descendants | 
+ **descendants_of_payor** | [**str**](.md)| The Payor ID from which to start the query to show all descendants | [optional] 
+ **parent_of_payor** | [**str**](.md)| Look for the parent payor details for this payor id | [optional] 
  **fields** | **str**| List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - &#39;fields&#39; allows you to add to this. Example: &#x60;&#x60;&#x60;fields&#x3D;primaryContactEmail,kycState&#x60;&#x60;&#x60; - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState               | [optional] 
 
 ### Return type

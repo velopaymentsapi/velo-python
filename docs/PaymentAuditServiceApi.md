@@ -12,12 +12,13 @@ Method | HTTP request | Description
 [**get_payments_for_payout_v4**](PaymentAuditServiceApi.md#get_payments_for_payout_v4) | **GET** /v4/paymentaudit/payouts/{payoutId} | Get Payments for Payout
 [**get_payouts_for_payor**](PaymentAuditServiceApi.md#get_payouts_for_payor) | **GET** /v3/paymentaudit/payouts | Get Payouts for Payor
 [**get_payouts_for_payor_v4**](PaymentAuditServiceApi.md#get_payouts_for_payor_v4) | **GET** /v4/paymentaudit/payouts | Get Payouts for Payor
+[**list_payment_changes**](PaymentAuditServiceApi.md#list_payment_changes) | **GET** /v1/deltas/payments | List Payment Changes
 [**list_payments_audit**](PaymentAuditServiceApi.md#list_payments_audit) | **GET** /v3/paymentaudit/payments | Get List of Payments
 [**list_payments_audit_v4**](PaymentAuditServiceApi.md#list_payments_audit_v4) | **GET** /v4/paymentaudit/payments | Get List of Payments
 
 
 # **export_transactions_csv**
-> str export_transactions_csv(payor_id=payor_id, start_date=start_date, submitted_date_from=submitted_date_from)
+> str export_transactions_csv(payor_id=payor_id, start_date=start_date, submitted_date_from=submitted_date_from, include=include)
 
 Export Transactions
 
@@ -40,13 +41,14 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The account owner Payor ID (optional)
+payor_id = 'payor_id_example' # str | The Payor ID for whom you wish to run the report. For a Payor requesting the report, this could be their exact Payor, or it could be a child/descendant Payor.  (optional)
 start_date = '2013-10-20' # date | Start date, inclusive. Format is YYYY-MM-DD (optional)
 submitted_date_from = '2013-10-20' # date | Start date, inclusive. Format is YYYY-MM-DD (optional)
+include = 'include_example' # str | Mode to determine whether to include other Payor's data in the results. May only be used if payorId is specified. Can be omitted or set to 'payorOnly' or 'payorAndDescendants'. payorOnly: Only include results for the specified Payor. This is the default if 'include' is omitted. payorAndDescendants: Aggregate results for all descendant Payors of the specified Payor. Should only be used if the Payor with the specified payorId has at least one child Payor.                      Note when a Payor requests the report and include=payorAndDescendants is used, the following additional columns are included in the CSV: Payor Name, Payor Id  (optional)
 
 try:
     # Export Transactions
-    api_response = api_instance.export_transactions_csv(payor_id=payor_id, start_date=start_date, submitted_date_from=submitted_date_from)
+    api_response = api_instance.export_transactions_csv(payor_id=payor_id, start_date=start_date, submitted_date_from=submitted_date_from, include=include)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PaymentAuditServiceApi->export_transactions_csv: %s\n" % e)
@@ -56,9 +58,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The account owner Payor ID | [optional] 
+ **payor_id** | [**str**](.md)| The Payor ID for whom you wish to run the report. For a Payor requesting the report, this could be their exact Payor, or it could be a child/descendant Payor.  | [optional] 
  **start_date** | **date**| Start date, inclusive. Format is YYYY-MM-DD | [optional] 
  **submitted_date_from** | **date**| Start date, inclusive. Format is YYYY-MM-DD | [optional] 
+ **include** | **str**| Mode to determine whether to include other Payor&#39;s data in the results. May only be used if payorId is specified. Can be omitted or set to &#39;payorOnly&#39; or &#39;payorAndDescendants&#39;. payorOnly: Only include results for the specified Payor. This is the default if &#39;include&#39; is omitted. payorAndDescendants: Aggregate results for all descendant Payors of the specified Payor. Should only be used if the Payor with the specified payorId has at least one child Payor.                      Note when a Payor requests the report and include&#x3D;payorAndDescendants is used, the following additional columns are included in the CSV: Payor Name, Payor Id  | [optional] 
 
 ### Return type
 
@@ -600,6 +603,73 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **list_payment_changes**
+> PaymentDeltaResponse list_payment_changes(payor_id, updated_since, page=page, page_size=page_size)
+
+List Payment Changes
+
+Get a paginated response listing payment changes.
+
+### Example
+
+* OAuth Authentication (OAuth2):
+```python
+from __future__ import print_function
+import time
+import velo_payments
+from velo_payments.rest import ApiException
+from pprint import pprint
+configuration = velo_payments.Configuration()
+# Configure OAuth2 access token for authorization: OAuth2
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
+payor_id = 'payor_id_example' # str | The Payor ID to find associated Payments
+updated_since = '2013-10-20T19:20:30+01:00' # datetime | The updatedSince filter in the format YYYY-MM-DDThh:mm:ss+hh:mm
+page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+page_size = 100 # int | Page size. Default is 100. Max allowable is 1000. (optional) (default to 100)
+
+try:
+    # List Payment Changes
+    api_response = api_instance.list_payment_changes(payor_id, updated_since, page=page, page_size=page_size)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PaymentAuditServiceApi->list_payment_changes: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **payor_id** | [**str**](.md)| The Payor ID to find associated Payments | 
+ **updated_since** | **datetime**| The updatedSince filter in the format YYYY-MM-DDThh:mm:ss+hh:mm | 
+ **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
+ **page_size** | **int**| Page size. Default is 100. Max allowable is 1000. | [optional] [default to 100]
+
+### Return type
+
+[**PaymentDeltaResponse**](PaymentDeltaResponse.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Details of Payment Changes |  -  |
+**400** | Bad Request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_payments_audit**
 > ListPaymentsResponse list_payments_audit(payee_id=payee_id, payor_id=payor_id, payor_name=payor_name, remote_id=remote_id, status=status, source_account_name=source_account_name, source_amount_from=source_amount_from, source_amount_to=source_amount_to, source_currency=source_currency, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, payment_currency=payment_currency, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, payment_memo=payment_memo, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
 
@@ -635,7 +705,7 @@ source_amount_to = 56 # int | The source amount to range filter. Filters for sou
 source_currency = 'source_currency_example' # str | The source currency filter. Filters based on an exact match on the currency. (optional)
 payment_amount_from = 56 # int | The payment amount from range filter. Filters for paymentAmount >= paymentAmountFrom (optional)
 payment_amount_to = 56 # int | The payment amount to range filter. Filters for paymentAmount ⇐ paymentAmountTo (optional)
-payment_currency = 'payment_currency_example' # str | The source currency filter. Filters based on an exact match on the currency. (optional)
+payment_currency = 'payment_currency_example' # str | The payment currency filter. Filters based on an exact match on the currency. (optional)
 submitted_date_from = '2013-10-20' # date | The submitted date from range filter. Format is yyyy-MM-dd. (optional)
 submitted_date_to = '2013-10-20' # date | The submitted date to range filter. Format is yyyy-MM-dd. (optional)
 payment_memo = 'payment_memo_example' # str | The payment memo filter. This filters via a case insensitive substring match. (optional)
@@ -667,7 +737,7 @@ Name | Type | Description  | Notes
  **source_currency** | **str**| The source currency filter. Filters based on an exact match on the currency. | [optional] 
  **payment_amount_from** | **int**| The payment amount from range filter. Filters for paymentAmount &gt;&#x3D; paymentAmountFrom | [optional] 
  **payment_amount_to** | **int**| The payment amount to range filter. Filters for paymentAmount ⇐ paymentAmountTo | [optional] 
- **payment_currency** | **str**| The source currency filter. Filters based on an exact match on the currency. | [optional] 
+ **payment_currency** | **str**| The payment currency filter. Filters based on an exact match on the currency. | [optional] 
  **submitted_date_from** | **date**| The submitted date from range filter. Format is yyyy-MM-dd. | [optional] 
  **submitted_date_to** | **date**| The submitted date to range filter. Format is yyyy-MM-dd. | [optional] 
  **payment_memo** | **str**| The payment memo filter. This filters via a case insensitive substring match. | [optional] 
@@ -732,7 +802,7 @@ source_amount_to = 56 # int | The source amount to range filter. Filters for sou
 source_currency = 'source_currency_example' # str | The source currency filter. Filters based on an exact match on the currency. (optional)
 payment_amount_from = 56 # int | The payment amount from range filter. Filters for paymentAmount >= paymentAmountFrom (optional)
 payment_amount_to = 56 # int | The payment amount to range filter. Filters for paymentAmount ⇐ paymentAmountTo (optional)
-payment_currency = 'payment_currency_example' # str | The source currency filter. Filters based on an exact match on the currency. (optional)
+payment_currency = 'payment_currency_example' # str | The payment currency filter. Filters based on an exact match on the currency. (optional)
 submitted_date_from = '2013-10-20' # date | The submitted date from range filter. Format is yyyy-MM-dd. (optional)
 submitted_date_to = '2013-10-20' # date | The submitted date to range filter. Format is yyyy-MM-dd. (optional)
 payment_memo = 'payment_memo_example' # str | The payment memo filter. This filters via a case insensitive substring match. (optional)
@@ -764,7 +834,7 @@ Name | Type | Description  | Notes
  **source_currency** | **str**| The source currency filter. Filters based on an exact match on the currency. | [optional] 
  **payment_amount_from** | **int**| The payment amount from range filter. Filters for paymentAmount &gt;&#x3D; paymentAmountFrom | [optional] 
  **payment_amount_to** | **int**| The payment amount to range filter. Filters for paymentAmount ⇐ paymentAmountTo | [optional] 
- **payment_currency** | **str**| The source currency filter. Filters based on an exact match on the currency. | [optional] 
+ **payment_currency** | **str**| The payment currency filter. Filters based on an exact match on the currency. | [optional] 
  **submitted_date_from** | **date**| The submitted date from range filter. Format is yyyy-MM-dd. | [optional] 
  **submitted_date_to** | **date**| The submitted date to range filter. Format is yyyy-MM-dd. | [optional] 
  **payment_memo** | **str**| The payment memo filter. This filters via a case insensitive substring match. | [optional] 
