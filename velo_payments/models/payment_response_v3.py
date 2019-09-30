@@ -304,8 +304,8 @@ class PaymentResponseV3(object):
         :param quote_id: The quote_id of this PaymentResponseV3.  # noqa: E501
         :type: str
         """
-        if quote_id is None:
-            raise ValueError("Invalid value for `quote_id`, must not be `None`")  # noqa: E501
+        # if quote_id is None:
+        #     raise ValueError("Invalid value for `quote_id`, must not be `None`")  # noqa: E501
 
         self._quote_id = quote_id
 
