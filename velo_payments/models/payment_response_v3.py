@@ -237,8 +237,8 @@ class PaymentResponseV3(object):
         :param payee_id: The payee_id of this PaymentResponseV3.  # noqa: E501
         :type: str
         """
-        if payee_id is None:
-            raise ValueError("Invalid value for `payee_id`, must not be `None`")  # noqa: E501
+        # if payee_id is None:
+        #     raise ValueError("Invalid value for `payee_id`, must not be `None`")  # noqa: E501
 
         self._payee_id = payee_id
 
@@ -327,8 +327,8 @@ class PaymentResponseV3(object):
         :param source_account_id: The source_account_id of this PaymentResponseV3.  # noqa: E501
         :type: str
         """
-        if source_account_id is None:
-            raise ValueError("Invalid value for `source_account_id`, must not be `None`")  # noqa: E501
+        # if source_account_id is None:
+        #     raise ValueError("Invalid value for `source_account_id`, must not be `None`")  # noqa: E501
 
         self._source_account_id = source_account_id
 
@@ -876,8 +876,8 @@ class PaymentResponseV3(object):
         :param events: The events of this PaymentResponseV3.  # noqa: E501
         :type: list[PaymentEventResponseV3]
         """
-        if events is None:
-            raise ValueError("Invalid value for `events`, must not be `None`")  # noqa: E501
+        # if events is None:
+        #     raise ValueError("Invalid value for `events`, must not be `None`")  # noqa: E501
 
         self._events = events
 
