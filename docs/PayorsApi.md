@@ -348,7 +348,7 @@ configuration.host = "https://api.sandbox.velopayments.com"
 api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
 descendants_of_payor = 'descendants_of_payor_example' # str | The Payor ID from which to start the query to show all descendants (optional)
 parent_of_payor = 'parent_of_payor_example' # str | Look for the parent payor details for this payor id (optional)
-fields = 'fields_example' # str | List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - 'fields' allows you to add to this. Example: ```fields=primaryContactEmail,kycState``` - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState               (optional)
+fields = 'fields_example' # str | List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - 'fields' allows you to add to this. Example: ```fields=primaryContactEmail,kycState``` - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState  (optional)
 
 try:
     # List Payor Links
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **descendants_of_payor** | [**str**](.md)| The Payor ID from which to start the query to show all descendants | [optional] 
  **parent_of_payor** | [**str**](.md)| Look for the parent payor details for this payor id | [optional] 
- **fields** | **str**| List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - &#39;fields&#39; allows you to add to this. Example: &#x60;&#x60;&#x60;fields&#x3D;primaryContactEmail,kycState&#x60;&#x60;&#x60; - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState               | [optional] 
+ **fields** | **str**| List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - &#39;fields&#39; allows you to add to this. Example: &#x60;&#x60;&#x60;fields&#x3D;primaryContactEmail,kycState&#x60;&#x60;&#x60; - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState  | [optional] 
 
 ### Return type
 

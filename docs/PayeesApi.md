@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_payees**
-> PayeeResponse list_payees(payor_id, ofac_status=ofac_status, onboarded_status=onboarded_status, email=email, display_name=display_name, remote_id=remote_id, payee_type=payee_type, payee_country=payee_country, page=page, page_size=page_size, sort=sort)
+> PagedPayeeResponse list_payees(payor_id, ofac_status=ofac_status, onboarded_status=onboarded_status, email=email, display_name=display_name, remote_id=remote_id, payee_type=payee_type, payee_country=payee_country, page=page, page_size=page_size, sort=sort)
 
 List Payees
 
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PayeeResponse**](PayeeResponse.md)
+[**PagedPayeeResponse**](PagedPayeeResponse.md)
 
 ### Authorization
 

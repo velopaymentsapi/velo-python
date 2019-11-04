@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payor_id** | **str** |  | [optional] [readonly] 
 **payor_name** | **str** | The name of the payor. | 
-**address** | [**Address**](Address.md) |  | [optional] 
+**address** | [**PayorAddressV2**](PayorAddressV2.md) |  | [optional] 
 **primary_contact_name** | **str** | Name of primary contact for the payor. | [optional] 
 **primary_contact_phone** | **str** | Primary contact phone number for the payor. | [optional] 
 **primary_contact_email** | **str** | Primary contact email for the payor. | [optional] 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **reminder_emails_opt_out** | **bool** | Whether or not the payor has opted-out of reminder emails being sent. | [optional] [readonly] 
 **language** | **str** | The payor’s language preference. Must be one of [EN, FR]. | [optional] 
 **includes_reports** | **bool** |  | [optional] 
+**max_master_payor_admins** | **int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

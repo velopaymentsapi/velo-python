@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **total_payment_amount** | **int** |  | 
 **source_currency** | **str** |  | 
 **payment_currency** | **str** |  | 
-**funding_status** | **str** |  | [optional] 
-**status** | **str** |  | [optional] 
+**funding_status** | **str** |  | 
+**status** | **str** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

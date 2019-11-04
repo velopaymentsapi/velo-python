@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payment_id** | **str** |  | 
 **payee_id** | **str** |  | 
-**payor_id** | **str** |  | 
+**payor_id** | **str** | Deprecated in v2.16. Will be populated with submitting payor ID until removed in a later release. | 
 **payor_name** | **str** |  | [optional] 
 **quote_id** | **str** |  | 
 **source_account_id** | **str** |  | 
@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **events** | [**list[PaymentEventResponseV4]**](PaymentEventResponseV4.md) |  | 
 **return_cost** | **int** |  | [optional] 
 **return_reason** | **str** |  | [optional] 
+**payout** | [**PaymentResponseV4Payout**](PaymentResponseV4Payout.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
