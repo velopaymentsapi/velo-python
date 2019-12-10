@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**get_payee_by_id**](PayeesApi.md#get_payee_by_id) | **GET** /v1/payees/{payeeId} | Get Payee by Id
 [**list_payee_changes**](PayeesApi.md#list_payee_changes) | **GET** /v1/deltas/payees | List Payee Changes
 [**list_payees**](PayeesApi.md#list_payees) | **GET** /v1/payees | List Payees
+[**list_payees_v3**](PayeesApi.md#list_payees_v3) | **GET** /v3/payees | List Payees
+[**v1_payees_payee_id_remote_id_update_post**](PayeesApi.md#v1_payees_payee_id_remote_id_update_post) | **POST** /v1/payees/{payeeId}/remoteIdUpdate | Update Payee Remote Id
 
 
 # **delete_payee_by_id**
@@ -232,7 +234,7 @@ email = 'email_example' # str | Email address (optional)
 display_name = 'display_name_example' # str | The display name of the payees. (optional)
 remote_id = 'remote_id_example' # str | The remote id of the payees. (optional)
 payee_type = velo_payments.PayeeType() # PayeeType | The onboarded status of the payees. (optional)
-payee_country = 'payee_country_example' # str | The country of the payees. (optional)
+payee_country = 'payee_country_example' # str | The country of the payee - 2 letter ISO 3166-1 country code (upper case) (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
 sort = 'displayName:asc' # str | List of sort fields (e.g. ?sort=onboardedStatus:asc,name:asc) Default is name:asc 'name' is treated as company name for companies - last name + ',' + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.  (optional) (default to 'displayName:asc')
@@ -256,7 +258,7 @@ Name | Type | Description  | Notes
  **display_name** | **str**| The display name of the payees. | [optional] 
  **remote_id** | **str**| The remote id of the payees. | [optional] 
  **payee_type** | [**PayeeType**](.md)| The onboarded status of the payees. | [optional] 
- **payee_country** | **str**| The country of the payees. | [optional] 
+ **payee_country** | **str**| The country of the payee - 2 letter ISO 3166-1 country code (upper case) | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| Page size. Default is 25. Max allowable is 100. | [optional] [default to 25]
  **sort** | **str**| List of sort fields (e.g. ?sort&#x3D;onboardedStatus:asc,name:asc) Default is name:asc &#39;name&#39; is treated as company name for companies - last name + &#39;,&#39; + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.  | [optional] [default to &#39;displayName:asc&#39;]
@@ -280,6 +282,154 @@ Name | Type | Description  | Notes
 **200** | Details of Payee |  -  |
 **400** | Bad Request |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_payees_v3**
+> PagedPayeeResponse2 list_payees_v3(payor_id, ofac_status=ofac_status, onboarded_status=onboarded_status, email=email, display_name=display_name, remote_id=remote_id, payee_type=payee_type, payee_country=payee_country, page=page, page_size=page_size, sort=sort)
+
+List Payees
+
+Get a paginated response listing the payees for a payor.
+
+### Example
+
+* OAuth Authentication (OAuth2):
+```python
+from __future__ import print_function
+import time
+import velo_payments
+from velo_payments.rest import ApiException
+from pprint import pprint
+configuration = velo_payments.Configuration()
+# Configure OAuth2 access token for authorization: OAuth2
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
+payor_id = 'payor_id_example' # str | The account owner Payor ID
+ofac_status = velo_payments.WatchlistStatus() # WatchlistStatus | The watchlistStatus of the payees. (optional)
+onboarded_status = velo_payments.OnboardedStatus() # OnboardedStatus | The onboarded status of the payees. (optional)
+email = 'email_example' # str | Email address (optional)
+display_name = 'display_name_example' # str | The display name of the payees. (optional)
+remote_id = 'remote_id_example' # str | The remote id of the payees. (optional)
+payee_type = velo_payments.PayeeType() # PayeeType | The onboarded status of the payees. (optional)
+payee_country = 'payee_country_example' # str | The country of the payee - 2 letter ISO 3166-1 country code (upper case) (optional)
+page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
+sort = 'displayName:asc' # str | List of sort fields (e.g. ?sort=onboardedStatus:asc,name:asc) Default is name:asc 'name' is treated as company name for companies - last name + ',' + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.  (optional) (default to 'displayName:asc')
+
+try:
+    # List Payees
+    api_response = api_instance.list_payees_v3(payor_id, ofac_status=ofac_status, onboarded_status=onboarded_status, email=email, display_name=display_name, remote_id=remote_id, payee_type=payee_type, payee_country=payee_country, page=page, page_size=page_size, sort=sort)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PayeesApi->list_payees_v3: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **payor_id** | [**str**](.md)| The account owner Payor ID | 
+ **ofac_status** | [**WatchlistStatus**](.md)| The watchlistStatus of the payees. | [optional] 
+ **onboarded_status** | [**OnboardedStatus**](.md)| The onboarded status of the payees. | [optional] 
+ **email** | [**str**](.md)| Email address | [optional] 
+ **display_name** | **str**| The display name of the payees. | [optional] 
+ **remote_id** | **str**| The remote id of the payees. | [optional] 
+ **payee_type** | [**PayeeType**](.md)| The onboarded status of the payees. | [optional] 
+ **payee_country** | **str**| The country of the payee - 2 letter ISO 3166-1 country code (upper case) | [optional] 
+ **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
+ **page_size** | **int**| Page size. Default is 25. Max allowable is 100. | [optional] [default to 25]
+ **sort** | **str**| List of sort fields (e.g. ?sort&#x3D;onboardedStatus:asc,name:asc) Default is name:asc &#39;name&#39; is treated as company name for companies - last name + &#39;,&#39; + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.  | [optional] [default to &#39;displayName:asc&#39;]
+
+### Return type
+
+[**PagedPayeeResponse2**](PagedPayeeResponse2.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Details of Payee |  -  |
+**400** | Bad Request |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v1_payees_payee_id_remote_id_update_post**
+> v1_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request)
+
+Update Payee Remote Id
+
+Update the remote Id for the given Payee Id.
+
+### Example
+
+* OAuth Authentication (OAuth2):
+```python
+from __future__ import print_function
+import time
+import velo_payments
+from velo_payments.rest import ApiException
+from pprint import pprint
+configuration = velo_payments.Configuration()
+# Configure OAuth2 access token for authorization: OAuth2
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
+payee_id = 'payee_id_example' # str | The UUID of the payee.
+update_remote_id_request = velo_payments.UpdateRemoteIdRequest() # UpdateRemoteIdRequest | Request to update payee remote id
+
+try:
+    # Update Payee Remote Id
+    api_instance.v1_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request)
+except ApiException as e:
+    print("Exception when calling PayeesApi->v1_payees_payee_id_remote_id_update_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **payee_id** | [**str**](.md)| The UUID of the payee. | 
+ **update_remote_id_request** | [**UpdateRemoteIdRequest**](UpdateRemoteIdRequest.md)| Request to update payee remote id | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted, No Content |  -  |
+**400** | Invalid request. See Error message payload for details of failure |  -  |
+**401** | Invalid access token. May be expired or invalid |  -  |
+**403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
+**404** | Resource not found |  -  |
+**409** | The request contained data that would reult in a duplicate value  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
