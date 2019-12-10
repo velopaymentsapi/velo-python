@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **address_city** | **str** |  | 
 **address_county_or_province** | **str** |  | [optional] 
 **address_zip_or_postcode** | **str** |  | 
-**address_country** | **str** |  | 
+**address_country** | **str** | Ideally a 2 letter ISO 3166-1 country code.  But a limited set of additional values will be corrected.  See Java Locale.getISOCountries() and Locale.getDisplayCountry() | 
 **individual_national_identification** | **str** |  | [optional] 
 **individual_date_of_birth** | **date** | Must not be date in future. Example - 1970-05-20 | [optional] 
 **individual_title** | **str** |  | [optional] 

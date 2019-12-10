@@ -7,8 +7,10 @@ Method | HTTP request | Description
 [**get_payees_invitation_status**](PayeeInvitationApi.md#get_payees_invitation_status) | **GET** /v1/payees/payors/{payorId}/invitationStatus | Get Payee Invitation Status
 [**get_payees_invitation_status_v2**](PayeeInvitationApi.md#get_payees_invitation_status_v2) | **GET** /v2/payees/payors/{payorId}/invitationStatus | Get Payee Invitation Status
 [**resend_payee_invite**](PayeeInvitationApi.md#resend_payee_invite) | **POST** /v1/payees/{payeeId}/invite | Resend Payee Invite
-[**v2_create_payee**](PayeeInvitationApi.md#v2_create_payee) | **POST** /v2/payees | Intiate Payee Creation
+[**v2_create_payee**](PayeeInvitationApi.md#v2_create_payee) | **POST** /v2/payees | Intiate Payee Creation V2
 [**v2_query_batch_status**](PayeeInvitationApi.md#v2_query_batch_status) | **GET** /v2/payees/batch/{batchId} | Query Batch Status
+[**v3_create_payee**](PayeeInvitationApi.md#v3_create_payee) | **POST** /v3/payees | Intiate Payee Creation V3
+[**v3_query_batch_status**](PayeeInvitationApi.md#v3_query_batch_status) | **GET** /v3/payees/batch/{batchId} | Query Batch Status
 
 
 # **get_payees_invitation_status**
@@ -209,7 +211,7 @@ Name | Type | Description  | Notes
 # **v2_create_payee**
 > CreatePayeesCSVResponse v2_create_payee(create_payees_request)
 
-Intiate Payee Creation
+Intiate Payee Creation V2
 
 Initiate the process of creating 1 to 2000 payees in a batch Use the response location header to query for status (201 - Created, 400 - invalid request body, 409 - if there is a duplicate remote id within the batch / if there is a duplicate email within the batch). 
 
@@ -233,7 +235,7 @@ api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configur
 create_payees_request = velo_payments.CreatePayeesRequest() # CreatePayeesRequest | Post payees to create.
 
 try:
-    # Intiate Payee Creation
+    # Intiate Payee Creation V2
     api_response = api_instance.v2_create_payee(create_payees_request)
     pprint(api_response)
 except ApiException as e:
@@ -299,6 +301,127 @@ try:
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PayeeInvitationApi->v2_query_batch_status: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batch_id** | [**str**](.md)| Batch Id | 
+
+### Return type
+
+[**QueryBatchResponse**](QueryBatchResponse.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Get Batch Status |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_create_payee**
+> CreatePayeesCSVResponse2 v3_create_payee(create_payees_request2)
+
+Intiate Payee Creation V3
+
+Initiate the process of creating 1 to 2000 payees in a batch Use the response location header to query for status (201 - Created, 400 - invalid request body, 409 - if there is a duplicate remote id within the batch / if there is a duplicate email within the batch). 
+
+### Example
+
+* OAuth Authentication (OAuth2):
+```python
+from __future__ import print_function
+import time
+import velo_payments
+from velo_payments.rest import ApiException
+from pprint import pprint
+configuration = velo_payments.Configuration()
+# Configure OAuth2 access token for authorization: OAuth2
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
+create_payees_request2 = velo_payments.CreatePayeesRequest2() # CreatePayeesRequest2 | Post payees to create.
+
+try:
+    # Intiate Payee Creation V3
+    api_response = api_instance.v3_create_payee(create_payees_request2)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PayeeInvitationApi->v3_create_payee: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_payees_request2** | [**CreatePayeesRequest2**](CreatePayeesRequest2.md)| Post payees to create. | 
+
+### Return type
+
+[**CreatePayeesCSVResponse2**](CreatePayeesCSVResponse2.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | HTTP Created. Body created only on CSV requests |  -  |
+**400** | Bad Request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v3_query_batch_status**
+> QueryBatchResponse v3_query_batch_status(batch_id)
+
+Query Batch Status
+
+Fetch the status of a specific batch of payees. The batch is fully processed when status is ACCEPTED and pendingCount is 0 ( 200 - OK, 404 - batch not found ). 
+
+### Example
+
+* OAuth Authentication (OAuth2):
+```python
+from __future__ import print_function
+import time
+import velo_payments
+from velo_payments.rest import ApiException
+from pprint import pprint
+configuration = velo_payments.Configuration()
+# Configure OAuth2 access token for authorization: OAuth2
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
+batch_id = 'batch_id_example' # str | Batch Id
+
+try:
+    # Query Batch Status
+    api_response = api_instance.v3_query_batch_status(batch_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PayeeInvitationApi->v3_query_batch_status: %s\n" % e)
 ```
 
 ### Parameters
