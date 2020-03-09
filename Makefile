@@ -1,3 +1,5 @@
+.PHONY: tests
+
 help:
 	@echo ""
 	@echo "\033[0;34m    Velo Payments - Python Client (\033[1;34mvelo-payments\033[0;34m) \033[0m"
@@ -44,6 +46,10 @@ info:
 	sed -i.bak '1s/# velo-python/# Python client for Velo/' README.md && rm README.md.bak
 	sed -i.bak '2s/.*/[![License](https:\/\/img.shields.io\/badge\/License-Apache%202.0-blue.svg)](https:\/\/opensource.org\/licenses\/Apache-2.0) [![npm version](https:\/\/badge.fury.io\/py\/velo-python.svg)](https:\/\/badge.fury.io\/py\/velo-python) [![CircleCI](https:\/\/circleci.com\/gh\/velopaymentsapi\/velo-python.svg?style=svg)](https:\/\/circleci.com\/gh\/velopaymentsapi\/velo-python)/' README.md && rm README.md.bak
 	sed -i.bak '3s/.*/This library provides a Python client that simplifies interactions with the Velo Payments API. For full details covering the API visit our docs at [Velo Payments APIs](https:\/\/apidocs.velopayments.com). Note: some of the Velo API calls which require authorization via an access token, see the full docs on how to configure./' README.md && rm README.md.bak
+	# adjust tox file
+	sed -i.bak 's/envlist = py27, py3/envlist = py3/g' tox.ini && rm tox.ini.bak
+	sed -i.bak 's/\[\]/-w .\/tests -s/' tox.ini && rm tox.ini.bak
+	echo "passenv = *" >> tox.ini
 
 build_client:
 	#
@@ -51,9 +57,8 @@ build_client:
 client: clean generate trim info build_client
 
 tests:
-	sed -i.bak 's/envlist = py27, py3/envlist = py3/g' tox.ini && rm tox.ini.bak
 	docker build -t=client-python-tests .
-	docker run -v $(PWD):/usr/src/app client-python-tests tox
+	docker run -v $(PWD):/usr/src/app -e KEY=${KEY} -e SECRET=${SECRET} -e PAYOR=${PAYOR} client-python-tests tox
 
 commit:
 	git add --all
