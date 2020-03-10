@@ -4,8 +4,7 @@ List Payouts Response
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**summary** | [**PagedPayeeResponseSummary**](PagedPayeeResponseSummary.md) |  | [optional] 
-**page** | [**PagedPayeeResponsePage**](PagedPayeeResponsePage.md) |  | [optional] 
+**page** | [**PagedPayeeInvitationStatusResponsePage**](PagedPayeeInvitationStatusResponsePage.md) |  | [optional] 
 **links** | [**list[PagedPayeeResponseLinks]**](PagedPayeeResponseLinks.md) |  | [optional] 
 **content** | [**list[PayoutSummaryAuditV4]**](PayoutSummaryAuditV4.md) |  | [optional] 
 

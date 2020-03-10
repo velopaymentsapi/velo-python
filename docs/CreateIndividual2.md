@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | [**IndividualV1Name**](IndividualV1Name.md) |  | 
+**name** | [**CreateIndividual2Name**](CreateIndividual2Name.md) |  | 
 **national_identification** | **str** |  | [optional] 
 **date_of_birth** | **date** | Must not be date in future. Example - 1970-05-20 | 
 

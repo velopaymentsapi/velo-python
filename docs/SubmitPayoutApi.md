@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Submit Payout
 
-Create a new payout and return a location header with a link to get the payout. Basic validation of the payout is performed before returning but more comprehensive validation is done asynchronously, the results of which can be obtained by issuing a HTTP GET to the URL returned in the location header. **NOTE:** amount values in payments must be in 'minor units' format. E.g. cents for USD, pence for GBP etc.  with no decimal places. 
+<p>Create a new payout and return a location header with a link to get the payout.</p> <p>Basic validation of the payout is performed before returning but more comprehensive validation is done asynchronously.</p> <p>The results can be obtained by issuing a HTTP GET to the URL returned in the location header.</p> <p>**NOTE:** amount values in payments must be in 'minor units' format. E.g. cents for USD, pence for GBP etc.</p>  with no decimal places. 
 
 ### Example
 
@@ -29,15 +29,18 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Defining host is optional and default to https://api.sandbox.velopayments.com
 configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.SubmitPayoutApi(velo_payments.ApiClient(configuration))
-create_payout_request = velo_payments.CreatePayoutRequest() # CreatePayoutRequest | Post amount to transfer using stored funding account details.
 
-try:
-    # Submit Payout
-    api_instance.submit_payout(create_payout_request)
-except ApiException as e:
-    print("Exception when calling SubmitPayoutApi->submit_payout: %s\n" % e)
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = velo_payments.SubmitPayoutApi(api_client)
+    create_payout_request = velo_payments.CreatePayoutRequest() # CreatePayoutRequest | Post amount to transfer using stored funding account details.
+
+    try:
+        # Submit Payout
+        api_instance.submit_payout(create_payout_request)
+    except ApiException as e:
+        print("Exception when calling SubmitPayoutApi->submit_payout: %s\n" % e)
 ```
 
 ### Parameters
@@ -57,15 +60,15 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, multipart/form-data
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Detailed response of payout instructions |  * Location - Reference to created payout <br>  |
-**400** | Bad Request |  -  |
-**404** | Not Found |  -  |
-**503** | Service Unavailable |  -  |
+**400** | Invalid request. See Error message payload for details of failure |  -  |
+**401** | Invalid access token. May be expired or invalid |  -  |
+**403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

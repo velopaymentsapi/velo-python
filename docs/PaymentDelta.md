@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **payor_payment_id** | **str** |  | [optional] 
 **payment_currency** | **str** |  | [optional] 
 **payment_amount** | **int** |  | [optional] 
-**status** | [**PaymentStatus**](PaymentStatus.md) |  | [optional] 
+**status** | **str** |  | [optional] 
 **source_currency** | **str** |  | [optional] 
 **source_amount** | **int** |  | [optional] 
 

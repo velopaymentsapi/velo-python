@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **individual_other_names** | **str** |  | [optional] 
 **individual_last_name** | **str** |  | [optional] 
 **company_name** | **str** |  | [optional] 
-**company_ein** | **str** | Company Tax Id (EIN) must be 9 numeric characters. Must match the regular expression &#x60;&#x60;&#x60;[\\d]{9}&#x60;&#x60;&#x60;. | [optional] 
+**company_ein** | **str** |  | [optional] 
 **company_operating_name** | **str** |  | [optional] 
 **payment_channel_account_number** | **str** | Either routing number and account number or only iban must be set | [optional] 
 **payment_channel_routing_number** | **str** | Either routing number and account number or only iban must be set | [optional] 

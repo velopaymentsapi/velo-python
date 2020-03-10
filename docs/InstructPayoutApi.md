@@ -29,15 +29,18 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Defining host is optional and default to https://api.sandbox.velopayments.com
 configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.InstructPayoutApi(velo_payments.ApiClient(configuration))
-payout_id = 'payout_id_example' # str | Id of the payout
 
-try:
-    # Instruct Payout
-    api_instance.v3_payouts_payout_id_post(payout_id)
-except ApiException as e:
-    print("Exception when calling InstructPayoutApi->v3_payouts_payout_id_post: %s\n" % e)
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = velo_payments.InstructPayoutApi(api_client)
+    payout_id = 'payout_id_example' # str | Id of the payout
+
+    try:
+        # Instruct Payout
+        api_instance.v3_payouts_payout_id_post(payout_id)
+    except ApiException as e:
+        print("Exception when calling InstructPayoutApi->v3_payouts_payout_id_post: %s\n" % e)
 ```
 
 ### Parameters
@@ -57,14 +60,17 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | HTTP 202 Accepted |  -  |
-**404** | Not Found |  -  |
-**409** | Conflict |  -  |
+**400** | Invalid request. See Error message payload for details of failure |  -  |
+**401** | Invalid access token. May be expired or invalid |  -  |
+**403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
+**404** | Resource not found |  -  |
+**409** | The request contained data that would result in a duplicate value  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

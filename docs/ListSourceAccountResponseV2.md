@@ -4,7 +4,7 @@ List Source Accounts Response Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page** | [**ListSourceAccountResponseV2Page**](ListSourceAccountResponseV2Page.md) |  | [optional] 
+**page** | [**PagedUserResponsePage**](PagedUserResponsePage.md) |  | [optional] 
 **links** | [**list[ListSourceAccountResponseLinks]**](ListSourceAccountResponseLinks.md) |  | [optional] 
 **content** | [**list[SourceAccountResponseV2]**](SourceAccountResponseV2.md) |  | [optional] 
 

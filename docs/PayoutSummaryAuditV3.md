@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **payout_id** | **str** |  | 
 **payor_id** | **str** |  | [optional] 
 **status** | [**PayoutStatusV3**](PayoutStatusV3.md) |  | 
-**date_time** | **datetime** |  | [optional] 
 **submitted_date_time** | **str** |  | 
 **instructed_date_time** | **str** |  | [optional] 
 **withdrawn_date_time** | **str** |  | [optional] 

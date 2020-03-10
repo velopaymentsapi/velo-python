@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **payments_rejected** | **int** |  | [optional] 
 **fx_summaries** | [**list[QuoteFxSummary]**](QuoteFxSummary.md) |  | 
 **accounts** | [**list[SourceAccount]**](SourceAccount.md) |  | 
+**accepted_payments** | [**list[AcceptedPayment]**](AcceptedPayment.md) |  | 
 **rejected_payments** | [**list[RejectedPayment]**](RejectedPayment.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

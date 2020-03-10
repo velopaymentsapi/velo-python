@@ -5,7 +5,7 @@ List Payments for payout
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **summary** | [**GetPaymentsForPayoutResponseV4Summary**](GetPaymentsForPayoutResponseV4Summary.md) |  | [optional] 
-**page** | [**PagedPayeeResponsePage**](PagedPayeeResponsePage.md) |  | [optional] 
+**page** | [**PagedPayeeInvitationStatusResponsePage**](PagedPayeeInvitationStatusResponsePage.md) |  | [optional] 
 **links** | [**list[PagedPayeeResponseLinks]**](PagedPayeeResponseLinks.md) |  | [optional] 
 **content** | [**list[PaymentResponseV4]**](PaymentResponseV4.md) |  | [optional] 
 

@@ -4,7 +4,7 @@ List Payees Invitation Status Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page** | [**PagedPayeeResponsePage**](PagedPayeeResponsePage.md) |  | [optional] 
+**page** | [**PagedPayeeInvitationStatusResponsePage**](PagedPayeeInvitationStatusResponsePage.md) |  | [optional] 
 **links** | [**list[PagedPayeeResponseLinks]**](PagedPayeeResponseLinks.md) |  | [optional] 
 **content** | [**list[PayeeInvitationStatusResponse]**](PayeeInvitationStatusResponse.md) |  | [optional] 
 

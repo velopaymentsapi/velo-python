@@ -4,7 +4,7 @@ List Payment Changes Response Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page** | [**PagedPayeeResponsePage**](PagedPayeeResponsePage.md) |  | [optional] 
+**page** | [**PagedPayeeInvitationStatusResponsePage**](PagedPayeeInvitationStatusResponsePage.md) |  | [optional] 
 **links** | [**list[PagedPayeeResponseLinks]**](PagedPayeeResponseLinks.md) |  | [optional] 
 **content** | [**list[PaymentDelta]**](PaymentDelta.md) |  | [optional] 
 
