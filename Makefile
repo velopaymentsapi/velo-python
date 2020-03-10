@@ -66,6 +66,7 @@ commit:
 	git push --set-upstream origin master
 
 build:
+	docker build -t=client-python-tests .
 	sed -i.bak 's/VERSION = ".*"/VERSION = "${VERSION}"/g' setup.py && rm setup.py.bak
 	docker run -v $(PWD):/usr/src/app client-python-tests python setup.py sdist
 
