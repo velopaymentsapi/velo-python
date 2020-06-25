@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **wu_customer_id** | **str** |  | [optional] 
 **max_master_payor_admins** | **int** |  | [optional] 
 **payment_rails** | [**PaymentRails**](PaymentRails.md) |  | [optional] 
+**transmission_types** | [**TransmissionTypes2**](TransmissionTypes2.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

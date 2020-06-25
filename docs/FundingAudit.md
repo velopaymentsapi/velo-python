@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **float** |  | [optional] 
+**amount** | **float** | The amount funded | [optional] 
+**currency** | **str** | The currency of the funding | [optional] 
 **date_time** | **datetime** |  | [optional] 
 **status** | **str** |  | [optional] 
-**currency** | **str** |  | [optional] 
 **source_account_name** | **str** |  | [optional] 
 **funding_account_name** | **str** |  | [optional] 
 **funding_type** | **str** |  | [optional] 

@@ -31,12 +31,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
@@ -75,7 +85,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get Payees with Invitaion status |  -  |
-**404** | Resource not found |  -  |
+**404** | The resource was not found or is no longer available  |  -  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
@@ -98,12 +108,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
@@ -150,7 +170,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get Payees with Invitaion status - filters of payeeId and invitationStatus |  -  |
-**404** | Resource not found |  -  |
+**404** | The resource was not found or is no longer available  |  -  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
@@ -173,12 +193,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
@@ -225,7 +255,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get Payees with Invitaion status - filters of payeeId and invitationStatus |  -  |
-**404** | Resource not found |  -  |
+**404** | The resource was not found or is no longer available  |  -  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
@@ -248,12 +278,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
@@ -292,7 +332,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get Batch Status |  -  |
-**404** | Resource not found |  -  |
+**404** | The resource was not found or is no longer available  |  -  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
@@ -315,12 +355,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
@@ -359,7 +409,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get Batch Status |  -  |
-**404** | Resource not found |  -  |
+**404** | The resource was not found or is no longer available  |  -  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
@@ -382,12 +432,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
@@ -427,7 +487,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the request was accepted |  -  |
-**404** | Resource not found |  -  |
+**404** | The resource was not found or is no longer available  |  -  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
@@ -451,12 +511,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
@@ -496,7 +566,7 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the request was accepted |  -  |
-**404** | Resource not found |  -  |
+**404** | The resource was not found or is no longer available  |  -  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
@@ -520,12 +590,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
@@ -564,7 +644,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | HTTP Created. Body created only on CSV requests |  -  |
-**404** | Resource not found |  -  |
+**404** | The resource was not found or is no longer available  |  -  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
@@ -588,12 +668,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
@@ -632,7 +722,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | HTTP Created. Body created only on CSV requests |  -  |
-**404** | Resource not found |  -  |
+**404** | The resource was not found or is no longer available  |  -  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |

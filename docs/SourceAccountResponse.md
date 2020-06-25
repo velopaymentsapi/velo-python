@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **customer_id** | **str** |  | [optional] 
 **physical_account_id** | **str** |  | [optional] 
 **funding_account_id** | **str** |  | [optional] 
+**account_type** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

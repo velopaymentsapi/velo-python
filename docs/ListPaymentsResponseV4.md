@@ -4,7 +4,7 @@ List Payments Response Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**page** | [**ListPaymentsResponsePage**](ListPaymentsResponsePage.md) |  | [optional] 
+**page** | [**ListPaymentsResponseV3Page**](ListPaymentsResponseV3Page.md) |  | [optional] 
 **links** | [**list[GetPayoutsResponseV3Links]**](GetPayoutsResponseV3Links.md) |  | [optional] 
 **content** | [**list[PaymentResponseV4]**](PaymentResponseV4.md) |  | [optional] 
 

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **total_payments** | **int** |  | [optional] 
 **total_incomplete_payments** | **int** |  | [optional] 
 **total_returned_payments** | **int** |  | [optional] 
+**total_withdrawn_payments** | **int** |  | [optional] 
 **source_account_summary** | [**list[SourceAccountSummaryV4]**](SourceAccountSummaryV4.md) |  | [optional] 
 **fx_summaries** | [**list[FxSummaryV4]**](FxSummaryV4.md) |  | [optional] 
 **payout_memo** | **str** |  | [optional] 

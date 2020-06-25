@@ -4,11 +4,11 @@ All URIs are relative to *https://api.sandbox.velopayments.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_supported_currencies**](CurrenciesApi.md#list_supported_currencies) | **GET** /v2/currencies | List Supported Currencies
+[**list_supported_currencies_v2**](CurrenciesApi.md#list_supported_currencies_v2) | **GET** /v2/currencies | List Supported Currencies
 
 
-# **list_supported_currencies**
-> SupportedCurrencyResponse list_supported_currencies()
+# **list_supported_currencies_v2**
+> SupportedCurrencyResponseV2 list_supported_currencies_v2()
 
 List Supported Currencies
 
@@ -22,6 +22,12 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
 
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient() as api_client:
@@ -30,10 +36,10 @@ with velo_payments.ApiClient() as api_client:
     
     try:
         # List Supported Currencies
-        api_response = api_instance.list_supported_currencies()
+        api_response = api_instance.list_supported_currencies_v2()
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling CurrenciesApi->list_supported_currencies: %s\n" % e)
+        print("Exception when calling CurrenciesApi->list_supported_currencies_v2: %s\n" % e)
 ```
 
 ### Parameters
@@ -41,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**SupportedCurrencyResponse**](SupportedCurrencyResponse.md)
+[**SupportedCurrencyResponseV2**](SupportedCurrencyResponseV2.md)
 
 ### Authorization
 

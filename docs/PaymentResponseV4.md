@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **payment_currency** | [**PaymentAuditCurrencyV4**](PaymentAuditCurrencyV4.md) |  | [optional] 
 **rate** | **float** | The FX rate for the payment, if FX was involved. **Note** that (depending on the role of the caller) this information may not be displayed | [optional] 
 **inverted_rate** | **float** | The inverted FX rate for the payment, if FX was involved. **Note** that (depending on the role of the caller) this information may not be displayed | [optional] 
+**is_payment_ccy_base_ccy** | **bool** |  | [optional] 
 **submitted_date_time** | **datetime** |  | 
 **status** | **str** |  | 
 **funding_status** | **str** | The funding status of the payment | 
@@ -39,6 +40,8 @@ Name | Type | Description | Notes
 **rails_payment_id** | **str** |  | [optional] 
 **rails_batch_id** | **str** |  | [optional] 
 **rejection_reason** | **str** |  | [optional] 
+**withdrawn_reason** | **str** |  | [optional] 
+**withdrawable** | **bool** |  | [optional] 
 **payout** | [**PaymentResponseV4Payout**](PaymentResponseV4Payout.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
