@@ -125,8 +125,10 @@ build_client:
 client: clean generate trim info build_client
 
 tests:
+	# overwrite the generated test stubs _api.py tests only
+	cp -Rf tests/ test/
 	docker build -t=client-python-tests .
-	docker run -v $(PWD):/usr/src/app -e KEY=${KEY} -e SECRET=${SECRET} -e PAYOR=${PAYOR} client-python-tests tox
+	docker run -t -v $(PWD):/usr/src/app -e KEY=${KEY} -e SECRET=${SECRET} -e PAYOR=${PAYOR} -e APITOKEN="" client-python-tests tox
 
 commit:
 	git add --all

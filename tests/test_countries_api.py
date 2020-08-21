@@ -21,65 +21,66 @@ from velo_payments.api.countries_api import CountriesApi  # noqa: E501
 from velo_payments.rest import ApiException
 from pprint import pprint
 
-@unittest.skip("skipping")
+# @unittest.skip("skipping")
 class TestCountriesApi(unittest.TestCase):
     """CountriesApi unit test stubs"""
 
     def setUp(self):
         self.api = velo_payments.api.countries_api.CountriesApi()  # noqa: E501
 
-        configuration = velo_payments.Configuration()
-        # Configure HTTP basic authorization: basicAuth
-        configuration.username = os.environ.get('KEY')
-        configuration.password = os.environ.get('SECRET')
+        if os.environ.get('APITOKEN') == "":
+            configuration = velo_payments.Configuration()
+            # Configure HTTP basic authorization: basicAuth
+            configuration.username = os.environ.get('KEY')
+            configuration.password = os.environ.get('SECRET')
 
-        # Defining host is optional and default to https://api.sandbox.velopayments.com
-        configuration.host = "https://api.sandbox.velopayments.com"
-        # Create an instance of the API class
-        api_instance = velo_payments.AuthApi(velo_payments.ApiClient(configuration))
-        grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
+            # Defining host is optional and default to https://api.sandbox.velopayments.com
+            configuration.host = "https://api.sandbox.velopayments.com"
+            # Create an instance of the API class
+            api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
+            grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
 
-        try:
-            # Authentication endpoint
-            api_response = api_instance.velo_auth(grant_type=grant_type)
-            self.access_token = api_response.access_token
-            
-        except ApiException as e:
-            print("Exception when calling AuthApi->velo_auth: %s\n" % e)
+            try:
+                # Authentication endpoint
+                api_response = api_instance.velo_auth(grant_type=grant_type)
+                os.environ["APITOKEN"] = api_response.access_token
+                
+            except ApiException as e:
+                print("Exception when calling LoginApi->velo_auth: %s\n" % e)
 
     def tearDown(self):
         pass
 
-    def test_list_supported_countries(self):
-        """Test case for list_supported_countries
+    def test_list_supported_countries_v1(self):
+        """Test case for list_supported_countries_v1
 
         List Supported Countries  # noqa: E501
         """
         configuration = velo_payments.Configuration()
-        configuration.access_token = self.access_token
+        configuration.access_token = os.environ["APITOKEN"]
         configuration.host = "https://api.sandbox.velopayments.com"
         api_instance = velo_payments.CountriesApi(velo_payments.ApiClient(configuration))
 
         try:
-            api_response = api_instance.list_supported_countries()
+            api_response = api_instance.list_supported_countries_v1()
         except ApiException as e:
-            print("Exception when calling CountriesApi->list_supported_countries: %s\n" % e)
+            print("Exception when calling CountriesApi->list_supported_countries_v1: %s\n" % e)
         
 
-    def test_v1_payment_channel_rules_get(self):
-        """Test case for v1_payment_channel_rules_get
+    def test_list_payment_channel_rules_v1(self):
+        """Test case for list_payment_channel_rules_v1
 
         List Payment Channel Country Rules  # noqa: E501
         """
         configuration = velo_payments.Configuration()
-        configuration.access_token = self.access_token
+        configuration.access_token = os.environ["APITOKEN"]
         configuration.host = "https://api.sandbox.velopayments.com"
         api_instance = velo_payments.CountriesApi(velo_payments.ApiClient(configuration))
 
         try:
-            api_response = api_instance.v1_payment_channel_rules_get()
+            api_response = api_instance.list_payment_channel_rules_v1()
         except ApiException as e:
-            print("Exception when calling CountriesApi->v1_payment_channel_rules_get: %s\n" % e)
+            print("Exception when calling CountriesApi->list_payment_channel_rules_v1: %s\n" % e)
 
 
 if __name__ == '__main__':
