@@ -151,28 +151,79 @@ class TestFundingManagerApi(unittest.TestCase):
 
         Get list of source accounts  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+
+        payor_id = os.environ["PAYOR"] # str |  (optional)
+        physical_account_name = None # str | Physical Account Name (optional)
+        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+        page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
+        sort = 'fundingRef:asc' # str | List of sort fields e.g. ?sort=name:asc Default is name:asc The supported sort fields are - fundingRef  (optional) (default to 'fundingRef:asc')
+
+        api_response = api_instance.get_source_accounts(physical_account_name=physical_account_name, payor_id=payor_id, page=page, page_size=page_size, sort=sort)
 
     def test_get_source_accounts_v2(self):
         """Test case for get_source_accounts_v2
 
         Get list of source accounts  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+
+        physical_account_name = None # str | Physical Account Name (optional)
+        physical_account_id = None # str | The physical account ID (optional)
+        payor_id = os.environ["PAYOR"] # str | The account owner Payor ID (optional)
+        funding_account_id = None # str | The funding account ID (optional)
+        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+        page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
+        sort = 'fundingRef:asc' # str | List of sort fields e.g. ?sort=name:asc Default is name:asc The supported sort fields are - fundingRef, name, balance  (optional) (default to 'fundingRef:asc')
+
+        api_response = api_instance.get_source_accounts_v2(physical_account_name=physical_account_name, physical_account_id=physical_account_id, payor_id=payor_id, funding_account_id=funding_account_id, page=page, page_size=page_size, sort=sort)
+        print(api_response)
 
     def test_get_source_accounts_v3(self):
         """Test case for get_source_accounts_v3
 
         Get list of source accounts  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+
+        physical_account_name = None # str | Physical Account Name (optional)
+        physical_account_id = None # str | The physical account ID (optional)
+        payor_id = os.environ["PAYOR"] # str | The account owner Payor ID (optional)
+        funding_account_id = None # str | The funding account ID (optional)
+        type = "FBO" # velo_payments.SourceAccountType() # SourceAccountType | The type of source account. (optional)
+        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+        page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
+        sort = 'fundingRef:asc' # str | List of sort fields e.g. ?sort=name:asc Default is name:asc The supported sort fields are - fundingRef, name, balance  (optional) (default to 'fundingRef:asc')
+
+        api_response = api_instance.get_source_accounts_v3(physical_account_name=physical_account_name, physical_account_id=physical_account_id, payor_id=payor_id, funding_account_id=funding_account_id, type=type, page=page, page_size=page_size, sort=sort)
+        print(api_response)
 
     def test_list_funding_audit_deltas(self):
         """Test case for list_funding_audit_deltas
 
         Get Funding Audit Delta  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+
+        payor_id = os.environ["PAYOR"] # str | 
+        updated_since = '2013-10-20T19:20:30+01:00' # datetime | 
+        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+        page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
+
+        api_response = api_instance.list_funding_audit_deltas(payor_id, updated_since, page=page, page_size=page_size)
+        print(api_response)
 
     def test_set_notifications_request(self):
         """Test case for set_notifications_request
