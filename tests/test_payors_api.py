@@ -12,6 +12,7 @@
 
 from __future__ import absolute_import
 
+import os
 import unittest
 
 import velo_payments
@@ -24,6 +25,26 @@ class TestPayorsApi(unittest.TestCase):
 
     def setUp(self):
         self.api = velo_payments.api.payors_api.PayorsApi()  # noqa: E501
+
+        if os.environ.get('APITOKEN') == "":
+            configuration = velo_payments.Configuration()
+            # Configure HTTP basic authorization: basicAuth
+            configuration.username = os.environ.get('KEY')
+            configuration.password = os.environ.get('SECRET')
+
+            # Defining host is optional and default to https://api.sandbox.velopayments.com
+            configuration.host = "https://api.sandbox.velopayments.com"
+            # Create an instance of the API class
+            api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
+            grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
+
+            try:
+                # Authentication endpoint
+                api_response = api_instance.velo_auth(grant_type=grant_type)
+                os.environ["APITOKEN"] = api_response.access_token
+                
+            except ApiException as e:
+                print("Exception when calling LoginApi->velo_auth: %s\n" % e)
 
     def tearDown(self):
         pass
@@ -82,7 +103,16 @@ class TestPayorsApi(unittest.TestCase):
 
         List Payor Links  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
+
+        descendants_of_payor = os.environ["PAYOR"] # str | The Payor ID from which to start the query to show all descendants (optional)
+        parent_of_payor = None # str | Look for the parent payor details for this payor id (optional)
+        fields = None # str | List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - 'fields' allows you to add to this. Example: ```fields=primaryContactEmail,kycState``` - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState  (optional)
+
+        api_response = api_instance.payor_links(descendants_of_payor=descendants_of_payor, parent_of_payor=parent_of_payor, fields=fields)
 
 
 if __name__ == '__main__':

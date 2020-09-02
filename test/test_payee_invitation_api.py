@@ -12,6 +12,7 @@
 
 from __future__ import absolute_import
 
+import os
 import unittest
 
 import velo_payments
@@ -25,6 +26,26 @@ class TestPayeeInvitationApi(unittest.TestCase):
     def setUp(self):
         self.api = velo_payments.api.payee_invitation_api.PayeeInvitationApi()  # noqa: E501
 
+        if os.environ.get('APITOKEN') == "":
+            configuration = velo_payments.Configuration()
+            # Configure HTTP basic authorization: basicAuth
+            configuration.username = os.environ.get('KEY')
+            configuration.password = os.environ.get('SECRET')
+
+            # Defining host is optional and default to https://api.sandbox.velopayments.com
+            configuration.host = "https://api.sandbox.velopayments.com"
+            # Create an instance of the API class
+            api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
+            grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
+
+            try:
+                # Authentication endpoint
+                api_response = api_instance.velo_auth(grant_type=grant_type)
+                os.environ["APITOKEN"] = api_response.access_token
+                
+            except ApiException as e:
+                print("Exception when calling LoginApi->velo_auth: %s\n" % e)
+
     def tearDown(self):
         pass
 
@@ -33,21 +54,51 @@ class TestPayeeInvitationApi(unittest.TestCase):
 
         Get Payee Invitation Status  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
+
+        payor_id = os.environ["PAYOR"] # str | 
+
+        api_response = api_instance.get_payees_invitation_status_v1(payor_id)
 
     def test_get_payees_invitation_status_v2(self):
         """Test case for get_payees_invitation_status_v2
 
         Get Payee Invitation Status  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
+
+        payor_id = os.environ["PAYOR"] # str | 
+        payee_id = None # str | The UUID of the payee. (optional)
+        invitation_status = None # velo_payments.InvitationStatus() # InvitationStatus | The invitation status of the payees. (optional)
+        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+        page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
+
+
+        api_response = api_instance.get_payees_invitation_status_v2(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
 
     def test_get_payees_invitation_status_v3(self):
         """Test case for get_payees_invitation_status_v3
 
         Get Payee Invitation Status  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
+
+        payor_id = os.environ["PAYOR"] # str | 
+        payee_id = None # str | The UUID of the payee. (optional)
+        invitation_status = None # velo_payments.InvitationStatus() # InvitationStatus | The invitation status of the payees. (optional)
+        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+        page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
+
+        api_response = api_instance.get_payees_invitation_status_v3(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
 
     def test_query_batch_status_v2(self):
         """Test case for query_batch_status_v2

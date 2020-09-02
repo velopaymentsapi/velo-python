@@ -12,6 +12,7 @@
 
 from __future__ import absolute_import
 
+import os
 import unittest
 
 import velo_payments
@@ -24,6 +25,26 @@ class TestPayeesApi(unittest.TestCase):
 
     def setUp(self):
         self.api = velo_payments.api.payees_api.PayeesApi()  # noqa: E501
+
+        if os.environ.get('APITOKEN') == "":
+            configuration = velo_payments.Configuration()
+            # Configure HTTP basic authorization: basicAuth
+            configuration.username = os.environ.get('KEY')
+            configuration.password = os.environ.get('SECRET')
+
+            # Defining host is optional and default to https://api.sandbox.velopayments.com
+            configuration.host = "https://api.sandbox.velopayments.com"
+            # Create an instance of the API class
+            api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
+            grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
+
+            try:
+                # Authentication endpoint
+                api_response = api_instance.velo_auth(grant_type=grant_type)
+                os.environ["APITOKEN"] = api_response.access_token
+                
+            except ApiException as e:
+                print("Exception when calling LoginApi->velo_auth: %s\n" % e)
 
     def tearDown(self):
         pass
@@ -68,28 +89,83 @@ class TestPayeesApi(unittest.TestCase):
 
         List Payee Changes  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
+
+        payor_id = os.environ["PAYOR"] # str | 
+        updated_since = '2013-10-20T19:20:30+01:00' # datetime | The updatedSince filter in the format YYYY-MM-DDThh:mm:ss+hh:mm
+        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+        page_size = 100 # int | Page size. Default is 100. Max allowable is 1000. (optional) (default to 100)
+
+        api_response = api_instance.list_payee_changes(payor_id, updated_since, page=page, page_size=page_size)
 
     def test_list_payee_changes_v3(self):
         """Test case for list_payee_changes_v3
 
         List Payee Changes  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
+
+        payor_id = os.environ["PAYOR"] # str | 
+        updated_since = '2013-10-20T19:20:30+01:00' # datetime | The updatedSince filter in the format YYYY-MM-DDThh:mm:ss+hh:mm
+        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+        page_size = 100 # int | Page size. Default is 100. Max allowable is 1000. (optional) (default to 100)
+
+        api_response = api_instance.list_payee_changes_v3(payor_id, updated_since, page=page, page_size=page_size)
 
     def test_list_payees_v1(self):
         """Test case for list_payees_v1
 
         List Payees V1  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
+
+        payor_id = os.environ["PAYOR"] # str | 
+        ofac_status = None # velo_payments.OfacStatus() # OfacStatus | The ofacStatus of the payees. (optional)
+        onboarded_status = None # velo_payments.OnboardedStatus() # OnboardedStatus | The onboarded status of the payees. (optional)
+        email = None # str | Email address (optional)
+        display_name = None # str | The display name of the payees. (optional)
+        remote_id = None # str | The remote id of the payees. (optional)
+        payee_type = None # velo_payments.PayeeType() # PayeeType | The onboarded status of the payees. (optional)
+        payee_country = 'US' # str | The country of the payee - 2 letter ISO 3166-1 country code (upper case) (optional)
+        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+        page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
+        sort = 'displayName:asc' # str | List of sort fields (e.g. ?sort=onboardedStatus:asc,name:asc) Default is name:asc 'name' is treated as company name for companies - last name + ',' + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.  (optional) (default to 'displayName:asc')
+
+        api_response = api_instance.list_payees_v1(payor_id, ofac_status=ofac_status, onboarded_status=onboarded_status, email=email, display_name=display_name, remote_id=remote_id, payee_type=payee_type, payee_country=payee_country, page=page, page_size=page_size, sort=sort)
 
     def test_list_payees_v3(self):
         """Test case for list_payees_v3
 
         List Payees  # noqa: E501
         """
-        self.skipTest("skipping test")
+        configuration = velo_payments.Configuration()
+        configuration.access_token = os.environ["APITOKEN"]
+        configuration.host = "https://api.sandbox.velopayments.com"
+        api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
+
+        payor_id = os.environ["PAYOR"] # str | 
+        watchlist_status = None # velo_payments.WatchlistStatus() # WatchlistStatus | The watchlistStatus of the payees. (optional)
+        disabled = False # bool | Payee disabled (optional)
+        onboarded_status = None # velo_payments.OnboardedStatus() # OnboardedStatus | The onboarded status of the payees. (optional)
+        email = None # str | Email address (optional)
+        display_name = None # str | The display name of the payees. (optional)
+        remote_id = None # str | The remote id of the payees. (optional)
+        payee_type = None # velo_payments.PayeeType() # PayeeType | The onboarded status of the payees. (optional)
+        payee_country = 'US' # str | The country of the payee - 2 letter ISO 3166-1 country code (upper case) (optional)
+        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+        page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
+        sort = 'displayName:asc' # str | List of sort fields (e.g. ?sort=onboardedStatus:asc,name:asc) Default is name:asc 'name' is treated as company name for companies - last name + ',' + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.  (optional) (default to 'displayName:asc')
+
+        api_response = api_instance.list_payees_v3(payor_id, watchlist_status=watchlist_status, disabled=disabled, onboarded_status=onboarded_status, email=email, display_name=display_name, remote_id=remote_id, payee_type=payee_type, payee_country=payee_country, page=page, page_size=page_size, sort=sort)
 
     def test_payee_details_update_v3(self):
         """Test case for payee_details_update_v3

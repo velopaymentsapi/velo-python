@@ -183,7 +183,6 @@ class TestFundingManagerApi(unittest.TestCase):
         sort = 'fundingRef:asc' # str | List of sort fields e.g. ?sort=name:asc Default is name:asc The supported sort fields are - fundingRef, name, balance  (optional) (default to 'fundingRef:asc')
 
         api_response = api_instance.get_source_accounts_v2(physical_account_name=physical_account_name, physical_account_id=physical_account_id, payor_id=payor_id, funding_account_id=funding_account_id, page=page, page_size=page_size, sort=sort)
-        print(api_response)
 
     def test_get_source_accounts_v3(self):
         """Test case for get_source_accounts_v3
@@ -205,7 +204,6 @@ class TestFundingManagerApi(unittest.TestCase):
         sort = 'fundingRef:asc' # str | List of sort fields e.g. ?sort=name:asc Default is name:asc The supported sort fields are - fundingRef, name, balance  (optional) (default to 'fundingRef:asc')
 
         api_response = api_instance.get_source_accounts_v3(physical_account_name=physical_account_name, physical_account_id=physical_account_id, payor_id=payor_id, funding_account_id=funding_account_id, type=type, page=page, page_size=page_size, sort=sort)
-        print(api_response)
 
     def test_list_funding_audit_deltas(self):
         """Test case for list_funding_audit_deltas
@@ -223,7 +221,6 @@ class TestFundingManagerApi(unittest.TestCase):
         page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 
         api_response = api_instance.list_funding_audit_deltas(payor_id, updated_since, page=page, page_size=page_size)
-        print(api_response)
 
     def test_set_notifications_request(self):
         """Test case for set_notifications_request

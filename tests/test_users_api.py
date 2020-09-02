@@ -12,6 +12,7 @@
 
 from __future__ import absolute_import
 
+import os
 import unittest
 
 import velo_payments
@@ -24,6 +25,26 @@ class TestUsersApi(unittest.TestCase):
 
     def setUp(self):
         self.api = velo_payments.api.users_api.UsersApi()  # noqa: E501
+
+        if os.environ.get('APITOKEN') == "":
+            configuration = velo_payments.Configuration()
+            # Configure HTTP basic authorization: basicAuth
+            configuration.username = os.environ.get('KEY')
+            configuration.password = os.environ.get('SECRET')
+
+            # Defining host is optional and default to https://api.sandbox.velopayments.com
+            configuration.host = "https://api.sandbox.velopayments.com"
+            # Create an instance of the API class
+            api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
+            grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
+
+            try:
+                # Authentication endpoint
+                api_response = api_instance.velo_auth(grant_type=grant_type)
+                os.environ["APITOKEN"] = api_response.access_token
+                
+            except ApiException as e:
+                print("Exception when calling LoginApi->velo_auth: %s\n" % e)
 
     def tearDown(self):
         pass
@@ -75,7 +96,20 @@ class TestUsersApi(unittest.TestCase):
 
         List Users  # noqa: E501
         """
-        self.skipTest("skipping test")
+        self.skipTest("skipping broken test")
+        # configuration = velo_payments.Configuration()
+        # configuration.access_token = os.environ["APITOKEN"]
+        # configuration.host = "https://api.sandbox.velopayments.com"
+        # api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+
+        # type = None # velo_payments.UserType() # UserType | The Type of the User. (optional)
+        # status = None # velo_payments.UserStatus() # UserStatus | The status of the User. (optional)
+        # entity_id = os.environ["PAYOR"] # str | The entityId of the User. (optional)
+        # page = 1 # int | Page number. Default is 1. (optional) (default to 1)
+        # page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
+        # sort = 'email:asc' # str | List of sort fields (e.g. ?sort=email:asc,lastName:asc) Default is email:asc 'name' The supported sort fields are - email, lastNmae.  (optional) (default to 'email:asc')
+
+        # api_response = api_instance.list_users(type=type, status=status, entity_id=entity_id, page=page, page_size=page_size, sort=sort)
 
     def test_register_sms(self):
         """Test case for register_sms
