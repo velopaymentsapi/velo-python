@@ -33,7 +33,7 @@ class TestUsersApi(unittest.TestCase):
             configuration.password = os.environ.get('SECRET')
 
             # Defining host is optional and default to https://api.sandbox.velopayments.com
-            configuration.host = "https://api.sandbox.velopayments.com"
+            configuration.host = os.environ.get('APIURL')
             # Create an instance of the API class
             api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
             grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
@@ -99,7 +99,7 @@ class TestUsersApi(unittest.TestCase):
         self.skipTest("skipping broken test")
         # configuration = velo_payments.Configuration()
         # configuration.access_token = os.environ["APITOKEN"]
-        # configuration.host = "https://api.sandbox.velopayments.com"
+        # configuration.host = os.environ.get('APIURL')
         # api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
 
         # type = None # velo_payments.UserType() # UserType | The Type of the User. (optional)
