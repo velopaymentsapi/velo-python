@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payor_id** | **str** |  | [readonly] 
 **payor_name** | **str** | The name of the payor. | 
+**payor_xid** | **str** | A unique identifier that an external system uses to reference the payor in their system | [optional] 
 **address** | [**PayorAddressV2**](PayorAddressV2.md) |  | [optional] 
 **primary_contact_name** | **str** | Name of primary contact for the payor. | [optional] 
 **primary_contact_phone** | **str** | Primary contact phone number for the payor. | [optional] 

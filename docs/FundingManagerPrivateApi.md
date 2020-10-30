@@ -75,7 +75,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**202** | Funding Account Creation Request Accepted |  * Location - Reference to status object <br>  * Retry-After - How long the user agent should wait before making a follow-up request (seconds) <br>  |
+**202** | Funding Account Creation Request Accepted |  * Location - Reference to created payout <br>  * Retry-After - How long the user agent should wait before making a follow-up request (seconds) <br>  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |

@@ -392,7 +392,7 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Success |  * Location - location <br>  |
+**201** | Success |  * Location - Reference to Webhook object <br>  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **404** | The resource was not found or is no longer available  |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |

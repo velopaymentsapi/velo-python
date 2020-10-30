@@ -143,7 +143,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **validate_access_token**
-> AccessTokenResponse validate_access_token(access_token_validation_request)
+> AccessTokenResponse validate_access_token(access_token_validation_request, authorization=authorization)
 
 validate
 
@@ -180,10 +180,11 @@ with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = velo_payments.LoginApi(api_client)
     access_token_validation_request = velo_payments.AccessTokenValidationRequest() # AccessTokenValidationRequest | An OTP from the user's registered MFA Device 
+authorization = 'authorization_example' # str | Bearer token authorization leg of validate (optional)
 
     try:
         # validate
-        api_response = api_instance.validate_access_token(access_token_validation_request)
+        api_response = api_instance.validate_access_token(access_token_validation_request, authorization=authorization)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling LoginApi->validate_access_token: %s\n" % e)
@@ -194,6 +195,7 @@ with velo_payments.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **access_token_validation_request** | [**AccessTokenValidationRequest**](AccessTokenValidationRequest.md)| An OTP from the user&#39;s registered MFA Device  | 
+ **authorization** | **str**| Bearer token authorization leg of validate | [optional] 
 
 ### Return type
 

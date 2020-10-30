@@ -16,3 +16,4 @@ from velo_payments.api.payors_private_api import PayorsPrivateApi
 from velo_payments.api.payout_service_api import PayoutServiceApi
 from velo_payments.api.tokens_api import TokensApi
 from velo_payments.api.users_api import UsersApi
+from velo_payments.api.webhooks_api import WebhooksApi

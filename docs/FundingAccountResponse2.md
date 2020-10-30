@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **currency** | **str** | ISO 4217 currency code | [optional] 
 **country** | **str** | ISO 3166-1 2 letter country code (upper case) | [optional] 
 **type** | **str** | Funding account type | [optional] 
+**archived** | **bool** | A flag for whether the funding account has been archived.  Only present in the response if true. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -945,7 +945,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **unregister_mfa_for_self**
-> unregister_mfa_for_self(self_mfa_type_unregister_request)
+> unregister_mfa_for_self(self_mfa_type_unregister_request, authorization=authorization)
 
 Unregister MFA for Self
 
@@ -982,10 +982,11 @@ with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = velo_payments.UsersApi(api_client)
     self_mfa_type_unregister_request = velo_payments.SelfMFATypeUnregisterRequest() # SelfMFATypeUnregisterRequest | The MFA Type to unregister
+authorization = 'authorization_example' # str | Bearer token authorization leg of validate (optional)
 
     try:
         # Unregister MFA for Self
-        api_instance.unregister_mfa_for_self(self_mfa_type_unregister_request)
+        api_instance.unregister_mfa_for_self(self_mfa_type_unregister_request, authorization=authorization)
     except ApiException as e:
         print("Exception when calling UsersApi->unregister_mfa_for_self: %s\n" % e)
 ```
@@ -995,6 +996,7 @@ with velo_payments.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **self_mfa_type_unregister_request** | [**SelfMFATypeUnregisterRequest**](SelfMFATypeUnregisterRequest.md)| The MFA Type to unregister | 
+ **authorization** | **str**| Bearer token authorization leg of validate | [optional] 
 
 ### Return type
 
