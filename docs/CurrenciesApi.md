@@ -22,24 +22,16 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 
+# Create an instance of the API class
+api_instance = velo_payments.CurrenciesApi()
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.CurrenciesApi(api_client)
-    
-    try:
-        # List Supported Currencies
-        api_response = api_instance.list_supported_currencies_v2()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CurrenciesApi->list_supported_currencies_v2: %s\n" % e)
+try:
+    # List Supported Currencies
+    api_response = api_instance.list_supported_currencies_v2()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CurrenciesApi->list_supported_currencies_v2: %s\n" % e)
 ```
 
 ### Parameters

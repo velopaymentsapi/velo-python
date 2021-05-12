@@ -39,34 +39,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    user_id = 'user_id_example' # str | The UUID of the User.
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+user_id = 'user_id_example' # str | The UUID of the User.
 
-    try:
-        # Delete a User
-        api_instance.delete_user_by_id_v2(user_id)
-    except ApiException as e:
-        print("Exception when calling UsersApi->delete_user_by_id_v2: %s\n" % e)
+try:
+    # Delete a User
+    api_instance.delete_user_by_id_v2(user_id)
+except ApiException as e:
+    print("Exception when calling UsersApi->delete_user_by_id_v2: %s\n" % e)
 ```
 
 ### Parameters
@@ -114,34 +101,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    user_id = 'user_id_example' # str | The UUID of the User.
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+user_id = 'user_id_example' # str | The UUID of the User.
 
-    try:
-        # Disable a User
-        api_instance.disable_user_v2(user_id)
-    except ApiException as e:
-        print("Exception when calling UsersApi->disable_user_v2: %s\n" % e)
+try:
+    # Disable a User
+    api_instance.disable_user_v2(user_id)
+except ApiException as e:
+    print("Exception when calling UsersApi->disable_user_v2: %s\n" % e)
 ```
 
 ### Parameters
@@ -190,34 +164,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    user_id = 'user_id_example' # str | The UUID of the User.
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+user_id = 'user_id_example' # str | The UUID of the User.
 
-    try:
-        # Enable a User
-        api_instance.enable_user_v2(user_id)
-    except ApiException as e:
-        print("Exception when calling UsersApi->enable_user_v2: %s\n" % e)
+try:
+    # Enable a User
+    api_instance.enable_user_v2(user_id)
+except ApiException as e:
+    print("Exception when calling UsersApi->enable_user_v2: %s\n" % e)
 ```
 
 ### Parameters
@@ -266,34 +227,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    
-    try:
-        # Get Self
-        api_response = api_instance.get_self()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling UsersApi->get_self: %s\n" % e)
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+
+try:
+    # Get Self
+    api_response = api_instance.get_self()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UsersApi->get_self: %s\n" % e)
 ```
 
 ### Parameters
@@ -337,35 +285,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    user_id = 'user_id_example' # str | The UUID of the User.
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+user_id = 'user_id_example' # str | The UUID of the User.
 
-    try:
-        # Get User
-        api_response = api_instance.get_user_by_id_v2(user_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling UsersApi->get_user_by_id_v2: %s\n" % e)
+try:
+    # Get User
+    api_response = api_instance.get_user_by_id_v2(user_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UsersApi->get_user_by_id_v2: %s\n" % e)
 ```
 
 ### Parameters
@@ -413,34 +348,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    invite_user_request = velo_payments.InviteUserRequest() # InviteUserRequest | Details of User to invite
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+invite_user_request = velo_payments.InviteUserRequest() # InviteUserRequest | Details of User to invite
 
-    try:
-        # Invite a User
-        api_instance.invite_user(invite_user_request)
-    except ApiException as e:
-        print("Exception when calling UsersApi->invite_user: %s\n" % e)
+try:
+    # Invite a User
+    api_instance.invite_user(invite_user_request)
+except ApiException as e:
+    print("Exception when calling UsersApi->invite_user: %s\n" % e)
 ```
 
 ### Parameters
@@ -490,40 +412,27 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    type = velo_payments.UserType() # UserType | The Type of the User. (optional)
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+type = velo_payments.UserType() # UserType | The Type of the User. (optional)
 status = velo_payments.UserStatus() # UserStatus | The status of the User. (optional)
 entity_id = 'entity_id_example' # str | The entityId of the User. (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 sort = 'email:asc' # str | List of sort fields (e.g. ?sort=email:asc,lastName:asc) Default is email:asc 'name' The supported sort fields are - email, lastNmae.  (optional) (default to 'email:asc')
 
-    try:
-        # List Users
-        api_response = api_instance.list_users(type=type, status=status, entity_id=entity_id, page=page, page_size=page_size, sort=sort)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling UsersApi->list_users: %s\n" % e)
+try:
+    # List Users
+    api_response = api_instance.list_users(type=type, status=status, entity_id=entity_id, page=page, page_size=page_size, sort=sort)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UsersApi->list_users: %s\n" % e)
 ```
 
 ### Parameters
@@ -576,34 +485,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    register_sms_request = velo_payments.RegisterSmsRequest() # RegisterSmsRequest | a SMS Number to send an OTP to
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+register_sms_request = velo_payments.RegisterSmsRequest() # RegisterSmsRequest | a SMS Number to send an OTP to
 
-    try:
-        # Register SMS Number
-        api_instance.register_sms(register_sms_request)
-    except ApiException as e:
-        print("Exception when calling UsersApi->register_sms: %s\n" % e)
+try:
+    # Register SMS Number
+    api_instance.register_sms(register_sms_request)
+except ApiException as e:
+    print("Exception when calling UsersApi->register_sms: %s\n" % e)
 ```
 
 ### Parameters
@@ -651,35 +547,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    user_id = 'user_id_example' # str | The UUID of the User.
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+user_id = 'user_id_example' # str | The UUID of the User.
 resend_token_request = velo_payments.ResendTokenRequest() # ResendTokenRequest | The type of token to resend
 
-    try:
-        # Resend a token
-        api_instance.resend_token(user_id, resend_token_request)
-    except ApiException as e:
-        print("Exception when calling UsersApi->resend_token: %s\n" % e)
+try:
+    # Resend a token
+    api_instance.resend_token(user_id, resend_token_request)
+except ApiException as e:
+    print("Exception when calling UsersApi->resend_token: %s\n" % e)
 ```
 
 ### Parameters
@@ -728,35 +611,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    user_id = 'user_id_example' # str | The UUID of the User.
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+user_id = 'user_id_example' # str | The UUID of the User.
 role_update_request = velo_payments.RoleUpdateRequest() # RoleUpdateRequest | The Role to change to
 
-    try:
-        # Update User Role
-        api_instance.role_update(user_id, role_update_request)
-    except ApiException as e:
-        print("Exception when calling UsersApi->role_update: %s\n" % e)
+try:
+    # Update User Role
+    api_instance.role_update(user_id, role_update_request)
+except ApiException as e:
+    print("Exception when calling UsersApi->role_update: %s\n" % e)
 ```
 
 ### Parameters
@@ -806,34 +676,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    user_id = 'user_id_example' # str | The UUID of the User.
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+user_id = 'user_id_example' # str | The UUID of the User.
 
-    try:
-        # Unlock a User
-        api_instance.unlock_user_v2(user_id)
-    except ApiException as e:
-        print("Exception when calling UsersApi->unlock_user_v2: %s\n" % e)
+try:
+    # Unlock a User
+    api_instance.unlock_user_v2(user_id)
+except ApiException as e:
+    print("Exception when calling UsersApi->unlock_user_v2: %s\n" % e)
 ```
 
 ### Parameters
@@ -882,35 +739,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    user_id = 'user_id_example' # str | The UUID of the User.
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+user_id = 'user_id_example' # str | The UUID of the User.
 unregister_mfa_request = velo_payments.UnregisterMFARequest() # UnregisterMFARequest | The MFA Type to unregister
 
-    try:
-        # Unregister MFA for the user
-        api_instance.unregister_mfa(user_id, unregister_mfa_request)
-    except ApiException as e:
-        print("Exception when calling UsersApi->unregister_mfa: %s\n" % e)
+try:
+    # Unregister MFA for the user
+    api_instance.unregister_mfa(user_id, unregister_mfa_request)
+except ApiException as e:
+    print("Exception when calling UsersApi->unregister_mfa: %s\n" % e)
 ```
 
 ### Parameters
@@ -960,35 +804,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    self_mfa_type_unregister_request = velo_payments.SelfMFATypeUnregisterRequest() # SelfMFATypeUnregisterRequest | The MFA Type to unregister
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+self_mfa_type_unregister_request = velo_payments.SelfMFATypeUnregisterRequest() # SelfMFATypeUnregisterRequest | The MFA Type to unregister
 authorization = 'authorization_example' # str | Bearer token authorization leg of validate (optional)
 
-    try:
-        # Unregister MFA for Self
-        api_instance.unregister_mfa_for_self(self_mfa_type_unregister_request, authorization=authorization)
-    except ApiException as e:
-        print("Exception when calling UsersApi->unregister_mfa_for_self: %s\n" % e)
+try:
+    # Unregister MFA for Self
+    api_instance.unregister_mfa_for_self(self_mfa_type_unregister_request, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling UsersApi->unregister_mfa_for_self: %s\n" % e)
 ```
 
 ### Parameters
@@ -1037,34 +868,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    self_update_password_request = velo_payments.SelfUpdatePasswordRequest() # SelfUpdatePasswordRequest | The password
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+self_update_password_request = velo_payments.SelfUpdatePasswordRequest() # SelfUpdatePasswordRequest | The password
 
-    try:
-        # Update Password for self
-        api_instance.update_password_self(self_update_password_request)
-    except ApiException as e:
-        print("Exception when calling UsersApi->update_password_self: %s\n" % e)
+try:
+    # Update Password for self
+    api_instance.update_password_self(self_update_password_request)
+except ApiException as e:
+    print("Exception when calling UsersApi->update_password_self: %s\n" % e)
 ```
 
 ### Parameters
@@ -1112,35 +930,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    user_id = 'user_id_example' # str | The UUID of the User.
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+user_id = 'user_id_example' # str | The UUID of the User.
 user_details_update_request = velo_payments.UserDetailsUpdateRequest() # UserDetailsUpdateRequest | The details of the user to update
 
-    try:
-        # Update User Details
-        api_instance.user_details_update(user_id, user_details_update_request)
-    except ApiException as e:
-        print("Exception when calling UsersApi->user_details_update: %s\n" % e)
+try:
+    # Update User Details
+    api_instance.user_details_update(user_id, user_details_update_request)
+except ApiException as e:
+    print("Exception when calling UsersApi->user_details_update: %s\n" % e)
 ```
 
 ### Parameters
@@ -1191,34 +996,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    payee_user_self_update_request = velo_payments.PayeeUserSelfUpdateRequest() # PayeeUserSelfUpdateRequest | The details of the user to update
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+payee_user_self_update_request = velo_payments.PayeeUserSelfUpdateRequest() # PayeeUserSelfUpdateRequest | The details of the user to update
 
-    try:
-        # Update User Details for self
-        api_instance.user_details_update_for_self(payee_user_self_update_request)
-    except ApiException as e:
-        print("Exception when calling UsersApi->user_details_update_for_self: %s\n" % e)
+try:
+    # Update User Details for self
+    api_instance.user_details_update_for_self(payee_user_self_update_request)
+except ApiException as e:
+    print("Exception when calling UsersApi->user_details_update_for_self: %s\n" % e)
 ```
 
 ### Parameters
@@ -1267,35 +1059,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.UsersApi(api_client)
-    password_request = velo_payments.PasswordRequest() # PasswordRequest | The password
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
+password_request = velo_payments.PasswordRequest() # PasswordRequest | The password
 
-    try:
-        # Validate the proposed password
-        api_response = api_instance.validate_password_self(password_request)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling UsersApi->validate_password_self: %s\n" % e)
+try:
+    # Validate the proposed password
+    api_response = api_instance.validate_password_self(password_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UsersApi->validate_password_self: %s\n" % e)
 ```
 
 ### Parameters

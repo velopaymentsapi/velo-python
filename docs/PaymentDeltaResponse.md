@@ -1,6 +1,5 @@
 # PaymentDeltaResponse
 
-List Payment Changes Response Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

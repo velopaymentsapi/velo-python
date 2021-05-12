@@ -1,6 +1,5 @@
 # WebhooksResponse
 
-List Webhooks Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

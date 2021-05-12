@@ -1,6 +1,5 @@
 # PagedPaymentsResponseV3
 
-List Payees Response Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

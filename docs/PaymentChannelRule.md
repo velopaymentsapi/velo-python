@@ -1,6 +1,5 @@
 # PaymentChannelRule
 
-Rules that will get applied when creating or updating a payment channel for the given country
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

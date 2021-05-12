@@ -1,6 +1,5 @@
 # PayeeUserSelfUpdateRequest
 
-<p>All properties are optional</p> <p>Only provided properties will be updated</p> <p>Use null to null out a property that is allowed to be nullable</p> 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **remote_id** | **str** |  | 
-**payee_id** | **str** |  | [readonly] 
+**payee_id** | **str** |  | 
 **display_name** | **str** |  | [optional] 
 **dba_name** | **str** |  | [optional] 
 **email** | **str** |  | [optional] 

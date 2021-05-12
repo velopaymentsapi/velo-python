@@ -1,6 +1,5 @@
 # KycState
 
-The kyc state of the payor.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

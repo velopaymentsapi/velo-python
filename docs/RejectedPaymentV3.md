@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **amount** | **int** |  | 
 **source_account_name** | **str** |  | 
 **payor_payment_id** | **str** |  | 
+**remote_system_id** | **str** |  | [optional] 
+**payment_metadata** | **str** |  | [optional] 
 **reason** | **str** |  | 
 **reason_code** | **str** |  | [optional] 
 **line_number** | **int** |  | [optional] 

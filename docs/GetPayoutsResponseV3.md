@@ -1,6 +1,5 @@
 # GetPayoutsResponseV3
 
-List Payouts Response
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

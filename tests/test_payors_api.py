@@ -112,7 +112,7 @@ class TestPayorsApi(unittest.TestCase):
         parent_of_payor = None # str | Look for the parent payor details for this payor id (optional)
         fields = None # str | List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - 'fields' allows you to add to this. Example: ```fields=primaryContactEmail,kycState``` - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState  (optional)
 
-        api_response = api_instance.payor_links(descendants_of_payor=descendants_of_payor, parent_of_payor=parent_of_payor, fields=fields)
+        api_response = api_instance.payor_links(descendants_of_payor=descendants_of_payor)
 
 
 if __name__ == '__main__':

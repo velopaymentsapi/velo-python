@@ -1,6 +1,5 @@
 # TransmissionType
 
-The transmission type that will be used to send a payment
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,5 @@
 # MFAType
 
-The type of the MFA device
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

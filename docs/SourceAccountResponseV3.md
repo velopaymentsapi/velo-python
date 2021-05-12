@@ -18,7 +18,9 @@ Name | Type | Description | Notes
 **auto_top_up_config** | [**AutoTopUpConfig2**](AutoTopUpConfig2.md) |  | [optional] 
 **type** | **str** |  | 
 **country** | **str** | The two character ISO country code for the associated account | [optional] 
-**archived** | **bool** | A flag for whether the source account has been archived.  Only present in the response if true. | [optional] 
+**deleted** | **bool** | An optional flag for whether the source account has been deleted. Only present in the response if true. | [optional] 
+**user_deleted** | **bool** | An optional flag for whether the source account has been deleted by a user. Only present in the response if true. | [optional] 
+**deleted_at** | **datetime** | An optional timestamp when the source account has been deleted. Only present in the response if deleted. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

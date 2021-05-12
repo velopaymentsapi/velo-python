@@ -1,6 +1,5 @@
 # ListPaymentsResponseV3
 
-List Payments Response Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

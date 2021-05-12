@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **address_city** | **str** |  | 
 **address_county_or_province** | **str** |  | [optional] 
 **address_zip_or_postcode** | **str** |  | 
-**address_country** | **str** | Ideally a 2 letter ISO 3166-1 country code.  But a limited set of additional values will be corrected.  See Java Locale.getISOCountries() and Locale.getDisplayCountry() | 
+**address_country** | **str** | Must be a 2 character country code - per ISO 3166-1 | 
 **individual_national_identification** | **str** |  | [optional] 
 **individual_date_of_birth** | **date** | Must not be date in future. Example - 1970-05-20 | [optional] 
 **individual_title** | **str** |  | [optional] 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **individual_other_names** | **str** |  | [optional] 
 **individual_last_name** | **str** |  | [optional] 
 **company_name** | **str** |  | [optional] 
-**company_ein** | **str** | Company Tax Id (EIN) must be 9 numeric characters. Must match the regular expression &#x60;&#x60;&#x60;[\\d]{9}&#x60;&#x60;&#x60;. | [optional] 
+**company_ein** | **str** |  | [optional] 
 **company_operating_name** | **str** |  | [optional] 
 **payment_channel_account_number** | **str** | Either routing number and account number or only iban must be set | [optional] 
 **payment_channel_routing_number** | **str** | Either routing number and account number or only iban must be set | [optional] 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **payment_channel_currency** | **str** |  | [optional] 
 **challenge_description** | **str** |  | [optional] 
 **challenge_value** | **str** |  | [optional] 
-**payee_language** | **str** |  | [optional] 
+**payee_language** | **str** | An IETF BCP 47 language code which has been configured for use within this Velo environment.&lt;BR&gt; See the /v1/supportedLanguages endpoint to list the available codes for an environment.  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

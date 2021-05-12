@@ -1,6 +1,5 @@
 # PayeeDeltaResponse
 
-List Payee Changes Response Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

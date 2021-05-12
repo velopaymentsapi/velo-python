@@ -30,7 +30,7 @@ clean:
 	rm -f tox.ini
 
 generate:
-	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
+	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:v4.1.3 generate \
 		-i $$WORKING_SPEC \
 		-g python \
 		-o /local \
@@ -43,6 +43,7 @@ trim:
 	- rm git_push.sh
 
 info:
+	# wget https://raw.githubusercontent.com/velopaymentsapi/changelog/main/README.md -O CHANGELOG.md
 	sed -i.bak '1s/# velo-python/# Python client for Velo/' README.md && rm README.md.bak
 	sed -i.bak '2s/.*/[![License](https:\/\/img.shields.io\/badge\/License-Apache%202.0-blue.svg)](https:\/\/opensource.org\/licenses\/Apache-2.0) [![npm version](https:\/\/badge.fury.io\/py\/velo-python.svg)](https:\/\/badge.fury.io\/py\/velo-python) [![CircleCI](https:\/\/circleci.com\/gh\/velopaymentsapi\/velo-python.svg?style=svg)](https:\/\/circleci.com\/gh\/velopaymentsapi\/velo-python)/' README.md && rm README.md.bak
 	sed -i.bak '3s/.*/This library provides a Python client that simplifies interactions with the Velo Payments API. For full details covering the API visit our docs at [Velo Payments APIs](https:\/\/apidocs.velopayments.com). Note: some of the Velo API calls which require authorization via an access token, see the full docs on how to configure./' README.md && rm README.md.bak
@@ -77,6 +78,14 @@ info:
 	- sed -i.bak "s/:true/:True/g" test/test_payor_v1.py && rm test/test_payor_v1.py.bak
 	- sed -i.bak "s/:true/:True/g" test/test_payor_v2.py && rm test/test_payor_v2.py.bak
 	- sed -i.bak "s/:false/:False/g" test/test_paged_payments_response_v3.py && rm test/test_paged_payments_response_v3.py.bak
+	- sed -i.bak "s/:true/:True/g" test/test_create_payee2.py && rm test/test_create_payee2.py.bak
+	- sed -i.bak "s/:true/:True/g" test/test_create_payees_request2.py && rm test/test_create_payees_request2.py.bak
+	- sed -i.bak "s/:true/:True/g" test/test_payee_detail_response.py && rm test/test_payee_detail_response.py.bak
+	- sed -i.bak "s/:true/:True/g" test/test_get_payee_list_response2.py && rm test/test_get_payee_list_response2.py.bak
+	- sed -i.bak "s/:true/:True/g" test/test_payee_detail_response2.py && rm test/test_payee_detail_response2.py.bak
+	- sed -i.bak "s/:true/:True/g" test/test_get_payee_list_response.py && rm test/test_get_payee_list_response.py.bak
+	- sed -i.bak "s/:true/:True/g" test/test_create_payee.py && rm test/test_create_payee.py.bak
+	
 	# fix generated code : suffixes
 	- sed -i.bak "s/create_payee_address_2/create_payee_address2/g" test/test_create_payee2.py && rm test/test_create_payee2.py.bak
 	- sed -i.bak "s/CreatePayeeAddress_2/CreatePayeeAddress2/g" test/test_create_payee2.py && rm test/test_create_payee2.py.bak
@@ -108,12 +117,6 @@ info:
 	- sed -i.bak "s/inline_response_412_errors.inline_response_412_errors/inline_response412_errors.InlineResponse412Errors/g" test/test_inline_response412.py && rm test/test_inline_response412.py.bak
 	- sed -i.bak "s/inline_response_404_errors.inline_response_404_errors/inline_response404_errors.InlineResponse404Errors/g" test/test_inline_response404.py && rm test/test_inline_response404.py.bak
 	
-	# fix generated code : bad examples
-	# sed -i.bak "s/tax_id = '123'/tax_id = '123456789'/g" test/test_company_v1.py && rm test/test_company_v1.py.bak
-	sed -i.bak "s/tax_id = '123'/tax_id = '123456789'/g" test/test_company_v1.py && rm test/test_company_v1.py.bak
-	
-	sed -i.bak "s/\\\\d/\\d/g" velo_payments/models/create_payees_csv_request.py && rm velo_payments/models/create_payees_csv_request.py.bak
-
 	# adjust tox file
 	sed -i.bak 's/envlist = py27, py3/envlist = py3/g' tox.ini && rm tox.ini.bak
 	sed -i.bak 's/\[\]/-w .\/tests -s/' tox.ini && rm tox.ini.bak
@@ -126,6 +129,7 @@ client: clean generate trim info build_client
 
 tests:
 	# overwrite the generated test stubs _api.py tests only
+	rm -Rf test/test_*.py
 	cp -Rf tests/ test/
 	docker build -t=client-python-tests .
 	docker run -t -v $(PWD):/usr/src/app -e KEY=${KEY} -e SECRET=${SECRET} -e PAYOR=${PAYOR} -e APIURL=${APIURL} -e APITOKEN="" client-python-tests tox

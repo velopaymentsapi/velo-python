@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **payment_channel_currency** | **str** |  | [optional] 
 **challenge_description** | **str** |  | [optional] 
 **challenge_value** | **str** |  | [optional] 
-**payee_language** | **str** |  | [optional] 
+**payee_language** | **str** | An IETF BCP 47 language code which has been configured for use within this Velo environment.&lt;BR&gt; See the /v1/supportedLanguages endpoint to list the available codes for an environment.  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

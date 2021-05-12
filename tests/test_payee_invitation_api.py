@@ -49,39 +49,6 @@ class TestPayeeInvitationApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_get_payees_invitation_status_v1(self):
-        """Test case for get_payees_invitation_status_v1
-
-        Get Payee Invitation Status  # noqa: E501
-        """
-        configuration = velo_payments.Configuration()
-        configuration.access_token = os.environ["APITOKEN"]
-        configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-
-        payor_id = os.environ["PAYOR"] # str | 
-
-        api_response = api_instance.get_payees_invitation_status_v1(payor_id)
-
-    def test_get_payees_invitation_status_v2(self):
-        """Test case for get_payees_invitation_status_v2
-
-        Get Payee Invitation Status  # noqa: E501
-        """
-        configuration = velo_payments.Configuration()
-        configuration.access_token = os.environ["APITOKEN"]
-        configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-
-        payor_id = os.environ["PAYOR"] # str | 
-        payee_id = None # str | The UUID of the payee. (optional)
-        invitation_status = None # velo_payments.InvitationStatus() # InvitationStatus | The invitation status of the payees. (optional)
-        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
-        page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
-
-
-        api_response = api_instance.get_payees_invitation_status_v2(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
-
     def test_get_payees_invitation_status_v3(self):
         """Test case for get_payees_invitation_status_v3
 
@@ -98,7 +65,7 @@ class TestPayeeInvitationApi(unittest.TestCase):
         page = 1 # int | Page number. Default is 1. (optional) (default to 1)
         page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
 
-        api_response = api_instance.get_payees_invitation_status_v3(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
+        api_response = api_instance.get_payees_invitation_status_v3(payor_id, page=page, page_size=page_size)
 
     def test_query_batch_status_v2(self):
         """Test case for query_batch_status_v2

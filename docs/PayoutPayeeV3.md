@@ -1,6 +1,5 @@
 # PayoutPayeeV3
 
-Payee data associated with a payment. Either individual or company must be populated
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -63,23 +63,6 @@ class TestPaymentAuditServiceApi(unittest.TestCase):
         """
         self.skipTest("skipping test")
 
-    def test_get_fundings_v1(self):
-        """Test case for get_fundings_v1
-
-        Get Fundings for Payor  # noqa: E501
-        """
-        configuration = velo_payments.Configuration()
-        configuration.access_token = os.environ["APITOKEN"]
-        configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
-
-        payor_id = os.environ["PAYOR"] # str | 
-        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
-        page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
-        sort = 'dateTime:desc' # str | List of sort fields. Example: ```?sort=destinationCurrency:asc,destinationAmount:asc``` Default is no sort. The supported sort fields are: dateTime and amount.  (optional)
-
-        api_response = api_instance.get_fundings_v1(payor_id, page=page, page_size=page_size, sort=sort)
-
     def test_get_fundings_v4(self):
         """Test case for get_fundings_v4
 
@@ -125,20 +108,6 @@ class TestPaymentAuditServiceApi(unittest.TestCase):
         """
         self.skipTest("skipping test")
 
-    def test_get_payout_stats_v1(self):
-        """Test case for get_payout_stats_v1
-
-        Get Payout Statistics  # noqa: E501
-        """
-        configuration = velo_payments.Configuration()
-        configuration.access_token = os.environ["APITOKEN"]
-        configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
-
-        payor_id = os.environ["PAYOR"] # str | 
-
-        api_response = api_instance.get_payout_stats_v1(payor_id=payor_id)
-
     def test_get_payout_stats_v4(self):
         """Test case for get_payout_stats_v4
 
@@ -153,28 +122,6 @@ class TestPaymentAuditServiceApi(unittest.TestCase):
 
         api_response = api_instance.get_payout_stats_v4(payor_id=payor_id)
 
-    def test_get_payouts_for_payor_v3(self):
-        """Test case for get_payouts_for_payor_v3
-
-        Get Payouts for Payor  # noqa: E501
-        """
-        configuration = velo_payments.Configuration()
-        configuration.access_token = os.environ["APITOKEN"]
-        configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
-
-        payor_id = os.environ["PAYOR"] # str | 
-        payout_memo = None # str | Payout Memo filter - case insensitive sub-string match (optional)
-        status = None # str | Payout Status (optional)
-        submitted_date_from = None # date | The submitted date from range filter. Format is yyyy-MM-dd. (optional)
-        submitted_date_to = None # date | The submitted date to range filter. Format is yyyy-MM-dd. (optional)
-        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
-        page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
-        sort = 'submittedDateTime:desc' # str | List of sort fields (e.g. ?sort=submittedDateTime:asc,instructedDateTime:asc,status:asc) Default is submittedDateTime:asc The supported sort fields are: submittedDateTime, instructedDateTime, status.  (optional)
-
-
-        api_response = api_instance.get_payouts_for_payor_v3(payor_id, payout_memo=payout_memo, status=status, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, page=page, page_size=page_size, sort=sort)
-
     def test_get_payouts_for_payor_v4(self):
         """Test case for get_payouts_for_payor_v4
 
@@ -186,33 +133,11 @@ class TestPaymentAuditServiceApi(unittest.TestCase):
         api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str | 
-        payout_memo = None # str | Payout Memo filter - case insensitive sub-string match (optional)
-        status = None # str | Payout Status (optional)
-        submitted_date_from = None # date | The submitted date from range filter. Format is yyyy-MM-dd. (optional)
-        submitted_date_to = None # date | The submitted date to range filter. Format is yyyy-MM-dd. (optional)
-        from_payor_name = None # str | The name of the payor whose payees are being paid. This filters via a case insensitive substring match. (optional)
         page = 1 # int | Page number. Default is 1. (optional) (default to 1)
         page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
         sort = 'submittedDateTime:desc' # str | List of sort fields (e.g. ?sort=submittedDateTime:asc,instructedDateTime:asc,status:asc) Default is submittedDateTime:asc The supported sort fields are: submittedDateTime, instructedDateTime, status, totalPayments, payoutId  (optional)
 
-        api_response = api_instance.get_payouts_for_payor_v4(payor_id=payor_id, payout_memo=payout_memo, status=status, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, from_payor_name=from_payor_name, page=page, page_size=page_size, sort=sort)
-
-    def test_list_payment_changes(self):
-        """Test case for list_payment_changes
-
-        List Payment Changes  # noqa: E501
-        """
-        configuration = velo_payments.Configuration()
-        configuration.access_token = os.environ["APITOKEN"]
-        configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
-
-        payor_id = os.environ["PAYOR"] # str | 
-        updated_since = '2013-10-20T19:20:30+01:00' # datetime | The updatedSince filter in the format YYYY-MM-DDThh:mm:ss+hh:mm
-        page = 1 # int | Page number. Default is 1. (optional) (default to 1)
-        page_size = 100 # int | The number of results to return in a page (optional) (default to 100)
-
-        api_response = api_instance.list_payment_changes(payor_id, updated_since, page=page, page_size=page_size)
+        api_response = api_instance.get_payouts_for_payor_v4(payor_id=payor_id, page=page, page_size=page_size, sort=sort)
 
     def test_list_payment_changes_v4(self):
         """Test case for list_payment_changes_v4

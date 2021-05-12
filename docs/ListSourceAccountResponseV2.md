@@ -1,6 +1,5 @@
 # ListSourceAccountResponseV2
 
-List Source Accounts Response Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

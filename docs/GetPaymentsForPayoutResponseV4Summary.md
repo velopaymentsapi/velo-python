@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**payout_status** | **str** | The current status of the payout. | [optional] 
+**payout_status** | [**PayoutStatus**](PayoutStatus.md) |  | [optional] 
 **submitted_date_time** | **datetime** | The date/time at which the payout was submitted. | [optional] 
 **instructed_date_time** | **datetime** | The date/time at which the payout was instructed. | [optional] 
 **withdrawn_date_time** | **datetime** |  | [optional] 
@@ -15,13 +15,13 @@ Name | Type | Description | Notes
 **incomplete_payments** | **int** | The count of payments within the payout which are incomplete. | [optional] 
 **returned_payments** | **int** | The count of payments within the payout which have been returned. | [optional] 
 **withdrawn_payments** | **int** | The count of payments within the payout which have been withdrawn. | [optional] 
-**payout_type** | [**PayoutTypeV4**](PayoutTypeV4.md) |  | [optional] 
-**submitting** | [**PayoutPayorV4**](PayoutPayorV4.md) |  | [optional] 
-**payout_from** | [**PayoutPayorV4**](PayoutPayorV4.md) |  | [optional] 
-**payout_to** | [**PayoutPayorV4**](PayoutPayorV4.md) |  | [optional] 
-**quoted** | [**PayoutPrincipalV4**](PayoutPrincipalV4.md) |  | [optional] 
-**instructed** | [**PayoutPrincipalV4**](PayoutPrincipalV4.md) |  | [optional] 
-**withdrawn** | [**PayoutPrincipalV4**](PayoutPrincipalV4.md) |  | [optional] 
+**payout_type** | [**PayoutType**](PayoutType.md) |  | [optional] 
+**submitting** | [**PayoutPayor**](PayoutPayor.md) |  | [optional] 
+**payout_from** | [**PayoutPayor**](PayoutPayor.md) |  | [optional] 
+**payout_to** | [**PayoutPayor**](PayoutPayor.md) |  | [optional] 
+**quoted** | [**PayoutPrincipal**](PayoutPrincipal.md) |  | [optional] 
+**instructed** | [**PayoutPrincipal**](PayoutPrincipal.md) |  | [optional] 
+**withdrawn** | [**PayoutPrincipal**](PayoutPrincipal.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

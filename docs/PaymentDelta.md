@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**payment_id** | **str** |  | [readonly] 
-**payout_id** | **str** |  | [readonly] 
+**payment_id** | **str** |  | 
+**payout_id** | **str** |  | 
 **payor_payment_id** | **str** |  | [optional] 
 **payment_currency** | **str** |  | [optional] 
 **payment_amount** | **int** |  | [optional] 

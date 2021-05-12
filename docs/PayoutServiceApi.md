@@ -29,35 +29,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.PayoutServiceApi(api_client)
-    payout_id = 'payout_id_example' # str | Id of the payout
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayoutServiceApi(velo_payments.ApiClient(configuration))
+payout_id = 'payout_id_example' # str | Id of the payout
 
-    try:
-        # Create a quote for the payout
-        api_response = api_instance.create_quote_for_payout_v3(payout_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling PayoutServiceApi->create_quote_for_payout_v3: %s\n" % e)
+try:
+    # Create a quote for the payout
+    api_response = api_instance.create_quote_for_payout_v3(payout_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PayoutServiceApi->create_quote_for_payout_v3: %s\n" % e)
 ```
 
 ### Parameters
@@ -89,7 +76,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_payments_for_payout_v3**
-> PagedPaymentsResponseV3 get_payments_for_payout_v3(payout_id, status=status, remote_id=remote_id, payor_payment_id=payor_payment_id, source_account_name=source_account_name, payment_memo=payment_memo, page_size=page_size, page=page)
+> PagedPaymentsResponseV3 get_payments_for_payout_v3(payout_id, status=status, remote_id=remote_id, payor_payment_id=payor_payment_id, source_account_name=source_account_name, transmission_type=transmission_type, payment_memo=payment_memo, page_size=page_size, page=page)
 
 Retrieve payments for a payout
 
@@ -104,42 +91,30 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.PayoutServiceApi(api_client)
-    payout_id = 'payout_id_example' # str | Id of the payout
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayoutServiceApi(velo_payments.ApiClient(configuration))
+payout_id = 'payout_id_example' # str | Id of the payout
 status = 'status_example' # str | Payment Status * ACCEPTED: any payment which was accepted at submission time (status may have changed since) * REJECTED: any payment rejected by initial submission processing * WITHDRAWN: any payment which has been withdrawn * WITHDRAWABLE: any payment eligible for withdrawal  (optional)
 remote_id = 'remote_id_example' # str | The remote id of the payees. (optional)
 payor_payment_id = 'payor_payment_id_example' # str | Payor's Id of the Payment (optional)
 source_account_name = 'source_account_name_example' # str | Physical Account Name (optional)
+transmission_type = 'transmission_type_example' # str | Transmission Type * ACH * SAME_DAY_ACH * WIRE  (optional)
 payment_memo = 'payment_memo_example' # str | Payment Memo of the Payment (optional)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 
-    try:
-        # Retrieve payments for a payout
-        api_response = api_instance.get_payments_for_payout_v3(payout_id, status=status, remote_id=remote_id, payor_payment_id=payor_payment_id, source_account_name=source_account_name, payment_memo=payment_memo, page_size=page_size, page=page)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling PayoutServiceApi->get_payments_for_payout_v3: %s\n" % e)
+try:
+    # Retrieve payments for a payout
+    api_response = api_instance.get_payments_for_payout_v3(payout_id, status=status, remote_id=remote_id, payor_payment_id=payor_payment_id, source_account_name=source_account_name, transmission_type=transmission_type, payment_memo=payment_memo, page_size=page_size, page=page)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PayoutServiceApi->get_payments_for_payout_v3: %s\n" % e)
 ```
 
 ### Parameters
@@ -151,6 +126,7 @@ Name | Type | Description  | Notes
  **remote_id** | **str**| The remote id of the payees. | [optional] 
  **payor_payment_id** | **str**| Payor&#39;s Id of the Payment | [optional] 
  **source_account_name** | **str**| Physical Account Name | [optional] 
+ **transmission_type** | **str**| Transmission Type * ACH * SAME_DAY_ACH * WIRE  | [optional] 
  **payment_memo** | **str**| Payment Memo of the Payment | [optional] 
  **page_size** | **int**| The number of results to return in a page | [optional] [default to 25]
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
@@ -192,35 +168,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.PayoutServiceApi(api_client)
-    payout_id = 'payout_id_example' # str | Id of the payout
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayoutServiceApi(velo_payments.ApiClient(configuration))
+payout_id = 'payout_id_example' # str | Id of the payout
 
-    try:
-        # Get Payout Summary
-        api_response = api_instance.get_payout_summary_v3(payout_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling PayoutServiceApi->get_payout_summary_v3: %s\n" % e)
+try:
+    # Get Payout Summary
+    api_response = api_instance.get_payout_summary_v3(payout_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PayoutServiceApi->get_payout_summary_v3: %s\n" % e)
 ```
 
 ### Parameters
@@ -268,34 +231,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.PayoutServiceApi(api_client)
-    payout_id = 'payout_id_example' # str | Id of the payout
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayoutServiceApi(velo_payments.ApiClient(configuration))
+payout_id = 'payout_id_example' # str | Id of the payout
 
-    try:
-        # Instruct Payout
-        api_instance.instruct_payout_v3(payout_id)
-    except ApiException as e:
-        print("Exception when calling PayoutServiceApi->instruct_payout_v3: %s\n" % e)
+try:
+    # Instruct Payout
+    api_instance.instruct_payout_v3(payout_id)
+except ApiException as e:
+    print("Exception when calling PayoutServiceApi->instruct_payout_v3: %s\n" % e)
 ```
 
 ### Parameters
@@ -345,34 +295,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.PayoutServiceApi(api_client)
-    create_payout_request_v3 = velo_payments.CreatePayoutRequestV3() # CreatePayoutRequestV3 | Post amount to transfer using stored funding account details.
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayoutServiceApi(velo_payments.ApiClient(configuration))
+create_payout_request_v3 = velo_payments.CreatePayoutRequestV3() # CreatePayoutRequestV3 | Post amount to transfer using stored funding account details.
 
-    try:
-        # Submit Payout
-        api_instance.submit_payout_v3(create_payout_request_v3)
-    except ApiException as e:
-        print("Exception when calling PayoutServiceApi->submit_payout_v3: %s\n" % e)
+try:
+    # Submit Payout
+    api_instance.submit_payout_v3(create_payout_request_v3)
+except ApiException as e:
+    print("Exception when calling PayoutServiceApi->submit_payout_v3: %s\n" % e)
 ```
 
 ### Parameters
@@ -420,35 +357,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.PayoutServiceApi(api_client)
-    payment_id = 'payment_id_example' # str | Id of the Payment
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayoutServiceApi(velo_payments.ApiClient(configuration))
+payment_id = 'payment_id_example' # str | Id of the Payment
 withdraw_payment_request = velo_payments.WithdrawPaymentRequest() # WithdrawPaymentRequest | details for withdrawal
 
-    try:
-        # Withdraw a Payment
-        api_instance.withdraw_payment(payment_id, withdraw_payment_request)
-    except ApiException as e:
-        print("Exception when calling PayoutServiceApi->withdraw_payment: %s\n" % e)
+try:
+    # Withdraw a Payment
+    api_instance.withdraw_payment(payment_id, withdraw_payment_request)
+except ApiException as e:
+    print("Exception when calling PayoutServiceApi->withdraw_payment: %s\n" % e)
 ```
 
 ### Parameters
@@ -498,34 +422,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.PayoutServiceApi(api_client)
-    payout_id = 'payout_id_example' # str | Id of the payout
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayoutServiceApi(velo_payments.ApiClient(configuration))
+payout_id = 'payout_id_example' # str | Id of the payout
 
-    try:
-        # Withdraw Payout
-        api_instance.withdraw_payout_v3(payout_id)
-    except ApiException as e:
-        print("Exception when calling PayoutServiceApi->withdraw_payout_v3: %s\n" % e)
+try:
+    # Withdraw Payout
+    api_instance.withdraw_payout_v3(payout_id)
+except ApiException as e:
+    print("Exception when calling PayoutServiceApi->withdraw_payout_v3: %s\n" % e)
 ```
 
 ### Parameters

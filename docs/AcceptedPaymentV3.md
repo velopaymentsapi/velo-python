@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **source_account_name** | **str** |  | 
 **payor_payment_id** | **str** |  | 
 **payment_memo** | **str** |  | [optional] 
+**remote_system_id** | **str** |  | [optional] 
+**payment_metadata** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

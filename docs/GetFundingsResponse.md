@@ -1,6 +1,5 @@
 # GetFundingsResponse
 
-List Users Response Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,6 +1,6 @@
-FROM python:3.6.5-alpine
+FROM python:3.7.10-alpine
 
-RUN apk update && apk add --no-cache --virtual .build-deps openssl-dev gcc musl-dev git python3-dev build-base libffi-dev
+RUN apk update && apk add --no-cache --virtual .build-deps openssl-dev gcc musl-dev git python3-dev build-base libffi-dev libressl-dev cargo
 
 WORKDIR /usr/src/app
 

@@ -1,6 +1,5 @@
 # ListFundingAccountsResponse
 
-List Source Accounts Response Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

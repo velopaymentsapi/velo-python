@@ -39,35 +39,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    source_account_id = 'source_account_id_example' # str | Source account id
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+source_account_id = 'source_account_id_example' # str | Source account id
 funding_request_v1 = velo_payments.FundingRequestV1() # FundingRequestV1 | Body to included amount to be funded
 
-    try:
-        # Create Funding Request
-        api_instance.create_ach_funding_request(source_account_id, funding_request_v1)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->create_ach_funding_request: %s\n" % e)
+try:
+    # Create Funding Request
+    api_instance.create_ach_funding_request(source_account_id, funding_request_v1)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->create_ach_funding_request: %s\n" % e)
 ```
 
 ### Parameters
@@ -116,35 +103,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    source_account_id = 'source_account_id_example' # str | Source account id
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+source_account_id = 'source_account_id_example' # str | Source account id
 funding_request_v2 = velo_payments.FundingRequestV2() # FundingRequestV2 | Body to included amount to be funded
 
-    try:
-        # Create Funding Request
-        api_instance.create_funding_request(source_account_id, funding_request_v2)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->create_funding_request: %s\n" % e)
+try:
+    # Create Funding Request
+    api_instance.create_funding_request(source_account_id, funding_request_v2)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->create_funding_request: %s\n" % e)
 ```
 
 ### Parameters
@@ -194,35 +168,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    source_account_id = 'source_account_id_example' # str | Source account id
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+source_account_id = 'source_account_id_example' # str | Source account id
 funding_request_v3 = velo_payments.FundingRequestV3() # FundingRequestV3 | Body to included amount to be funded
 
-    try:
-        # Create Funding Request
-        api_instance.create_funding_request_v3(source_account_id, funding_request_v3)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->create_funding_request_v3: %s\n" % e)
+try:
+    # Create Funding Request
+    api_instance.create_funding_request_v3(source_account_id, funding_request_v3)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->create_funding_request_v3: %s\n" % e)
 ```
 
 ### Parameters
@@ -272,36 +233,23 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    funding_account_id = 'funding_account_id_example' # str | 
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+funding_account_id = 'funding_account_id_example' # str | 
 sensitive = False # bool |  (optional) (default to False)
 
-    try:
-        # Get Funding Account
-        api_response = api_instance.get_funding_account(funding_account_id, sensitive=sensitive)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->get_funding_account: %s\n" % e)
+try:
+    # Get Funding Account
+    api_response = api_instance.get_funding_account(funding_account_id, sensitive=sensitive)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->get_funding_account: %s\n" % e)
 ```
 
 ### Parameters
@@ -351,36 +299,23 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    funding_account_id = 'funding_account_id_example' # str | 
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+funding_account_id = 'funding_account_id_example' # str | 
 sensitive = False # bool |  (optional) (default to False)
 
-    try:
-        # Get Funding Account
-        api_response = api_instance.get_funding_account_v2(funding_account_id, sensitive=sensitive)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->get_funding_account_v2: %s\n" % e)
+try:
+    # Get Funding Account
+    api_response = api_instance.get_funding_account_v2(funding_account_id, sensitive=sensitive)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->get_funding_account_v2: %s\n" % e)
 ```
 
 ### Parameters
@@ -430,40 +365,27 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    payor_id = 'payor_id_example' # str |  (optional)
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+payor_id = 'payor_id_example' # str |  (optional)
 source_account_id = 'source_account_id_example' # str |  (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 sort = 'accountName:asc' # str | List of sort fields (e.g. ?sort=accountName:asc,name:asc) Default is accountName:asc The supported sort fields are - accountName, name and currency. (optional) (default to 'accountName:asc')
 sensitive = False # bool |  (optional) (default to False)
 
-    try:
-        # Get Funding Accounts
-        api_response = api_instance.get_funding_accounts(payor_id=payor_id, source_account_id=source_account_id, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->get_funding_accounts: %s\n" % e)
+try:
+    # Get Funding Accounts
+    api_response = api_instance.get_funding_accounts(payor_id=payor_id, source_account_id=source_account_id, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->get_funding_accounts: %s\n" % e)
 ```
 
 ### Parameters
@@ -515,28 +437,15 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    payor_id = 'payor_id_example' # str |  (optional)
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+payor_id = 'payor_id_example' # str |  (optional)
 name = 'name_example' # str | The descriptive funding account name (optional)
 country = 'US' # str | The 2 letter ISO 3166-1 country code (upper case) (optional)
 currency = 'USD' # str | The ISO 4217 currency code (optional)
@@ -546,12 +455,12 @@ page_size = 25 # int | The number of results to return in a page (optional) (def
 sort = 'accountName:asc' # str | List of sort fields (e.g. ?sort=accountName:asc,name:asc) Default is accountName:asc The supported sort fields are - accountName, name. (optional) (default to 'accountName:asc')
 sensitive = False # bool |  (optional) (default to False)
 
-    try:
-        # Get Funding Accounts
-        api_response = api_instance.get_funding_accounts_v2(payor_id=payor_id, name=name, country=country, currency=currency, type=type, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->get_funding_accounts_v2: %s\n" % e)
+try:
+    # Get Funding Accounts
+    api_response = api_instance.get_funding_accounts_v2(payor_id=payor_id, name=name, country=country, currency=currency, type=type, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->get_funding_accounts_v2: %s\n" % e)
 ```
 
 ### Parameters
@@ -606,35 +515,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    source_account_id = 'source_account_id_example' # str | Source account id
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+source_account_id = 'source_account_id_example' # str | Source account id
 
-    try:
-        # Get details about given source account.
-        api_response = api_instance.get_source_account(source_account_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->get_source_account: %s\n" % e)
+try:
+    # Get details about given source account.
+    api_response = api_instance.get_source_account(source_account_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->get_source_account: %s\n" % e)
 ```
 
 ### Parameters
@@ -682,35 +578,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    source_account_id = 'source_account_id_example' # str | Source account id
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+source_account_id = 'source_account_id_example' # str | Source account id
 
-    try:
-        # Get details about given source account.
-        api_response = api_instance.get_source_account_v2(source_account_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->get_source_account_v2: %s\n" % e)
+try:
+    # Get details about given source account.
+    api_response = api_instance.get_source_account_v2(source_account_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->get_source_account_v2: %s\n" % e)
 ```
 
 ### Parameters
@@ -759,35 +642,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    source_account_id = 'source_account_id_example' # str | Source account id
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+source_account_id = 'source_account_id_example' # str | Source account id
 
-    try:
-        # Get details about given source account.
-        api_response = api_instance.get_source_account_v3(source_account_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->get_source_account_v3: %s\n" % e)
+try:
+    # Get details about given source account.
+    api_response = api_instance.get_source_account_v3(source_account_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->get_source_account_v3: %s\n" % e)
 ```
 
 ### Parameters
@@ -836,39 +706,26 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    physical_account_name = 'physical_account_name_example' # str | Physical Account Name (optional)
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+physical_account_name = 'physical_account_name_example' # str | Physical Account Name (optional)
 payor_id = 'payor_id_example' # str | The account owner Payor ID (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 sort = 'fundingRef:asc' # str | List of sort fields e.g. ?sort=name:asc Default is name:asc The supported sort fields are - fundingRef  (optional) (default to 'fundingRef:asc')
 
-    try:
-        # Get list of source accounts
-        api_response = api_instance.get_source_accounts(physical_account_name=physical_account_name, payor_id=payor_id, page=page, page_size=page_size, sort=sort)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->get_source_accounts: %s\n" % e)
+try:
+    # Get list of source accounts
+    api_response = api_instance.get_source_accounts(physical_account_name=physical_account_name, payor_id=payor_id, page=page, page_size=page_size, sort=sort)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->get_source_accounts: %s\n" % e)
 ```
 
 ### Parameters
@@ -920,28 +777,15 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    physical_account_name = 'physical_account_name_example' # str | Physical Account Name (optional)
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+physical_account_name = 'physical_account_name_example' # str | Physical Account Name (optional)
 physical_account_id = 'physical_account_id_example' # str | The physical account ID (optional)
 payor_id = 'payor_id_example' # str | The account owner Payor ID (optional)
 funding_account_id = 'funding_account_id_example' # str | The funding account ID (optional)
@@ -949,12 +793,12 @@ page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 sort = 'fundingRef:asc' # str | List of sort fields e.g. ?sort=name:asc Default is name:asc The supported sort fields are - fundingRef, name, balance  (optional) (default to 'fundingRef:asc')
 
-    try:
-        # Get list of source accounts
-        api_response = api_instance.get_source_accounts_v2(physical_account_name=physical_account_name, physical_account_id=physical_account_id, payor_id=payor_id, funding_account_id=funding_account_id, page=page, page_size=page_size, sort=sort)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->get_source_accounts_v2: %s\n" % e)
+try:
+    # Get list of source accounts
+    api_response = api_instance.get_source_accounts_v2(physical_account_name=physical_account_name, physical_account_id=physical_account_id, payor_id=payor_id, funding_account_id=funding_account_id, page=page, page_size=page_size, sort=sort)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->get_source_accounts_v2: %s\n" % e)
 ```
 
 ### Parameters
@@ -994,7 +838,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_source_accounts_v3**
-> ListSourceAccountResponseV3 get_source_accounts_v3(physical_account_name=physical_account_name, physical_account_id=physical_account_id, payor_id=payor_id, funding_account_id=funding_account_id, type=type, page=page, page_size=page_size, sort=sort)
+> ListSourceAccountResponseV3 get_source_accounts_v3(physical_account_name=physical_account_name, physical_account_id=physical_account_id, payor_id=payor_id, funding_account_id=funding_account_id, include_user_deleted=include_user_deleted, type=type, page=page, page_size=page_size, sort=sort)
 
 Get list of source accounts
 
@@ -1009,42 +853,30 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    physical_account_name = 'physical_account_name_example' # str | Physical Account Name (optional)
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+physical_account_name = 'physical_account_name_example' # str | Physical Account Name (optional)
 physical_account_id = 'physical_account_id_example' # str | The physical account ID (optional)
 payor_id = 'payor_id_example' # str | The account owner Payor ID (optional)
 funding_account_id = 'funding_account_id_example' # str | The funding account ID (optional)
+include_user_deleted = True # bool | A filter for retrieving both active accounts and user deleted ones (optional)
 type = velo_payments.SourceAccountType() # SourceAccountType | The type of source account. (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 sort = 'fundingRef:asc' # str | List of sort fields e.g. ?sort=name:asc Default is name:asc The supported sort fields are - fundingRef, name, balance  (optional) (default to 'fundingRef:asc')
 
-    try:
-        # Get list of source accounts
-        api_response = api_instance.get_source_accounts_v3(physical_account_name=physical_account_name, physical_account_id=physical_account_id, payor_id=payor_id, funding_account_id=funding_account_id, type=type, page=page, page_size=page_size, sort=sort)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->get_source_accounts_v3: %s\n" % e)
+try:
+    # Get list of source accounts
+    api_response = api_instance.get_source_accounts_v3(physical_account_name=physical_account_name, physical_account_id=physical_account_id, payor_id=payor_id, funding_account_id=funding_account_id, include_user_deleted=include_user_deleted, type=type, page=page, page_size=page_size, sort=sort)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->get_source_accounts_v3: %s\n" % e)
 ```
 
 ### Parameters
@@ -1055,6 +887,7 @@ Name | Type | Description  | Notes
  **physical_account_id** | [**str**](.md)| The physical account ID | [optional] 
  **payor_id** | [**str**](.md)| The account owner Payor ID | [optional] 
  **funding_account_id** | [**str**](.md)| The funding account ID | [optional] 
+ **include_user_deleted** | **bool**| A filter for retrieving both active accounts and user deleted ones | [optional] 
  **type** | [**SourceAccountType**](.md)| The type of source account. | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| The number of results to return in a page | [optional] [default to 25]
@@ -1100,38 +933,25 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    payor_id = 'payor_id_example' # str | 
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+payor_id = 'payor_id_example' # str | 
 updated_since = '2013-10-20T19:20:30+01:00' # datetime | 
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 
-    try:
-        # Get Funding Audit Delta
-        api_response = api_instance.list_funding_audit_deltas(payor_id, updated_since, page=page, page_size=page_size)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->list_funding_audit_deltas: %s\n" % e)
+try:
+    # Get Funding Audit Delta
+    api_response = api_instance.list_funding_audit_deltas(payor_id, updated_since, page=page, page_size=page_size)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->list_funding_audit_deltas: %s\n" % e)
 ```
 
 ### Parameters
@@ -1182,35 +1002,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    source_account_id = 'source_account_id_example' # str | Source account id
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+source_account_id = 'source_account_id_example' # str | Source account id
 set_notifications_request = velo_payments.SetNotificationsRequest() # SetNotificationsRequest | Body to included minimum balance to set
 
-    try:
-        # Set notifications
-        api_instance.set_notifications_request(source_account_id, set_notifications_request)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->set_notifications_request: %s\n" % e)
+try:
+    # Set notifications
+    api_instance.set_notifications_request(source_account_id, set_notifications_request)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->set_notifications_request: %s\n" % e)
 ```
 
 ### Parameters
@@ -1260,35 +1067,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    source_account_id = 'source_account_id_example' # str | The 'from' source account id, which will be debited
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+source_account_id = 'source_account_id_example' # str | The 'from' source account id, which will be debited
 transfer_request = velo_payments.TransferRequest() # TransferRequest | Body
 
-    try:
-        # Transfer Funds between source accounts
-        api_instance.transfer_funds(source_account_id, transfer_request)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->transfer_funds: %s\n" % e)
+try:
+    # Transfer Funds between source accounts
+    api_instance.transfer_funds(source_account_id, transfer_request)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->transfer_funds: %s\n" % e)
 ```
 
 ### Parameters
@@ -1338,35 +1132,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.FundingManagerApi(api_client)
-    source_account_id = 'source_account_id_example' # str | The 'from' source account id, which will be debited
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+source_account_id = 'source_account_id_example' # str | The 'from' source account id, which will be debited
 transfer_request2 = velo_payments.TransferRequest2() # TransferRequest2 | Body
 
-    try:
-        # Transfer Funds between source accounts
-        api_instance.transfer_funds_v3(source_account_id, transfer_request2)
-    except ApiException as e:
-        print("Exception when calling FundingManagerApi->transfer_funds_v3: %s\n" % e)
+try:
+    # Transfer Funds between source accounts
+    api_instance.transfer_funds_v3(source_account_id, transfer_request2)
+except ApiException as e:
+    print("Exception when calling FundingManagerApi->transfer_funds_v3: %s\n" % e)
 ```
 
 ### Parameters

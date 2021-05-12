@@ -1,6 +1,5 @@
 # PayorLinksResponse
 
-List Payor Links Response Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

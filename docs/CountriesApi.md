@@ -25,34 +25,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.CountriesApi(api_client)
-    
-    try:
-        # List Payment Channel Country Rules
-        api_response = api_instance.list_payment_channel_rules_v1()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CountriesApi->list_payment_channel_rules_v1: %s\n" % e)
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.CountriesApi(velo_payments.ApiClient(configuration))
+
+try:
+    # List Payment Channel Country Rules
+    api_response = api_instance.list_payment_channel_rules_v1()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CountriesApi->list_payment_channel_rules_v1: %s\n" % e)
 ```
 
 ### Parameters
@@ -94,24 +81,16 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 
+# Create an instance of the API class
+api_instance = velo_payments.CountriesApi()
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.CountriesApi(api_client)
-    
-    try:
-        # List Supported Countries
-        api_response = api_instance.list_supported_countries_v1()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CountriesApi->list_supported_countries_v1: %s\n" % e)
+try:
+    # List Supported Countries
+    api_response = api_instance.list_supported_countries_v1()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CountriesApi->list_supported_countries_v1: %s\n" % e)
 ```
 
 ### Parameters
@@ -152,24 +131,16 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 
+# Create an instance of the API class
+api_instance = velo_payments.CountriesApi()
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.CountriesApi(api_client)
-    
-    try:
-        # List Supported Countries
-        api_response = api_instance.list_supported_countries_v2()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CountriesApi->list_supported_countries_v2: %s\n" % e)
+try:
+    # List Supported Countries
+    api_response = api_instance.list_supported_countries_v2()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CountriesApi->list_supported_countries_v2: %s\n" % e)
 ```
 
 ### Parameters

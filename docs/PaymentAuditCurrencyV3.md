@@ -1,6 +1,5 @@
 # PaymentAuditCurrencyV3
 
-ISO 3 character currency code
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

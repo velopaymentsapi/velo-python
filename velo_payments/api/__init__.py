@@ -11,6 +11,7 @@ from velo_payments.api.login_api import LoginApi
 from velo_payments.api.payee_invitation_api import PayeeInvitationApi
 from velo_payments.api.payees_api import PayeesApi
 from velo_payments.api.payment_audit_service_api import PaymentAuditServiceApi
+from velo_payments.api.payment_audit_service__deprecated_api import PaymentAuditServiceDeprecatedApi
 from velo_payments.api.payors_api import PayorsApi
 from velo_payments.api.payors_private_api import PayorsPrivateApi
 from velo_payments.api.payout_service_api import PayoutServiceApi

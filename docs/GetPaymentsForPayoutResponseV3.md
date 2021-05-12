@@ -1,6 +1,5 @@
 # GetPaymentsForPayoutResponseV3
 
-List Payments for payout
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

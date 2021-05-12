@@ -1,6 +1,5 @@
 # PagedPayeeInvitationStatusResponse2
 
-List Payees Invitation Status Object
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

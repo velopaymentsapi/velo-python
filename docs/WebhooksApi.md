@@ -27,34 +27,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.WebhooksApi(api_client)
-    create_webhook_request = velo_payments.CreateWebhookRequest() # CreateWebhookRequest |  (optional)
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.WebhooksApi(velo_payments.ApiClient(configuration))
+create_webhook_request = velo_payments.CreateWebhookRequest() # CreateWebhookRequest |  (optional)
 
-    try:
-        # Create Webhook
-        api_instance.create_webhook_v1(create_webhook_request=create_webhook_request)
-    except ApiException as e:
-        print("Exception when calling WebhooksApi->create_webhook_v1: %s\n" % e)
+try:
+    # Create Webhook
+    api_instance.create_webhook_v1(create_webhook_request=create_webhook_request)
+except ApiException as e:
+    print("Exception when calling WebhooksApi->create_webhook_v1: %s\n" % e)
 ```
 
 ### Parameters
@@ -102,35 +89,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.WebhooksApi(api_client)
-    webhook_id = 'webhook_id_example' # str | Webhook id
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.WebhooksApi(velo_payments.ApiClient(configuration))
+webhook_id = 'webhook_id_example' # str | Webhook id
 
-    try:
-        # Get details about the given webhook.
-        api_response = api_instance.get_webhook_v1(webhook_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling WebhooksApi->get_webhook_v1: %s\n" % e)
+try:
+    # Get details about the given webhook.
+    api_response = api_instance.get_webhook_v1(webhook_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling WebhooksApi->get_webhook_v1: %s\n" % e)
 ```
 
 ### Parameters
@@ -179,37 +153,24 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.WebhooksApi(api_client)
-    payor_id = 'payor_id_example' # str | The Payor ID
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.WebhooksApi(velo_payments.ApiClient(configuration))
+payor_id = 'payor_id_example' # str | The Payor ID
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 
-    try:
-        # List the details about the webhooks for the given payor.
-        api_response = api_instance.list_webhooks_v1(payor_id, page=page, page_size=page_size)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling WebhooksApi->list_webhooks_v1: %s\n" % e)
+try:
+    # List the details about the webhooks for the given payor.
+    api_response = api_instance.list_webhooks_v1(payor_id, page=page, page_size=page_size)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling WebhooksApi->list_webhooks_v1: %s\n" % e)
 ```
 
 ### Parameters
@@ -257,34 +218,21 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.WebhooksApi(api_client)
-    webhook_id = 'webhook_id_example' # str | Webhook id
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.WebhooksApi(velo_payments.ApiClient(configuration))
+webhook_id = 'webhook_id_example' # str | Webhook id
 
-    try:
-        api_response = api_instance.ping_webhook_v1(webhook_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling WebhooksApi->ping_webhook_v1: %s\n" % e)
+try:
+    api_response = api_instance.ping_webhook_v1(webhook_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling WebhooksApi->ping_webhook_v1: %s\n" % e)
 ```
 
 ### Parameters
@@ -333,35 +281,22 @@ import time
 import velo_payments
 from velo_payments.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
+configuration = velo_payments.Configuration()
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = velo_payments.Configuration(
-    host = "https://api.sandbox.velopayments.com"
-)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Enter a context with an instance of the API client
-with velo_payments.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = velo_payments.WebhooksApi(api_client)
-    webhook_id = 'webhook_id_example' # str | Webhook id
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.WebhooksApi(velo_payments.ApiClient(configuration))
+webhook_id = 'webhook_id_example' # str | Webhook id
 update_webhook_request = velo_payments.UpdateWebhookRequest() # UpdateWebhookRequest |  (optional)
 
-    try:
-        # Update Webhook
-        api_instance.update_webhook_v1(webhook_id, update_webhook_request=update_webhook_request)
-    except ApiException as e:
-        print("Exception when calling WebhooksApi->update_webhook_v1: %s\n" % e)
+try:
+    # Update Webhook
+    api_instance.update_webhook_v1(webhook_id, update_webhook_request=update_webhook_request)
+except ApiException as e:
+    print("Exception when calling WebhooksApi->update_webhook_v1: %s\n" % e)
 ```
 
 ### Parameters
