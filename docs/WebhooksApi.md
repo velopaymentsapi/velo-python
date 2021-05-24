@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**create_webhook_v1**](WebhooksApi.md#create_webhook_v1) | **POST** /v1/webhooks | Create Webhook
 [**get_webhook_v1**](WebhooksApi.md#get_webhook_v1) | **GET** /v1/webhooks/{webhookId} | Get details about the given webhook.
 [**list_webhooks_v1**](WebhooksApi.md#list_webhooks_v1) | **GET** /v1/webhooks | List the details about the webhooks for the given payor.
-[**ping_webhook_v1**](WebhooksApi.md#ping_webhook_v1) | **POST** /v1/webhooks/{webhookId}/ping | 
 [**update_webhook_v1**](WebhooksApi.md#update_webhook_v1) | **POST** /v1/webhooks/{webhookId} | Update Webhook
 
 
@@ -201,67 +200,6 @@ Name | Type | Description  | Notes
 **400** | Invalid Request Parameters |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **ping_webhook_v1**
-> PingResponse ping_webhook_v1(webhook_id)
-
-
-
-### Example
-
-* OAuth Authentication (OAuth2):
-```python
-from __future__ import print_function
-import time
-import velo_payments
-from velo_payments.rest import ApiException
-from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.WebhooksApi(velo_payments.ApiClient(configuration))
-webhook_id = 'webhook_id_example' # str | Webhook id
-
-try:
-    api_response = api_instance.ping_webhook_v1(webhook_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling WebhooksApi->ping_webhook_v1: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **webhook_id** | [**str**](.md)| Webhook id | 
-
-### Return type
-
-[**PingResponse**](PingResponse.md)
-
-### Authorization
-
-[OAuth2](../README.md#OAuth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**202** | Send ping |  -  |
-**400** | Bad Request, Invalid path parameter |  -  |
-**401** | Invalid access token. May be expired or invalid |  -  |
-**403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
-**404** | The resource was not found or is no longer available  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
