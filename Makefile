@@ -123,7 +123,7 @@ info:
 	echo "passenv = *" >> tox.ini
 
 build_client:
-	#
+	# skip
 
 client: clean generate trim info build_client
 
