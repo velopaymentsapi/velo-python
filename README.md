@@ -1,15 +1,88 @@
 # Python client for Velo
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![npm version](https://badge.fury.io/py/velo-python.svg)](https://badge.fury.io/py/velo-python) [![CircleCI](https://circleci.com/gh/velopaymentsapi/velo-python.svg?style=svg)](https://circleci.com/gh/velopaymentsapi/velo-python)
 This library provides a Python client that simplifies interactions with the Velo Payments API. For full details covering the API visit our docs at [Velo Payments APIs](https://apidocs.velopayments.com). Note: some of the Velo API calls which require authorization via an access token, see the full docs on how to configure.
+Throughout this document and the Velo platform the following terms are used:
+
+* **Payor.** An entity (typically a corporation) which wishes to pay funds to one or more payees via a payout.
+* **Payee.** The recipient of funds paid out by a payor.
+* **Payment.** A single transfer of funds from a payor to a payee.
+* **Payout.** A batch of Payments, typically used by a payor to logically group payments (e.g. by business day). Technically there need be no relationship between the payments in a payout - a single payout can contain payments to multiple payees and/or multiple payments to a single payee.
+* **Sandbox.** An integration environment provided by Velo Payments which offers a similar API experience to the production environment, but all funding and payment events are simulated, along with many other services such as OFAC sanctions list checking.
+
+## Overview
+
+The Velo Payments API allows a payor to perform a number of operations. The following is a list of the main capabilities in a natural order of execution:
+
+* Authenticate with the Velo platform
+* Maintain a collection of payees
+* Query the payor’s current balance of funds within the platform and perform additional funding
+* Issue payments to payees
+* Query the platform for a history of those payments
+
+This document describes the main concepts and APIs required to get up and running with the Velo Payments platform. It is not an exhaustive API reference. For that, please see the separate Velo Payments API Reference.
+
+## API Considerations
+
+The Velo Payments API is REST based and uses the JSON format for requests and responses.
+
+Most calls are secured using OAuth 2 security and require a valid authentication access token for successful operation. See the Authentication section for details.
+
+Where a dynamic value is required in the examples below, the {token} format is used, suggesting that the caller needs to supply the appropriate value of the token in question (without including the { or } characters).
+
+Where curl examples are given, the –d @filename.json approach is used, indicating that the request body should be placed into a file named filename.json in the current directory. Each of the curl examples in this document should be considered a single line on the command-line, regardless of how they appear in print.
+
+## Authenticating with the Velo Platform
+
+Once Velo backoffice staff have added your organization as a payor within the Velo platform sandbox, they will create you a payor Id, an API key and an API secret and share these with you in a secure manner.
+
+You will need to use these values to authenticate with the Velo platform in order to gain access to the APIs. The steps to take are explained in the following:
+
+create a string comprising the API key (e.g. 44a9537d-d55d-4b47-8082-14061c2bcdd8) and API secret (e.g. c396b26b-137a-44fd-87f5-34631f8fd529) with a colon between them. E.g. 44a9537d-d55d-4b47-8082-14061c2bcdd8:c396b26b-137a-44fd-87f5-34631f8fd529
+
+base64 encode this string. E.g.: NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==
+
+create an HTTP **Authorization** header with the value set to e.g. Basic NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==
+
+perform the Velo authentication REST call using the HTTP header created above e.g. via curl:
+
+```
+  curl -X POST \\
+  -H \"Content-Type: application/json\" \\
+  -H \"Authorization: Basic NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==\" \\
+  'https://api.sandbox.velopayments.com/v1/authenticate?grant_type=client_credentials'
+```
+
+If successful, this call will result in a **200** HTTP status code and a response body such as:
+
+```
+  {
+    \"access_token\":\"19f6bafd-93fd-4747-b229-00507bbc991f\",
+    \"token_type\":\"bearer\",
+    \"expires_in\":1799,
+    \"scope\":\"...\"
+  }
+```
+## API access following authentication
+Following successful authentication, the value of the access_token field in the response (indicated in green above) should then be presented with all subsequent API calls to allow the Velo platform to validate that the caller is authenticated.
+
+This is achieved by setting the HTTP Authorization header with the value set to e.g. Bearer 19f6bafd-93fd-4747-b229-00507bbc991f such as the curl example below:
+
+```
+  -H \"Authorization: Bearer 19f6bafd-93fd-4747-b229-00507bbc991f \"
+```
+
+If you make other Velo API calls which require authorization but the Authorization header is missing or invalid then you will get a **401** HTTP status response.
+
+
 This Python package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: 2.26.124
-- Package version: 2.26.124
+- API version: 2.29.128
+- Package version: 2.29.130
 - Build package: org.openapitools.codegen.languages.PythonClientCodegen
 
 ## Requirements.
 
-Python 2.7 and 3.4+
+Python >=3.6
 
 ## Installation & Usage
 ### pip install
@@ -23,7 +96,7 @@ pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 
 Then import the package:
 ```python
-import velo_payments 
+import velo_payments
 ```
 
 ### Setuptools
@@ -45,28 +118,44 @@ import velo_payments
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
-from __future__ import print_function
+
 import time
 import velo_payments
-from velo_payments.rest import ApiException
 from pprint import pprint
+from velo_payments.api import countries_api
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.payment_channel_rules_response import PaymentChannelRulesResponse
+from velo_payments.model.supported_countries_response import SupportedCountriesResponse
+from velo_payments.model.supported_countries_response_v2 import SupportedCountriesResponseV2
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 
-configuration = velo_payments.Configuration()
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.CountriesApi(velo_payments.ApiClient(configuration))
 
-try:
-    # List Payment Channel Country Rules
-    api_response = api_instance.list_payment_channel_rules_v1()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling CountriesApi->list_payment_channel_rules_v1: %s\n" % e)
-
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = countries_api.CountriesApi(api_client)
+    
+    try:
+        # List Payment Channel Country Rules
+        api_response = api_instance.list_payment_channel_rules_v1()
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling CountriesApi->list_payment_channel_rules_v1: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -148,9 +237,11 @@ Class | Method | HTTP request | Description
 *PayorsApi* | [**payor_links**](docs/PayorsApi.md#payor_links) | **GET** /v1/payorLinks | List Payor Links
 *PayorsPrivateApi* | [**create_payor_links**](docs/PayorsPrivateApi.md#create_payor_links) | **POST** /v1/payorLinks | Create a Payor Link
 *PayoutServiceApi* | [**create_quote_for_payout_v3**](docs/PayoutServiceApi.md#create_quote_for_payout_v3) | **POST** /v3/payouts/{payoutId}/quote | Create a quote for the payout
+*PayoutServiceApi* | [**deschedule_payout**](docs/PayoutServiceApi.md#deschedule_payout) | **DELETE** /v3/payouts/{payoutId}/schedule | Deschedule a payout
 *PayoutServiceApi* | [**get_payments_for_payout_v3**](docs/PayoutServiceApi.md#get_payments_for_payout_v3) | **GET** /v3/payouts/{payoutId}/payments | Retrieve payments for a payout
 *PayoutServiceApi* | [**get_payout_summary_v3**](docs/PayoutServiceApi.md#get_payout_summary_v3) | **GET** /v3/payouts/{payoutId} | Get Payout Summary
 *PayoutServiceApi* | [**instruct_payout_v3**](docs/PayoutServiceApi.md#instruct_payout_v3) | **POST** /v3/payouts/{payoutId} | Instruct Payout
+*PayoutServiceApi* | [**schedule_for_payout**](docs/PayoutServiceApi.md#schedule_for_payout) | **POST** /v3/payouts/{payoutId}/schedule | Schedule a payout
 *PayoutServiceApi* | [**submit_payout_v3**](docs/PayoutServiceApi.md#submit_payout_v3) | **POST** /v3/payouts | Submit Payout
 *PayoutServiceApi* | [**withdraw_payment**](docs/PayoutServiceApi.md#withdraw_payment) | **POST** /v1/payments/{paymentId}/withdraw | Withdraw a Payment
 *PayoutServiceApi* | [**withdraw_payout_v3**](docs/PayoutServiceApi.md#withdraw_payout_v3) | **DELETE** /v3/payouts/{payoutId} | Withdraw Payout
@@ -175,6 +266,7 @@ Class | Method | HTTP request | Description
 *WebhooksApi* | [**create_webhook_v1**](docs/WebhooksApi.md#create_webhook_v1) | **POST** /v1/webhooks | Create Webhook
 *WebhooksApi* | [**get_webhook_v1**](docs/WebhooksApi.md#get_webhook_v1) | **GET** /v1/webhooks/{webhookId} | Get details about the given webhook.
 *WebhooksApi* | [**list_webhooks_v1**](docs/WebhooksApi.md#list_webhooks_v1) | **GET** /v1/webhooks | List the details about the webhooks for the given payor.
+*WebhooksApi* | [**ping_webhook_v1**](docs/WebhooksApi.md#ping_webhook_v1) | **POST** /v1/webhooks/{webhookId}/ping | 
 *WebhooksApi* | [**update_webhook_v1**](docs/WebhooksApi.md#update_webhook_v1) | **POST** /v1/webhooks/{webhookId} | Update Webhook
 
 
@@ -261,11 +353,14 @@ Class | Method | HTTP request | Description
  - [InlineResponse404](docs/InlineResponse404.md)
  - [InlineResponse409](docs/InlineResponse409.md)
  - [InlineResponse412](docs/InlineResponse412.md)
+ - [InstructPayoutRequest](docs/InstructPayoutRequest.md)
  - [InvitationStatus](docs/InvitationStatus.md)
  - [InvitationStatus2](docs/InvitationStatus2.md)
  - [InvitePayeeRequest](docs/InvitePayeeRequest.md)
  - [InvitePayeeRequest2](docs/InvitePayeeRequest2.md)
  - [InviteUserRequest](docs/InviteUserRequest.md)
+ - [IsoCountryCode](docs/IsoCountryCode.md)
+ - [IsoCurrency](docs/IsoCurrency.md)
  - [KycState](docs/KycState.md)
  - [LinkForResponse](docs/LinkForResponse.md)
  - [ListFundingAccountsResponse](docs/ListFundingAccountsResponse.md)
@@ -330,6 +425,7 @@ Class | Method | HTTP request | Description
  - [PayeePayorRef](docs/PayeePayorRef.md)
  - [PayeePayorRefV3](docs/PayeePayorRefV3.md)
  - [PayeeType](docs/PayeeType.md)
+ - [PayeeType2](docs/PayeeType2.md)
  - [PayeeUserSelfUpdateRequest](docs/PayeeUserSelfUpdateRequest.md)
  - [PaymentAuditCurrency](docs/PaymentAuditCurrency.md)
  - [PaymentAuditCurrencyV3](docs/PaymentAuditCurrencyV3.md)
@@ -376,6 +472,8 @@ Class | Method | HTTP request | Description
  - [PayoutPayor](docs/PayoutPayor.md)
  - [PayoutPayorIds](docs/PayoutPayorIds.md)
  - [PayoutPrincipal](docs/PayoutPrincipal.md)
+ - [PayoutSchedule](docs/PayoutSchedule.md)
+ - [PayoutSchedule2](docs/PayoutSchedule2.md)
  - [PayoutStatus](docs/PayoutStatus.md)
  - [PayoutStatusV3](docs/PayoutStatusV3.md)
  - [PayoutSummaryAudit](docs/PayoutSummaryAudit.md)
@@ -383,6 +481,7 @@ Class | Method | HTTP request | Description
  - [PayoutSummaryResponseV3](docs/PayoutSummaryResponseV3.md)
  - [PayoutType](docs/PayoutType.md)
  - [Ping](docs/Ping.md)
+ - [PingResponse](docs/PingResponse.md)
  - [QueryBatchResponse](docs/QueryBatchResponse.md)
  - [QueryBatchResponse2](docs/QueryBatchResponse2.md)
  - [QuoteFxSummaryV3](docs/QuoteFxSummaryV3.md)
@@ -394,6 +493,9 @@ Class | Method | HTTP request | Description
  - [ResetPasswordRequest](docs/ResetPasswordRequest.md)
  - [Role](docs/Role.md)
  - [RoleUpdateRequest](docs/RoleUpdateRequest.md)
+ - [SchedulePayoutRequest](docs/SchedulePayoutRequest.md)
+ - [ScheduleStatus](docs/ScheduleStatus.md)
+ - [ScheduleStatus2](docs/ScheduleStatus2.md)
  - [SelfMFATypeUnregisterRequest](docs/SelfMFATypeUnregisterRequest.md)
  - [SelfUpdatePasswordRequest](docs/SelfUpdatePasswordRequest.md)
  - [SetNotificationsRequest](docs/SetNotificationsRequest.md)
@@ -429,6 +531,7 @@ Class | Method | HTTP request | Description
  - [UserType](docs/UserType.md)
  - [UserType2](docs/UserType2.md)
  - [ValidatePasswordResponse](docs/ValidatePasswordResponse.md)
+ - [VerificationCode](docs/VerificationCode.md)
  - [WatchlistStatus](docs/WatchlistStatus.md)
  - [WatchlistStatus2](docs/WatchlistStatus2.md)
  - [WebhookResponse](docs/WebhookResponse.md)
@@ -466,4 +569,23 @@ Class | Method | HTTP request | Description
 
 
 
+
+## Notes for Large OpenAPI documents
+If the OpenAPI document is large, imports in velo_payments.apis and velo_payments.models may fail with a
+RecursionError indicating the maximum recursion limit has been exceeded. In that case, there are a couple of solutions:
+
+Solution 1:
+Use specific imports for apis and models like:
+- `from velo_payments.api.default_api import DefaultApi`
+- `from velo_payments.model.pet import Pet`
+
+Solution 2:
+Before importing the package, adjust the maximum recursion limit as shown below:
+```
+import sys
+sys.setrecursionlimit(1500)
+import velo_payments
+from velo_payments.apis import *
+from velo_payments.models import *
+```
 

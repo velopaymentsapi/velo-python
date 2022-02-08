@@ -16,6 +16,7 @@ import os
 import unittest
 
 import velo_payments
+from velo_payments.api.login_api import LoginApi
 from velo_payments.api.payees_api import PayeesApi  # noqa: E501
 from velo_payments.rest import ApiException
 
@@ -35,7 +36,7 @@ class TestPayeesApi(unittest.TestCase):
             # Defining host is optional and default to https://api.sandbox.velopayments.com
             configuration.host = os.environ.get('APIURL')
             # Create an instance of the API class
-            api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
+            api_instance = LoginApi(velo_payments.ApiClient(configuration))
             grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
 
             try:
@@ -92,7 +93,7 @@ class TestPayeesApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
+        api_instance = PayeesApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str | 
         updated_since = '2013-10-20T19:20:30+01:00' # datetime | The updatedSince filter in the format YYYY-MM-DDThh:mm:ss+hh:mm
@@ -109,7 +110,7 @@ class TestPayeesApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
+        api_instance = PayeesApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str | 
         disabled = False # bool | Payee disabled (optional)

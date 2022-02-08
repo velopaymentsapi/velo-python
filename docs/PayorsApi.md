@@ -24,35 +24,53 @@ Get a Single Payor by Id.
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payors_api
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.payor_v1 import PayorV1
+from velo_payments.model.error_response import ErrorResponse
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payors_api.PayorsApi(api_client)
+    payor_id = "payorId_example" # str | The Payor Id
 
-try:
-    # Get Payor
-    api_response = api_instance.get_payor_by_id(payor_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayorsApi->get_payor_by_id: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Get Payor
+        api_response = api_instance.get_payor_by_id(payor_id)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayorsApi->get_payor_by_id: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
+ **payor_id** | **str**| The Payor Id |
 
 ### Return type
 
@@ -67,7 +85,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get Payor Details |  -  |
@@ -86,35 +106,54 @@ Get a Single Payor by Id.
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payors_api
+from velo_payments.model.payor_v2 import PayorV2
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.error_response import ErrorResponse
+from velo_payments.model.inline_response400 import InlineResponse400
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payors_api.PayorsApi(api_client)
+    payor_id = "payorId_example" # str | The Payor Id
 
-try:
-    # Get Payor
-    api_response = api_instance.get_payor_by_id_v2(payor_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayorsApi->get_payor_by_id_v2: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Get Payor
+        api_response = api_instance.get_payor_by_id_v2(payor_id)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayorsApi->get_payor_by_id_v2: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
+ **payor_id** | **str**| The Payor Id |
 
 ### Return type
 
@@ -129,7 +168,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get Payor Details |  -  |
@@ -140,7 +181,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payor_add_payor_logo**
-> payor_add_payor_logo(payor_id, logo=logo)
+> payor_add_payor_logo(payor_id)
 
 Add Logo
 
@@ -149,36 +190,62 @@ Add Payor Logo. Logo file is used in your branding, and emails sent to payees.
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payors_api
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.inline_response404 import InlineResponse404
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
-logo = '/path/to/file' # file |  (optional)
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payors_api.PayorsApi(api_client)
+    payor_id = "payorId_example" # str | The Payor Id
+    logo = open('/path/to/file', 'rb') # file_type |  (optional)
 
-try:
-    # Add Logo
-    api_instance.payor_add_payor_logo(payor_id, logo=logo)
-except ApiException as e:
-    print("Exception when calling PayorsApi->payor_add_payor_logo: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Add Logo
+        api_instance.payor_add_payor_logo(payor_id)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayorsApi->payor_add_payor_logo: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Add Logo
+        api_instance.payor_add_payor_logo(payor_id, logo=logo)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayorsApi->payor_add_payor_logo: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
- **logo** | **file**|  | [optional] 
+ **payor_id** | **str**| The Payor Id |
+ **logo** | **file_type**|  | [optional]
 
 ### Return type
 
@@ -193,7 +260,9 @@ void (empty response body)
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
@@ -213,39 +282,63 @@ Create an an API key for the given payor Id and application Id
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payors_api
+from velo_payments.model.payor_create_api_key_request import PayorCreateApiKeyRequest
+from velo_payments.model.payor_create_api_key_response import PayorCreateApiKeyResponse
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.inline_response404 import InlineResponse404
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
-application_id = 'application_id_example' # str | Application ID
-payor_create_api_key_request = velo_payments.PayorCreateApiKeyRequest() # PayorCreateApiKeyRequest | Details of application API key to create
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payors_api.PayorsApi(api_client)
+    payor_id = "payorId_example" # str | The Payor Id
+    application_id = "applicationId_example" # str | Application ID
+    payor_create_api_key_request = PayorCreateApiKeyRequest(
+        name="iOS Key",
+        description="Key for iOS mobile application",
+        roles=["payor.admin"],
+    ) # PayorCreateApiKeyRequest | Details of application API key to create
 
-try:
-    # Create API Key
-    api_response = api_instance.payor_create_api_key_request(payor_id, application_id, payor_create_api_key_request)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayorsApi->payor_create_api_key_request: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Create API Key
+        api_response = api_instance.payor_create_api_key_request(payor_id, application_id, payor_create_api_key_request)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayorsApi->payor_create_api_key_request: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
- **application_id** | [**str**](.md)| Application ID | 
- **payor_create_api_key_request** | [**PayorCreateApiKeyRequest**](PayorCreateApiKeyRequest.md)| Details of application API key to create | 
+ **payor_id** | **str**| The Payor Id |
+ **application_id** | **str**| Application ID |
+ **payor_create_api_key_request** | [**PayorCreateApiKeyRequest**](PayorCreateApiKeyRequest.md)| Details of application API key to create |
 
 ### Return type
 
@@ -260,7 +353,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | HTTP Ok, key created |  -  |
@@ -280,36 +375,59 @@ Create an application for the given Payor ID. Applications are programatic users
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payors_api
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.payor_create_application_request import PayorCreateApplicationRequest
+from velo_payments.model.inline_response404 import InlineResponse404
+from velo_payments.model.inline_response409 import InlineResponse409
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
-payor_create_application_request = velo_payments.PayorCreateApplicationRequest() # PayorCreateApplicationRequest | Details of application to create
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payors_api.PayorsApi(api_client)
+    payor_id = "payorId_example" # str | The Payor Id
+    payor_create_application_request = PayorCreateApplicationRequest(
+        name="SAP",
+        description="SAP Application integration",
+    ) # PayorCreateApplicationRequest | Details of application to create
 
-try:
-    # Create Application
-    api_instance.payor_create_application_request(payor_id, payor_create_application_request)
-except ApiException as e:
-    print("Exception when calling PayorsApi->payor_create_application_request: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Create Application
+        api_instance.payor_create_application_request(payor_id, payor_create_application_request)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayorsApi->payor_create_application_request: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
- **payor_create_application_request** | [**PayorCreateApplicationRequest**](PayorCreateApplicationRequest.md)| Details of application to create | 
+ **payor_id** | **str**| The Payor Id |
+ **payor_create_application_request** | [**PayorCreateApplicationRequest**](PayorCreateApplicationRequest.md)| Details of application to create |
 
 ### Return type
 
@@ -324,10 +442,12 @@ void (empty response body)
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Success |  * Location - location <br>  |
+**201** | Success |  * Location - Reference to Webhook object <br>  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **404** | The resource was not found or is no longer available  |  -  |
 **403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
@@ -345,36 +465,57 @@ Update the emailRemindersOptOut field for a Payor. This API can be used to opt o
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payors_api
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.error_response import ErrorResponse
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.payor_email_opt_out_request import PayorEmailOptOutRequest
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
-payor_email_opt_out_request = velo_payments.PayorEmailOptOutRequest() # PayorEmailOptOutRequest | Reminder Emails Opt-Out Request
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payors_api.PayorsApi(api_client)
+    payor_id = "payorId_example" # str | The Payor Id
+    payor_email_opt_out_request = PayorEmailOptOutRequest(
+        reminder_emails_opt_out=True,
+    ) # PayorEmailOptOutRequest | Reminder Emails Opt-Out Request
 
-try:
-    # Reminder Email Opt-Out
-    api_instance.payor_email_opt_out(payor_id, payor_email_opt_out_request)
-except ApiException as e:
-    print("Exception when calling PayorsApi->payor_email_opt_out: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Reminder Email Opt-Out
+        api_instance.payor_email_opt_out(payor_id, payor_email_opt_out_request)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayorsApi->payor_email_opt_out: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
- **payor_email_opt_out_request** | [**PayorEmailOptOutRequest**](PayorEmailOptOutRequest.md)| Reminder Emails Opt-Out Request | 
+ **payor_id** | **str**| The Payor Id |
+ **payor_email_opt_out_request** | [**PayorEmailOptOutRequest**](PayorEmailOptOutRequest.md)| Reminder Emails Opt-Out Request |
 
 ### Return type
 
@@ -389,7 +530,9 @@ void (empty response body)
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | HTTP Accepted |  -  |
@@ -409,35 +552,54 @@ Get the payor branding details.
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payors_api
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.error_response import ErrorResponse
+from velo_payments.model.payor_branding_response import PayorBrandingResponse
+from velo_payments.model.inline_response400 import InlineResponse400
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payors_api.PayorsApi(api_client)
+    payor_id = "payorId_example" # str | The Payor Id
 
-try:
-    # Get Branding
-    api_response = api_instance.payor_get_branding(payor_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayorsApi->payor_get_branding: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Get Branding
+        api_response = api_instance.payor_get_branding(payor_id)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayorsApi->payor_get_branding: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
+ **payor_id** | **str**| The Payor Id |
 
 ### Return type
 
@@ -452,7 +614,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | HTTP Ok, key created |  -  |
@@ -463,7 +627,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payor_links**
-> PayorLinksResponse payor_links(descendants_of_payor=descendants_of_payor, parent_of_payor=parent_of_payor, fields=fields)
+> PayorLinksResponse payor_links()
 
 List Payor Links
 
@@ -472,39 +636,59 @@ This endpoint allows you to list payor links
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payors_api
+from velo_payments.model.payor_links_response import PayorLinksResponse
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.inline_response404 import InlineResponse404
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-descendants_of_payor = 'descendants_of_payor_example' # str | The Payor ID from which to start the query to show all descendants (optional)
-parent_of_payor = 'parent_of_payor_example' # str | Look for the parent payor details for this payor id (optional)
-fields = 'fields_example' # str | List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - 'fields' allows you to add to this. Example: ```fields=primaryContactEmail,kycState``` - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState  (optional)
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payors_api.PayorsApi(api_client)
+    descendants_of_payor = "descendantsOfPayor_example" # str | The Payor ID from which to start the query to show all descendants (optional)
+    parent_of_payor = "parentOfPayor_example" # str | Look for the parent payor details for this payor id (optional)
+    fields = "fields_example" # str | List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - 'fields' allows you to add to this. Example: ```fields=primaryContactEmail,kycState``` - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState  (optional)
 
-try:
-    # List Payor Links
-    api_response = api_instance.payor_links(descendants_of_payor=descendants_of_payor, parent_of_payor=parent_of_payor, fields=fields)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayorsApi->payor_links: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # List Payor Links
+        api_response = api_instance.payor_links(descendants_of_payor=descendants_of_payor, parent_of_payor=parent_of_payor, fields=fields)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayorsApi->payor_links: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **descendants_of_payor** | [**str**](.md)| The Payor ID from which to start the query to show all descendants | [optional] 
- **parent_of_payor** | [**str**](.md)| Look for the parent payor details for this payor id | [optional] 
- **fields** | **str**| List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - &#39;fields&#39; allows you to add to this. Example: &#x60;&#x60;&#x60;fields&#x3D;primaryContactEmail,kycState&#x60;&#x60;&#x60; - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState  | [optional] 
+ **descendants_of_payor** | **str**| The Payor ID from which to start the query to show all descendants | [optional]
+ **parent_of_payor** | **str**| Look for the parent payor details for this payor id | [optional]
+ **fields** | **str**| List of additional Payor fields to include in the response for each Payor. The values of payorId and payorName and always included for each Payor - &#39;fields&#39; allows you to add to this. Example: &#x60;&#x60;&#x60;fields&#x3D;primaryContactEmail,kycState&#x60;&#x60;&#x60; - will include payorId+payorName+primaryContactEmail+kycState for each Payor Default if not specified is to include only payorId and payorName. The supported fields are any combination of: primaryContactEmail,kycState  | [optional]
 
 ### Return type
 
@@ -519,7 +703,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Details of Payor Links |  -  |

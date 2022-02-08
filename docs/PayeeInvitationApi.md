@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **get_payees_invitation_status_v3**
-> PagedPayeeInvitationStatusResponse get_payees_invitation_status_v3(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
+> PagedPayeeInvitationStatusResponse get_payees_invitation_status_v3(payor_id)
 
 Get Payee Invitation Status
 
@@ -24,43 +24,73 @@ Get Payee Invitation Status
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payee_invitation_api
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.paged_payee_invitation_status_response import PagedPayeeInvitationStatusResponse
+from velo_payments.model.invitation_status import InvitationStatus
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.inline_response404 import InlineResponse404
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-payor_id = '9ac75325-5dcd-42d5-b992-175d7e0a035e' # str | The account owner Payor ID
-payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee. (optional)
-invitation_status = velo_payments.InvitationStatus() # InvitationStatus | The invitation status of the payees. (optional)
-page = 1 # int | Page number. Default is 1. (optional) (default to 1)
-page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payee_invitation_api.PayeeInvitationApi(api_client)
+    payor_id = "9ac75325-5dcd-42d5-b992-175d7e0a035e" # str | The account owner Payor ID
+    payee_id = "2aa5d7e0-2ecb-403f-8494-1865ed0454e9" # str | The UUID of the payee. (optional)
+    invitation_status = InvitationStatus("ACCEPTED") # InvitationStatus | The invitation status of the payees. (optional)
+    page = 1 # int | Page number. Default is 1. (optional) if omitted the server will use the default value of 1
+    page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) if omitted the server will use the default value of 25
 
-try:
-    # Get Payee Invitation Status
-    api_response = api_instance.get_payees_invitation_status_v3(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayeeInvitationApi->get_payees_invitation_status_v3: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Get Payee Invitation Status
+        api_response = api_instance.get_payees_invitation_status_v3(payor_id)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayeeInvitationApi->get_payees_invitation_status_v3: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get Payee Invitation Status
+        api_response = api_instance.get_payees_invitation_status_v3(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayeeInvitationApi->get_payees_invitation_status_v3: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The account owner Payor ID | 
- **payee_id** | [**str**](.md)| The UUID of the payee. | [optional] 
- **invitation_status** | [**InvitationStatus**](.md)| The invitation status of the payees. | [optional] 
- **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
- **page_size** | **int**| Page size. Default is 25. Max allowable is 100. | [optional] [default to 25]
+ **payor_id** | **str**| The account owner Payor ID |
+ **payee_id** | **str**| The UUID of the payee. | [optional]
+ **invitation_status** | **InvitationStatus**| The invitation status of the payees. | [optional]
+ **page** | **int**| Page number. Default is 1. | [optional] if omitted the server will use the default value of 1
+ **page_size** | **int**| Page size. Default is 25. Max allowable is 100. | [optional] if omitted the server will use the default value of 25
 
 ### Return type
 
@@ -75,7 +105,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get Payees with Invitaion status - filters of payeeId and invitationStatus |  -  |
@@ -87,7 +119,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_payees_invitation_status_v4**
-> PagedPayeeInvitationStatusResponse2 get_payees_invitation_status_v4(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
+> PagedPayeeInvitationStatusResponse2 get_payees_invitation_status_v4(payor_id)
 
 Get Payee Invitation Status
 
@@ -96,43 +128,73 @@ Returns a filtered, paginated list of payees associated with a payor, along with
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payee_invitation_api
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.invitation_status import InvitationStatus
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.paged_payee_invitation_status_response2 import PagedPayeeInvitationStatusResponse2
+from velo_payments.model.inline_response404 import InlineResponse404
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-payor_id = '9ac75325-5dcd-42d5-b992-175d7e0a035e' # str | The account owner Payor ID
-payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee. (optional)
-invitation_status = velo_payments.InvitationStatus() # InvitationStatus | The invitation status of the payees. (optional)
-page = 1 # int | Page number. Default is 1. (optional) (default to 1)
-page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payee_invitation_api.PayeeInvitationApi(api_client)
+    payor_id = "9ac75325-5dcd-42d5-b992-175d7e0a035e" # str | The account owner Payor ID
+    payee_id = "2aa5d7e0-2ecb-403f-8494-1865ed0454e9" # str | The UUID of the payee. (optional)
+    invitation_status = InvitationStatus("ACCEPTED") # InvitationStatus | The invitation status of the payees. (optional)
+    page = 1 # int | Page number. Default is 1. (optional) if omitted the server will use the default value of 1
+    page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) if omitted the server will use the default value of 25
 
-try:
-    # Get Payee Invitation Status
-    api_response = api_instance.get_payees_invitation_status_v4(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayeeInvitationApi->get_payees_invitation_status_v4: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Get Payee Invitation Status
+        api_response = api_instance.get_payees_invitation_status_v4(payor_id)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayeeInvitationApi->get_payees_invitation_status_v4: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Get Payee Invitation Status
+        api_response = api_instance.get_payees_invitation_status_v4(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayeeInvitationApi->get_payees_invitation_status_v4: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The account owner Payor ID | 
- **payee_id** | [**str**](.md)| The UUID of the payee. | [optional] 
- **invitation_status** | [**InvitationStatus**](.md)| The invitation status of the payees. | [optional] 
- **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
- **page_size** | **int**| Page size. Default is 25. Max allowable is 100. | [optional] [default to 25]
+ **payor_id** | **str**| The account owner Payor ID |
+ **payee_id** | **str**| The UUID of the payee. | [optional]
+ **invitation_status** | **InvitationStatus**| The invitation status of the payees. | [optional]
+ **page** | **int**| Page number. Default is 1. | [optional] if omitted the server will use the default value of 1
+ **page_size** | **int**| Page size. Default is 25. Max allowable is 100. | [optional] if omitted the server will use the default value of 25
 
 ### Return type
 
@@ -147,7 +209,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get Payees with Invitaion status - filters of payeeId and invitationStatus |  -  |
@@ -168,35 +232,55 @@ Query Batch Status
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payee_invitation_api
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.query_batch_response import QueryBatchResponse
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.inline_response404 import InlineResponse404
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-batch_id = 'batch_id_example' # str | Batch Id
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payee_invitation_api.PayeeInvitationApi(api_client)
+    batch_id = "batchId_example" # str | Batch Id
 
-try:
-    # Query Batch Status
-    api_response = api_instance.query_batch_status_v3(batch_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayeeInvitationApi->query_batch_status_v3: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Query Batch Status
+        api_response = api_instance.query_batch_status_v3(batch_id)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayeeInvitationApi->query_batch_status_v3: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **batch_id** | [**str**](.md)| Batch Id | 
+ **batch_id** | **str**| Batch Id |
 
 ### Return type
 
@@ -211,7 +295,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get Batch Status |  -  |
@@ -232,35 +318,55 @@ Fetch the status of a specific batch of payees. The batch is fully processed whe
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payee_invitation_api
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.query_batch_response2 import QueryBatchResponse2
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.inline_response404 import InlineResponse404
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-batch_id = 'batch_id_example' # str | Batch Id
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payee_invitation_api.PayeeInvitationApi(api_client)
+    batch_id = "batchId_example" # str | Batch Id
 
-try:
-    # Query Batch Status
-    api_response = api_instance.query_batch_status_v4(batch_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayeeInvitationApi->query_batch_status_v4: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Query Batch Status
+        api_response = api_instance.query_batch_status_v4(batch_id)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayeeInvitationApi->query_batch_status_v4: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **batch_id** | [**str**](.md)| Batch Id | 
+ **batch_id** | **str**| Batch Id |
 
 ### Return type
 
@@ -275,7 +381,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get Batch Status |  -  |
@@ -296,36 +404,59 @@ Resend Payee Invite
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payee_invitation_api
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.invite_payee_request import InvitePayeeRequest
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.inline_response404 import InlineResponse404
+from velo_payments.model.inline_response409 import InlineResponse409
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee.
-invite_payee_request = velo_payments.InvitePayeeRequest() # InvitePayeeRequest | Provide Payor Id in body of request
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payee_invitation_api.PayeeInvitationApi(api_client)
+    payee_id = "2aa5d7e0-2ecb-403f-8494-1865ed0454e9" # str | The UUID of the payee.
+    invite_payee_request = InvitePayeeRequest(
+        payor_id="9ac75325-5dcd-42d5-b992-175d7e0a035e",
+    ) # InvitePayeeRequest | Provide Payor Id in body of request
 
-try:
-    # Resend Payee Invite
-    api_instance.resend_payee_invite_v3(payee_id, invite_payee_request)
-except ApiException as e:
-    print("Exception when calling PayeeInvitationApi->resend_payee_invite_v3: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Resend Payee Invite
+        api_instance.resend_payee_invite_v3(payee_id, invite_payee_request)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayeeInvitationApi->resend_payee_invite_v3: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payee_id** | [**str**](.md)| The UUID of the payee. | 
- **invite_payee_request** | [**InvitePayeeRequest**](InvitePayeeRequest.md)| Provide Payor Id in body of request | 
+ **payee_id** | **str**| The UUID of the payee. |
+ **invite_payee_request** | [**InvitePayeeRequest**](InvitePayeeRequest.md)| Provide Payor Id in body of request |
 
 ### Return type
 
@@ -340,7 +471,9 @@ void (empty response body)
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the request was accepted |  -  |
@@ -362,36 +495,59 @@ Resend Payee Invite
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payee_invitation_api
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.invite_payee_request2 import InvitePayeeRequest2
+from velo_payments.model.inline_response404 import InlineResponse404
+from velo_payments.model.inline_response409 import InlineResponse409
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee.
-invite_payee_request2 = velo_payments.InvitePayeeRequest2() # InvitePayeeRequest2 | Provide Payor Id in body of request
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payee_invitation_api.PayeeInvitationApi(api_client)
+    payee_id = "2aa5d7e0-2ecb-403f-8494-1865ed0454e9" # str | The UUID of the payee.
+    invite_payee_request2 = InvitePayeeRequest2(
+        payor_id="9ac75325-5dcd-42d5-b992-175d7e0a035e",
+    ) # InvitePayeeRequest2 | Provide Payor Id in body of request
 
-try:
-    # Resend Payee Invite
-    api_instance.resend_payee_invite_v4(payee_id, invite_payee_request2)
-except ApiException as e:
-    print("Exception when calling PayeeInvitationApi->resend_payee_invite_v4: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Resend Payee Invite
+        api_instance.resend_payee_invite_v4(payee_id, invite_payee_request2)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayeeInvitationApi->resend_payee_invite_v4: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payee_id** | [**str**](.md)| The UUID of the payee. | 
- **invite_payee_request2** | [**InvitePayeeRequest2**](InvitePayeeRequest2.md)| Provide Payor Id in body of request | 
+ **payee_id** | **str**| The UUID of the payee. |
+ **invite_payee_request2** | [**InvitePayeeRequest2**](InvitePayeeRequest2.md)| Provide Payor Id in body of request |
 
 ### Return type
 
@@ -406,7 +562,9 @@ void (empty response body)
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | the request was accepted |  -  |
@@ -419,7 +577,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v3_create_payee**
-> CreatePayeesCSVResponse v3_create_payee(create_payees_request=create_payees_request)
+> CreatePayeesCSVResponse v3_create_payee()
 
 Initiate Payee Creation
 
@@ -428,35 +586,101 @@ Initiate Payee Creation
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payee_invitation_api
+from velo_payments.model.create_payees_csv_response import CreatePayeesCSVResponse
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.create_payees_csv_request import CreatePayeesCSVRequest
+from velo_payments.model.create_payees_request import CreatePayeesRequest
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.inline_response404 import InlineResponse404
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-create_payees_request = velo_payments.CreatePayeesRequest() # CreatePayeesRequest | Post payees to create. (optional)
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payee_invitation_api.PayeeInvitationApi(api_client)
+    create_payees_request = CreatePayeesRequest(
+        payor_id="9ac75325-5dcd-42d5-b992-175d7e0a035e",
+        payees=[
+            CreatePayee(
+                email="bob@example.com",
+                remote_id="Remote ID",
+                type=PayeeType2("Individual"),
+                address=CreatePayeeAddress(
+                    line1="500 Duval St",
+                    line2="line2_example",
+                    line3="line3_example",
+                    line4="line4_example",
+                    city="Key West",
+                    county_or_province="FL",
+                    zip_or_postcode="33945",
+                    country="US",
+                ),
+                payment_channel=CreatePaymentChannel(
+                    payment_channel_name="My Payment Channel",
+                    iban="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1234",
+                    account_number="XXXXXX5678",
+                    routing_number="XXXXX6789",
+                    country_code="US",
+                    currency="USD",
+                    account_name="My account",
+                ),
+                challenge=Challenge(
+                    value="challenge test",
+                    description="challenge description",
+                ),
+                language="en-US",
+                company=Company(
+                    name="ABC Group Plc",
+                    tax_id="123123123",
+                    operating_name="ABC Co",
+                ),
+                individual=CreateIndividual(
+                    name=CreateIndividualName(None),
+                    national_identification="SA211123K",
+                    date_of_birth=dateutil_parser('Wed May 20 00:00:00 UTC 1970').date(),
+                ),
+            ),
+        ],
+    ) # CreatePayeesRequest | Post payees to create. (optional)
 
-try:
-    # Initiate Payee Creation
-    api_response = api_instance.v3_create_payee(create_payees_request=create_payees_request)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayeeInvitationApi->v3_create_payee: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Initiate Payee Creation
+        api_response = api_instance.v3_create_payee(create_payees_request=create_payees_request)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayeeInvitationApi->v3_create_payee: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_payees_request** | [**CreatePayeesRequest**](CreatePayeesRequest.md)| Post payees to create. | [optional] 
+ **create_payees_request** | [**CreatePayeesRequest**](CreatePayeesRequest.md)| Post payees to create. | [optional]
 
 ### Return type
 
@@ -471,7 +695,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, multipart/form-data
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | HTTP Created. Body created only on CSV requests |  -  |
@@ -483,7 +709,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v4_create_payee**
-> CreatePayeesCSVResponse2 v4_create_payee(create_payees_request2=create_payees_request2)
+> CreatePayeesCSVResponse2 v4_create_payee()
 
 Initiate Payee Creation
 
@@ -492,35 +718,101 @@ Initiate the process of creating 1 to 2000 payees in a batch Use the response lo
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import payee_invitation_api
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.create_payees_csv_request2 import CreatePayeesCSVRequest2
+from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.create_payees_csv_response2 import CreatePayeesCSVResponse2
+from velo_payments.model.inline_response404 import InlineResponse404
+from velo_payments.model.create_payees_request2 import CreatePayeesRequest2
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-create_payees_request2 = velo_payments.CreatePayeesRequest2() # CreatePayeesRequest2 | Post payees to create. (optional)
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = payee_invitation_api.PayeeInvitationApi(api_client)
+    create_payees_request2 = CreatePayeesRequest2(
+        payor_id="9ac75325-5dcd-42d5-b992-175d7e0a035e",
+        payees=[
+            CreatePayee2(
+                email="bob@example.com",
+                remote_id="Remote ID",
+                type=PayeeType2("Individual"),
+                address=CreatePayeeAddress2(
+                    line1="500 Duval St",
+                    line2="line2_example",
+                    line3="line3_example",
+                    line4="line4_example",
+                    city="Key West",
+                    county_or_province="FL",
+                    zip_or_postcode="33945",
+                    country="US",
+                ),
+                payment_channel=CreatePaymentChannel2(
+                    payment_channel_name="My Payment Channel",
+                    iban="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX1234",
+                    account_number="XXXXXX5678",
+                    routing_number="XXXXX6789",
+                    country_code="US",
+                    currency="USD",
+                    account_name="My account",
+                ),
+                challenge=Challenge2(
+                    value="11984567",
+                    description="challenge description",
+                ),
+                language="en-US",
+                company=Company2(
+                    name="ABC Group Plc",
+                    tax_id="123123123",
+                    operating_name="ABC Co",
+                ),
+                individual=CreateIndividual2(
+                    name=CreateIndividualName(None),
+                    national_identification="SA211123K",
+                    date_of_birth=dateutil_parser('Wed May 20 00:00:00 UTC 1970').date(),
+                ),
+            ),
+        ],
+    ) # CreatePayeesRequest2 | Post payees to create. (optional)
 
-try:
-    # Initiate Payee Creation
-    api_response = api_instance.v4_create_payee(create_payees_request2=create_payees_request2)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayeeInvitationApi->v4_create_payee: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Initiate Payee Creation
+        api_response = api_instance.v4_create_payee(create_payees_request2=create_payees_request2)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling PayeeInvitationApi->v4_create_payee: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_payees_request2** | [**CreatePayeesRequest2**](CreatePayeesRequest2.md)| Post payees to create. | [optional] 
+ **create_payees_request2** | [**CreatePayeesRequest2**](CreatePayeesRequest2.md)| Post payees to create. | [optional]
 
 ### Return type
 
@@ -535,7 +827,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, multipart/form-data
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | HTTP Created. Body created only on CSV requests |  -  |

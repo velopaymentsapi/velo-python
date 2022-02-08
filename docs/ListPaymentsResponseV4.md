@@ -1,11 +1,14 @@
 # ListPaymentsResponseV4
 
+List Payments Response Object
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **page** | [**ListPaymentsResponseV3Page**](ListPaymentsResponseV3Page.md) |  | [optional] 
-**links** | [**list[GetPayoutsResponseV3Links]**](GetPayoutsResponseV3Links.md) |  | [optional] 
-**content** | [**list[PaymentResponseV4]**](PaymentResponseV4.md) |  | [optional] 
+**links** | [**[GetPayoutsResponseV3Links]**](GetPayoutsResponseV3Links.md) |  | [optional] 
+**content** | [**[PaymentResponseV4]**](PaymentResponseV4.md) |  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

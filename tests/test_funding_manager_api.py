@@ -16,6 +16,7 @@ import os
 import unittest
 
 import velo_payments
+from velo_payments.api.login_api import LoginApi
 from velo_payments.api.funding_manager_api import FundingManagerApi  # noqa: E501
 from velo_payments.rest import ApiException
 
@@ -35,7 +36,7 @@ class TestFundingManagerApi(unittest.TestCase):
             # Defining host is optional and default to https://api.sandbox.velopayments.com
             configuration.host = os.environ.get('APIURL')
             # Create an instance of the API class
-            api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
+            api_instance = LoginApi(velo_payments.ApiClient(configuration))
             grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
 
             try:
@@ -92,7 +93,7 @@ class TestFundingManagerApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+        api_instance = FundingManagerApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str |  (optional)
         source_account_id = '' # str |  (optional)
@@ -111,7 +112,7 @@ class TestFundingManagerApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+        api_instance = FundingManagerApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str |  (optional)
         name = '' # str | The descriptive funding account name (optional)
@@ -154,7 +155,7 @@ class TestFundingManagerApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+        api_instance = FundingManagerApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str |  (optional)
         page = 1 # int | Page number. Default is 1. (optional) (default to 1)
@@ -171,7 +172,7 @@ class TestFundingManagerApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+        api_instance = FundingManagerApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str | The account owner Payor ID (optional)
         page = 1 # int | Page number. Default is 1. (optional) (default to 1)
@@ -188,7 +189,7 @@ class TestFundingManagerApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+        api_instance = FundingManagerApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str | The account owner Payor ID (optional)
         type = "FBO" # velo_payments.SourceAccountType() # SourceAccountType | The type of source account. (optional)
@@ -206,7 +207,7 @@ class TestFundingManagerApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.FundingManagerApi(velo_payments.ApiClient(configuration))
+        api_instance = FundingManagerApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str | 
         updated_since = '2013-10-20T19:20:30+01:00' # datetime | 

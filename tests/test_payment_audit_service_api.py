@@ -16,6 +16,7 @@ import os
 import unittest
 
 import velo_payments
+from velo_payments.api.login_api import LoginApi
 from velo_payments.api.payment_audit_service_api import PaymentAuditServiceApi  # noqa: E501
 from velo_payments.rest import ApiException
 
@@ -35,7 +36,7 @@ class TestPaymentAuditServiceApi(unittest.TestCase):
             # Defining host is optional and default to https://api.sandbox.velopayments.com
             configuration.host = os.environ.get('APIURL')
             # Create an instance of the API class
-            api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
+            api_instance = LoginApi(velo_payments.ApiClient(configuration))
             grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
 
             try:
@@ -71,7 +72,7 @@ class TestPaymentAuditServiceApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
+        api_instance = PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str | 
         page = 1 # int | Page number. Default is 1. (optional) (default to 1)
@@ -116,7 +117,7 @@ class TestPaymentAuditServiceApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
+        api_instance = PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str | 
 
@@ -130,7 +131,7 @@ class TestPaymentAuditServiceApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
+        api_instance = PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
 
         payor_id = os.environ["PAYOR"] # str | 
         page = 1 # int | Page number. Default is 1. (optional) (default to 1)

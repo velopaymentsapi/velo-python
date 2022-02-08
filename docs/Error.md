@@ -1,5 +1,6 @@
 # Error
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -10,6 +11,7 @@ Name | Type | Description | Notes
 **location_type** | **str** | the location type in the request that was the cause of the error  | [optional] 
 **reason_code** | **str** | a camel-cased string that can be used by clients to localise client error messages (deprecated) | [optional] 
 **error_data** | [**ErrorData**](ErrorData.md) |  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

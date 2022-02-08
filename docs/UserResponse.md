@@ -1,5 +1,6 @@
 # UserResponse
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -12,11 +13,14 @@ Name | Type | Description | Notes
 **first_name** | **str** |  | [optional] 
 **last_name** | **str** |  | [optional] 
 **entity_id** | **str** | The payorId or payeeId or null if the user is not a payor or payee user  | [optional] 
-**roles** | [**list[Role]**](Role.md) | The role(s) for the user  | [optional] 
+**company_name** | **str** | The payor or payee company name or null if the user is not a payor or payee user  | [optional] 
+**roles** | [**[Role]**](Role.md) | The role(s) for the user  | [optional] 
+**user_type** | **str** | Indicates the type of user. Could be BACKOFFICE, PAYOR or PAYEE. | [optional] 
 **mfa_type** | **str** | The type of the MFA device | [optional] 
 **mfa_status** | **str** | The status of the MFA device | [optional] 
 **locked_out** | **bool** | If true the user is currently locked out and unable to log in | [optional] 
-**locked_out_timestamp** | **datetime** | A timestamp showing when the user was locked out If null then the user is not currently locked out  | [optional] 
+**locked_out_timestamp** | **datetime, none_type** | A timestamp showing when the user was locked out If null then the user is not currently locked out  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

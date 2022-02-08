@@ -1,19 +1,20 @@
 # CreatePayeesCSVRequest2
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**PayeeType**](PayeeType.md) |  | 
+**type** | [**PayeeType2**](PayeeType2.md) |  | 
 **remote_id** | **str** |  | 
 **email** | **str** |  | 
 **address_line1** | **str** |  | 
+**address_city** | **str** |  | 
+**address_zip_or_postcode** | **str** |  | 
+**address_country** | **str** | Must be a 2 character country code - per ISO 3166-1 | 
 **address_line2** | **str** |  | [optional] 
 **address_line3** | **str** |  | [optional] 
 **address_line4** | **str** |  | [optional] 
-**address_city** | **str** |  | 
 **address_county_or_province** | **str** |  | [optional] 
-**address_zip_or_postcode** | **str** |  | 
-**address_country** | **str** | Must be a 2 character country code - per ISO 3166-1 | 
 **individual_national_identification** | **str** |  | [optional] 
 **individual_date_of_birth** | **date** | Must not be date in future. Example - 1970-05-20 | [optional] 
 **individual_title** | **str** |  | [optional] 
@@ -32,6 +33,7 @@ Name | Type | Description | Notes
 **challenge_description** | **str** |  | [optional] 
 **challenge_value** | **str** |  | [optional] 
 **payee_language** | **str** | An IETF BCP 47 language code which has been configured for use within this Velo environment.&lt;BR&gt; See the /v1/supportedLanguages endpoint to list the available codes for an environment.  | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

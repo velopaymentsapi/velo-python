@@ -16,6 +16,7 @@ import os
 import unittest
 
 import velo_payments
+from velo_payments.api.login_api import LoginApi
 from velo_payments.api.payors_api import PayorsApi  # noqa: E501
 from velo_payments.rest import ApiException
 
@@ -35,7 +36,7 @@ class TestPayorsApi(unittest.TestCase):
             # Defining host is optional and default to https://api.sandbox.velopayments.com
             configuration.host = os.environ.get('APIURL')
             # Create an instance of the API class
-            api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
+            api_instance = LoginApi(velo_payments.ApiClient(configuration))
             grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
 
             try:
@@ -106,7 +107,7 @@ class TestPayorsApi(unittest.TestCase):
         configuration = velo_payments.Configuration()
         configuration.access_token = os.environ["APITOKEN"]
         configuration.host = os.environ.get('APIURL')
-        api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
+        api_instance = PayorsApi(velo_payments.ApiClient(configuration))
 
         descendants_of_payor = os.environ["PAYOR"] # str | The Payor ID from which to start the query to show all descendants (optional)
         parent_of_payor = None # str | Look for the parent payor details for this payor id (optional)

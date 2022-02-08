@@ -17,36 +17,58 @@ Resend a token
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import tokens_api
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.resend_token_request import ResendTokenRequest
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.inline_response400 import InlineResponse400
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.TokensApi(velo_payments.ApiClient(configuration))
-user_id = 'user_id_example' # str | The UUID of the User.
-resend_token_request = velo_payments.ResendTokenRequest() # ResendTokenRequest | The type of token to resend
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = tokens_api.TokensApi(api_client)
+    user_id = "userId_example" # str | The UUID of the User.
+    resend_token_request = ResendTokenRequest(
+        token_type="INVITE_MFA_USER",
+        verification_code="123456",
+    ) # ResendTokenRequest | The type of token to resend
 
-try:
-    # Resend a token
-    api_instance.resend_token(user_id, resend_token_request)
-except ApiException as e:
-    print("Exception when calling TokensApi->resend_token: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # Resend a token
+        api_instance.resend_token(user_id, resend_token_request)
+    except velo_payments.ApiException as e:
+        print("Exception when calling TokensApi->resend_token: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | [**str**](.md)| The UUID of the User. | 
- **resend_token_request** | [**ResendTokenRequest**](ResendTokenRequest.md)| The type of token to resend | 
+ **user_id** | **str**| The UUID of the User. |
+ **resend_token_request** | [**ResendTokenRequest**](ResendTokenRequest.md)| The type of token to resend |
 
 ### Return type
 
@@ -61,7 +83,9 @@ void (empty response body)
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | request completed okay |  -  |

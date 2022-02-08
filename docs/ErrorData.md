@@ -1,10 +1,12 @@
 # ErrorData
 
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **str** | The description of the error data content | [optional] 
-**content** | [**object**](.md) | Object containing typed error data specific to the API | [optional] 
+**content** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** | Object containing typed error data specific to the API | [optional] 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

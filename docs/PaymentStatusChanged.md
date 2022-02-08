@@ -1,5 +1,7 @@
 # PaymentStatusChanged
 
+Base type for all payment status changed events
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -7,9 +9,10 @@ Name | Type | Description | Notes
 **event_id** | **str** | UUID id of the source event in the Velo platform | 
 **created_at** | **datetime** | ISO8601 timestamp indicating when the source event was created | 
 **payment_id** | **str** | ID of this payment within the Velo platform | 
+**status** | **str** | The new status of the payment. One of \&quot;SUBMITTED\&quot; \&quot;ACCEPTED\&quot; \&quot;REJECTED\&quot; \&quot;ACCEPTED_BY_RAILS\&quot; \&quot;CONFIRMED\&quot; \&quot;RETURNED\&quot; \&quot;WITHDRAWN\&quot; | 
 **payout_payor_ids** | [**PayoutPayorIds**](PayoutPayorIds.md) |  | [optional] 
 **payor_payment_id** | **str** | ID of this payment in the payors system | [optional] 
-**status** | **str** | The new status of the payment. One of \&quot;SUBMITTED\&quot; \&quot;ACCEPTED\&quot; \&quot;REJECTED\&quot; \&quot;ACCEPTED_BY_RAILS\&quot; \&quot;CONFIRMED\&quot; \&quot;RETURNED\&quot; \&quot;WITHDRAWN\&quot; | 
+**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

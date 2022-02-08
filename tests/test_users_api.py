@@ -16,6 +16,7 @@ import os
 import unittest
 
 import velo_payments
+from velo_payments.api.login_api import LoginApi
 from velo_payments.api.users_api import UsersApi  # noqa: E501
 from velo_payments.rest import ApiException
 
@@ -35,7 +36,7 @@ class TestUsersApi(unittest.TestCase):
             # Defining host is optional and default to https://api.sandbox.velopayments.com
             configuration.host = os.environ.get('APIURL')
             # Create an instance of the API class
-            api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
+            api_instance = LoginApi(velo_payments.ApiClient(configuration))
             grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
 
             try:

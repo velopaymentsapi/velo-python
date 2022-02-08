@@ -20,27 +20,44 @@ Logout
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import login_api
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.inline_response403 import InlineResponse403
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = login_api.LoginApi(api_client)
 
-try:
-    # Logout
-    api_instance.logout()
-except ApiException as e:
-    print("Exception when calling LoginApi->logout: %s\n" % e)
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Logout
+        api_instance.logout()
+    except velo_payments.ApiException as e:
+        print("Exception when calling LoginApi->logout: %s\n" % e)
 ```
+
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -58,7 +75,9 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | User has been logged out |  -  |
@@ -76,29 +95,43 @@ Reset password
 
 ### Example
 
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import login_api
+from velo_payments.model.reset_password_request import ResetPasswordRequest
+from velo_payments.model.inline_response400 import InlineResponse400
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 
-# Create an instance of the API class
-api_instance = velo_payments.LoginApi()
-reset_password_request = velo_payments.ResetPasswordRequest() # ResetPasswordRequest | An Email address to send the reset password link to
 
-try:
-    # Reset password
-    api_instance.reset_password(reset_password_request)
-except ApiException as e:
-    print("Exception when calling LoginApi->reset_password: %s\n" % e)
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = login_api.LoginApi(api_client)
+    reset_password_request = ResetPasswordRequest(
+        email="foo@example.com",
+    ) # ResetPasswordRequest | An Email address to send the reset password link to
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Reset password
+        api_instance.reset_password(reset_password_request)
+    except velo_payments.ApiException as e:
+        print("Exception when calling LoginApi->reset_password: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **reset_password_request** | [**ResetPasswordRequest**](ResetPasswordRequest.md)| An Email address to send the reset password link to | 
+ **reset_password_request** | [**ResetPasswordRequest**](ResetPasswordRequest.md)| An Email address to send the reset password link to |
 
 ### Return type
 
@@ -113,7 +146,9 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | the request was accepted |  -  |
@@ -122,7 +157,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **validate_access_token**
-> AccessTokenResponse validate_access_token(access_token_validation_request, authorization=authorization)
+> AccessTokenResponse validate_access_token(access_token_validation_request)
 
 validate
 
@@ -131,37 +166,67 @@ validate
 ### Example
 
 * OAuth Authentication (OAuth2):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import login_api
+from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.access_token_validation_request import AccessTokenValidationRequest
+from velo_payments.model.inline_response403 import InlineResponse403
+from velo_payments.model.access_token_response import AccessTokenResponse
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
-access_token_validation_request = velo_payments.AccessTokenValidationRequest() # AccessTokenValidationRequest | An OTP from the user's registered MFA Device 
-authorization = 'authorization_example' # str | Bearer token authorization leg of validate (optional)
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = login_api.LoginApi(api_client)
+    access_token_validation_request = AccessTokenValidationRequest(
+        otp="123456",
+    ) # AccessTokenValidationRequest | An OTP from the user's registered MFA Device 
+    authorization = "Authorization_example" # str | Bearer token authorization leg of validate (optional)
 
-try:
-    # validate
-    api_response = api_instance.validate_access_token(access_token_validation_request, authorization=authorization)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling LoginApi->validate_access_token: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    try:
+        # validate
+        api_response = api_instance.validate_access_token(access_token_validation_request)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling LoginApi->validate_access_token: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # validate
+        api_response = api_instance.validate_access_token(access_token_validation_request, authorization=authorization)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling LoginApi->validate_access_token: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access_token_validation_request** | [**AccessTokenValidationRequest**](AccessTokenValidationRequest.md)| An OTP from the user&#39;s registered MFA Device  | 
- **authorization** | **str**| Bearer token authorization leg of validate | [optional] 
+ **access_token_validation_request** | [**AccessTokenValidationRequest**](AccessTokenValidationRequest.md)| An OTP from the user&#39;s registered MFA Device  |
+ **authorization** | **str**| Bearer token authorization leg of validate | [optional]
 
 ### Return type
 
@@ -176,7 +241,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | User request has been validated |  -  |
@@ -186,7 +253,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **velo_auth**
-> AuthResponse velo_auth(grant_type=grant_type)
+> AuthResponse velo_auth()
 
 Authentication endpoint
 
@@ -195,36 +262,52 @@ Use this endpoint to obtain an access token for calling Velo Payments APIs. Use 
 ### Example
 
 * Basic Authentication (basicAuth):
+
 ```python
-from __future__ import print_function
 import time
 import velo_payments
-from velo_payments.rest import ApiException
+from velo_payments.api import login_api
+from velo_payments.model.auth_response import AuthResponse
 from pprint import pprint
-configuration = velo_payments.Configuration()
+# Defining the host is optional and defaults to https://api.sandbox.velopayments.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = velo_payments.Configuration(
+    host = "https://api.sandbox.velopayments.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure HTTP basic authorization: basicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
+configuration = velo_payments.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.LoginApi(velo_payments.ApiClient(configuration))
-grant_type = 'client_credentials' # str | OAuth grant type. Should use 'client_credentials' (optional) (default to 'client_credentials')
+# Enter a context with an instance of the API client
+with velo_payments.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = login_api.LoginApi(api_client)
+    grant_type = "client_credentials" # str | OAuth grant type. Should use 'client_credentials' (optional) if omitted the server will use the default value of "client_credentials"
 
-try:
-    # Authentication endpoint
-    api_response = api_instance.velo_auth(grant_type=grant_type)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling LoginApi->velo_auth: %s\n" % e)
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Authentication endpoint
+        api_response = api_instance.velo_auth(grant_type=grant_type)
+        pprint(api_response)
+    except velo_payments.ApiException as e:
+        print("Exception when calling LoginApi->velo_auth: %s\n" % e)
 ```
+
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **grant_type** | **str**| OAuth grant type. Should use &#39;client_credentials&#39; | [optional] [default to &#39;client_credentials&#39;]
+ **grant_type** | **str**| OAuth grant type. Should use &#39;client_credentials&#39; | [optional] if omitted the server will use the default value of "client_credentials"
 
 ### Return type
 
@@ -239,7 +322,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Valid Authenication response |  * Cache-Control - Ensure clients do not cache request <br>  * Pragma - Ensure clients do not cache request <br>  |
