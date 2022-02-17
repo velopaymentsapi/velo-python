@@ -418,7 +418,7 @@ conf = velo_payments.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 2.29.128\n"\
-               "SDK Package Version: 2.29.130".\
+               "SDK Package Version: 2.29.128".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

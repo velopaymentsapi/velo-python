@@ -8,75 +8,26 @@
 """
 
 
+import sys
 import unittest
 
 import velo_payments
-from velo_payments.api.payment_audit_service__deprecated_api import PaymentAuditServiceDeprecatedApi  # noqa: E501
+from velo_payments.model.register_sms_request import RegisterSmsRequest
 
 
-class TestPaymentAuditServiceDeprecatedApi(unittest.TestCase):
-    """PaymentAuditServiceDeprecatedApi unit test stubs"""
+class TestRegisterSmsRequest(unittest.TestCase):
+    """RegisterSmsRequest unit test stubs"""
 
     def setUp(self):
-        self.api = PaymentAuditServiceDeprecatedApi()  # noqa: E501
+        pass
 
     def tearDown(self):
         pass
 
-    def test_export_transactions_csvv3(self):
-        """Test case for export_transactions_csvv3
-
-        V3 Export Transactions  # noqa: E501
-        """
-        pass
-
-    def test_get_fundings_v1(self):
-        """Test case for get_fundings_v1
-
-        V1 Get Fundings for Payor  # noqa: E501
-        """
-        pass
-
-    def test_get_payment_details_v3(self):
-        """Test case for get_payment_details_v3
-
-        V3 Get Payment  # noqa: E501
-        """
-        pass
-
-    def test_get_payments_for_payout_pav3(self):
-        """Test case for get_payments_for_payout_pav3
-
-        V3 Get Payments for Payout  # noqa: E501
-        """
-        pass
-
-    def test_get_payout_stats_v1(self):
-        """Test case for get_payout_stats_v1
-
-        V1 Get Payout Statistics  # noqa: E501
-        """
-        pass
-
-    def test_get_payouts_for_payor_v3(self):
-        """Test case for get_payouts_for_payor_v3
-
-        V3 Get Payouts for Payor  # noqa: E501
-        """
-        pass
-
-    def test_list_payment_changes(self):
-        """Test case for list_payment_changes
-
-        V1 List Payment Changes  # noqa: E501
-        """
-        pass
-
-    def test_list_payments_audit_v3(self):
-        """Test case for list_payments_audit_v3
-
-        V3 Get List of Payments  # noqa: E501
-        """
+    def testRegisterSmsRequest(self):
+        """Test RegisterSmsRequest"""
+        # FIXME: construct object with mandatory attributes with example values
+        # model = RegisterSmsRequest()  # noqa: E501
         pass
 
 

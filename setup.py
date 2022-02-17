@@ -11,7 +11,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "velo-python"
-VERSION = "2.29.130"
+VERSION = "2.29.128-beta.1"
 # To install the library, run the following
 #
 # python setup.py install
