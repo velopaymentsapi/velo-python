@@ -6,8 +6,8 @@ List Payments for payout
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **summary** | [**GetPaymentsForPayoutResponseV4Summary**](GetPaymentsForPayoutResponseV4Summary.md) |  | [optional] 
-**page** | [**PagedPayeeInvitationStatusResponsePage**](PagedPayeeInvitationStatusResponsePage.md) |  | [optional] 
-**links** | [**[PagedPayeeResponseLinks]**](PagedPayeeResponseLinks.md) |  | [optional] 
+**page** | [**PagedPayeeInvitationStatusResponseV3Page**](PagedPayeeInvitationStatusResponseV3Page.md) |  | [optional] 
+**links** | [**[PagedPayeeResponseV3Links]**](PagedPayeeResponseV3Links.md) |  | [optional] 
 **content** | [**[PaymentResponseV4]**](PaymentResponseV4.md) |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 

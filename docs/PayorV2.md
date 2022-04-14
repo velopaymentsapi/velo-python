@@ -29,6 +29,8 @@ Name | Type | Description | Notes
 **payment_rails** | [**PaymentRails**](PaymentRails.md) |  | [optional] 
 **transmission_types** | [**TransmissionTypes2**](TransmissionTypes2.md) |  | [optional] 
 **remote_system_ids** | **[str]** | The payor’s supported remote systems by id | [optional] 
+**usd_txn_value_reporting_threshold** | **int** | USD in minor units | [optional] 
+**managing_payees** | **bool** |  | [optional] 
 **any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

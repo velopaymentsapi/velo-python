@@ -50,7 +50,7 @@ trim: ## Remove unused files that are auto geneated
 	- rm .travis.yml
 	- rm git_push.sh
 
-info: ## Update the auto generated README.md with Velo info
+adjustments: ## Update the auto generated README.md with Velo info
 	sed -i.bak '1s/# velo-python/# Python client for Velo/' README.md && rm README.md.bak
 	sed -i.bak '2s/.*/[![License](https:\/\/img.shields.io\/badge\/License-Apache%202.0-blue.svg)](https:\/\/opensource.org\/licenses\/Apache-2.0) [![npm version](https:\/\/badge.fury.io\/py\/velo-python.svg)](https:\/\/badge.fury.io\/py\/velo-python) [![CircleCI](https:\/\/circleci.com\/gh\/velopaymentsapi\/velo-python.svg?style=svg)](https:\/\/circleci.com\/gh\/velopaymentsapi\/velo-python)/' README.md && rm README.md.bak
 	sed -i.bak '3s/.*/This library provides a Python client that simplifies interactions with the Velo Payments API. For full details covering the API visit our docs at [Velo Payments APIs](https:\/\/apidocs.velopayments.com). Note: some of the Velo API calls which require authorization via an access token, see the full docs on how to configure./' README.md && rm README.md.bak
@@ -120,29 +120,16 @@ info: ## Update the auto generated README.md with Velo info
 	sed -i.bak 's/envlist = py27, py3/envlist = py3/g' tox.ini && rm tox.ini.bak
 	sed -i.bak 's/\[\]/-w .\/tests -s/' tox.ini && rm tox.ini.bak
 	echo "passenv = *" >> tox.ini
+	
+rcnaming: ## 
+	$(eval RC_REVISION="$(shell make WORKING_SPEC=${WORKING_SPEC} version)")
+	@echo "${RC_REVISION}-beta.${RC_BUILD}"
 
-build_client: ## Post generate client processing (optional per sdk)
-	# skip
-
-client: clean generate trim info build_client ## Generate sdk via cli
+client: clean generate trim adjustments build_client ## Generate sdk via cli
 
 tests: ## Run (via docker) tests using supplied variables KEY, SECRET, PAYOR, APIURL
 	rm -Rf test/test_*.py
 	cp -Rf tests/ test/
+	rm -Rf .tox
 	docker build -t=velo-sdk-python-tests .
 	docker run -t -v $(PWD):/usr/src/app -e KEY=${KEY} -e SECRET=${SECRET} -e PAYOR=${PAYOR} -e APIURL=${APIURL} -e APITOKEN="" velo-sdk-python-tests tox
-
-commit: ## Commit & Push generated client to git repo
-	git add --all
-	git commit -am 'bump version to ${VERSION}'
-	git push --set-upstream origin master
-
-build: ## Build compiled package (optional per sdk)
-	docker build -t=velo-sdk-python-tests .
-	sed -i.bak 's/VERSION = ".*"/VERSION = "${VERSION}"/g' setup.py && rm setup.py.bak
-	docker run -v $(PWD):/usr/src/app velo-sdk-python-tests python setup.py sdist
-
-publish: ## Tag & Push git ref, (optional per sdk) publish to 3rd party registry
-	git tag $(VERSION)
-	git push origin tag $(VERSION)
-	docker run -v $(PWD):/usr/src/app velo-sdk-python-tests twine upload --verbose --config-file=.pypirc dist/*

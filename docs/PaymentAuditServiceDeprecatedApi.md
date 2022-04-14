@@ -28,7 +28,7 @@ Deprecated (use /v4/paymentaudit/transactions instead)
 ```python
 import time
 import velo_payments
-from velo_payments.api import payment_audit_service__deprecated_api
+from velo_payments.api import payment_audit_service_deprecated_api
 from velo_payments.model.inline_response401 import InlineResponse401
 from velo_payments.model.payor_aml_transaction_v3 import PayorAmlTransactionV3
 from velo_payments.model.inline_response403 import InlineResponse403
@@ -54,7 +54,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = payment_audit_service__deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
+    api_instance = payment_audit_service_deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
     payor_id = "payorId_example" # str | The Payor ID for whom you wish to run the report. For a Payor requesting the report, this could be their exact Payor, or it could be a child/descendant Payor.  (optional)
     start_date = dateutil_parser('1970-01-01').date() # date | Start date, inclusive. Format is YYYY-MM-DD (optional)
     end_date = dateutil_parser('1970-01-01').date() # date | End date, inclusive. Format is YYYY-MM-DD (optional)
@@ -117,7 +117,7 @@ Deprecated (use /v4/paymentaudit/fundings)
 ```python
 import time
 import velo_payments
-from velo_payments.api import payment_audit_service__deprecated_api
+from velo_payments.api import payment_audit_service_deprecated_api
 from velo_payments.model.inline_response401 import InlineResponse401
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.get_fundings_response import GetFundingsResponse
@@ -144,7 +144,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = payment_audit_service__deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
+    api_instance = payment_audit_service_deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
     payor_id = "payorId_example" # str | The account owner Payor ID
     page = 1 # int | Page number. Default is 1. (optional) if omitted the server will use the default value of 1
     page_size = 25 # int | The number of results to return in a page (optional) if omitted the server will use the default value of 25
@@ -218,7 +218,7 @@ Deprecated (use /v4/paymentaudit/payments/<paymentId> instead)
 ```python
 import time
 import velo_payments
-from velo_payments.api import payment_audit_service__deprecated_api
+from velo_payments.api import payment_audit_service_deprecated_api
 from velo_payments.model.inline_response401 import InlineResponse401
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.inline_response400 import InlineResponse400
@@ -245,7 +245,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = payment_audit_service__deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
+    api_instance = payment_audit_service_deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
     payment_id = "paymentId_example" # str | Payment Id
     sensitive = True # bool | Optional. If omitted or set to false, any Personal Identifiable Information (PII) values are returned masked. If set to true, and you have permission, the PII values will be returned as their original unmasked values.  (optional)
 
@@ -315,7 +315,7 @@ Deprecated (use /v4/paymentaudit/payouts/<payoutId> instead)
 ```python
 import time
 import velo_payments
-from velo_payments.api import payment_audit_service__deprecated_api
+from velo_payments.api import payment_audit_service_deprecated_api
 from velo_payments.model.inline_response401 import InlineResponse401
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.get_payments_for_payout_response_v3 import GetPaymentsForPayoutResponseV3
@@ -342,7 +342,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = payment_audit_service__deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
+    api_instance = payment_audit_service_deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
     payout_id = "payoutId_example" # str | The id (UUID) of the payout.
     remote_id = "remoteId_example" # str | The remote id of the payees. (optional)
     status = "ACCEPTED" # str | Payment Status (optional)
@@ -434,7 +434,7 @@ Deprecated (Use /v4/paymentaudit/payoutStatistics)
 ```python
 import time
 import velo_payments
-from velo_payments.api import payment_audit_service__deprecated_api
+from velo_payments.api import payment_audit_service_deprecated_api
 from velo_payments.model.inline_response401 import InlineResponse401
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.inline_response400 import InlineResponse400
@@ -461,7 +461,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = payment_audit_service__deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
+    api_instance = payment_audit_service_deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
     payor_id = "payorId_example" # str | The account owner Payor ID. Required for external users. (optional)
 
     # example passing only required values which don't have defaults set
@@ -521,7 +521,7 @@ Deprecated (use /v4/paymentaudit/payouts instead)
 ```python
 import time
 import velo_payments
-from velo_payments.api import payment_audit_service__deprecated_api
+from velo_payments.api import payment_audit_service_deprecated_api
 from velo_payments.model.inline_response401 import InlineResponse401
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.inline_response400 import InlineResponse400
@@ -548,7 +548,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = payment_audit_service__deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
+    api_instance = payment_audit_service_deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
     payor_id = "payorId_example" # str | The account owner Payor ID
     payout_memo = "payoutMemo_example" # str | Payout Memo filter - case insensitive sub-string match (optional)
     status = "ACCEPTED" # str | Payout Status (optional)
@@ -630,7 +630,7 @@ Deprecated (use /v4/payments/deltas instead)
 ```python
 import time
 import velo_payments
-from velo_payments.api import payment_audit_service__deprecated_api
+from velo_payments.api import payment_audit_service_deprecated_api
 from velo_payments.model.payment_delta_response_v1 import PaymentDeltaResponseV1
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.sandbox.velopayments.com
@@ -653,7 +653,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = payment_audit_service__deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
+    api_instance = payment_audit_service_deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
     payor_id = "payorId_example" # str | The Payor ID to find associated Payments
     updated_since = dateutil_parser('1970-01-01T00:00:00.00Z') # datetime | The updatedSince filter in the format YYYY-MM-DDThh:mm:ss+hh:mm
     page = 1 # int | Page number. Default is 1. (optional) if omitted the server will use the default value of 1
@@ -724,7 +724,7 @@ Deprecated (use /v4/paymentaudit/payments instead)
 ```python
 import time
 import velo_payments
-from velo_payments.api import payment_audit_service__deprecated_api
+from velo_payments.api import payment_audit_service_deprecated_api
 from velo_payments.model.inline_response401 import InlineResponse401
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.inline_response400 import InlineResponse400
@@ -750,7 +750,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Enter a context with an instance of the API client
 with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = payment_audit_service__deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
+    api_instance = payment_audit_service_deprecated_api.PaymentAuditServiceDeprecatedApi(api_client)
     payee_id = "payeeId_example" # str | The UUID of the payee. (optional)
     payor_id = "payorId_example" # str | The account owner Payor Id. Required for external users. (optional)
     payor_name = "payorName_example" # str | The payor’s name. This filters via a case insensitive substring match. (optional)

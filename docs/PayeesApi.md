@@ -175,7 +175,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_payee_by_id_v3**
-> PayeeDetailResponse get_payee_by_id_v3(payee_id)
+> PayeeDetailResponseV3 get_payee_by_id_v3(payee_id)
 
 Get Payee by Id
 
@@ -189,7 +189,7 @@ Get Payee by Id
 import time
 import velo_payments
 from velo_payments.api import payees_api
-from velo_payments.model.payee_detail_response import PayeeDetailResponse
+from velo_payments.model.payee_detail_response_v3 import PayeeDetailResponseV3
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.sandbox.velopayments.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PayeeDetailResponse**](PayeeDetailResponse.md)
+[**PayeeDetailResponseV3**](PayeeDetailResponseV3.md)
 
 ### Authorization
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_payee_by_id_v4**
-> PayeeDetailResponse2 get_payee_by_id_v4(payee_id)
+> PayeeDetailResponseV4 get_payee_by_id_v4(payee_id)
 
 Get Payee by Id
 
@@ -279,7 +279,7 @@ Get Payee by Id
 import time
 import velo_payments
 from velo_payments.api import payees_api
-from velo_payments.model.payee_detail_response2 import PayeeDetailResponse2
+from velo_payments.model.payee_detail_response_v4 import PayeeDetailResponseV4
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.sandbox.velopayments.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PayeeDetailResponse2**](PayeeDetailResponse2.md)
+[**PayeeDetailResponseV4**](PayeeDetailResponseV4.md)
 
 ### Authorization
 
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_payee_changes_v3**
-> PayeeDeltaResponse list_payee_changes_v3(payor_id, updated_since)
+> PayeeDeltaResponseV3 list_payee_changes_v3(payor_id, updated_since)
 
 List Payee Changes
 
@@ -369,7 +369,7 @@ List Payee Changes
 import time
 import velo_payments
 from velo_payments.api import payees_api
-from velo_payments.model.payee_delta_response import PayeeDeltaResponse
+from velo_payments.model.payee_delta_response_v3 import PayeeDeltaResponseV3
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.sandbox.velopayments.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PayeeDeltaResponse**](PayeeDeltaResponse.md)
+[**PayeeDeltaResponseV3**](PayeeDeltaResponseV3.md)
 
 ### Authorization
 
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_payee_changes_v4**
-> PayeeDeltaResponse2 list_payee_changes_v4(payor_id, updated_since)
+> PayeeDeltaResponseV4 list_payee_changes_v4(payor_id, updated_since)
 
 List Payee Changes
 
@@ -463,7 +463,7 @@ Get a paginated response listing payee changes (updated since a particular time)
 import time
 import velo_payments
 from velo_payments.api import payees_api
-from velo_payments.model.payee_delta_response2 import PayeeDeltaResponse2
+from velo_payments.model.payee_delta_response_v4 import PayeeDeltaResponseV4
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.sandbox.velopayments.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -521,7 +521,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PayeeDeltaResponse2**](PayeeDeltaResponse2.md)
+[**PayeeDeltaResponseV4**](PayeeDeltaResponseV4.md)
 
 ### Authorization
 
@@ -543,7 +543,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_payees_v3**
-> PagedPayeeResponse list_payees_v3(payor_id)
+> PagedPayeeResponseV3 list_payees_v3(payor_id)
 
 List Payees
 
@@ -557,11 +557,11 @@ List Payees
 import time
 import velo_payments
 from velo_payments.api import payees_api
+from velo_payments.model.onboarded_status_v4 import OnboardedStatusV4
 from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.paged_payee_response_v3 import PagedPayeeResponseV3
 from velo_payments.model.inline_response403 import InlineResponse403
-from velo_payments.model.watchlist_status import WatchlistStatus
-from velo_payments.model.onboarded_status import OnboardedStatus
-from velo_payments.model.paged_payee_response import PagedPayeeResponse
+from velo_payments.model.watchlist_status_v3 import WatchlistStatusV3
 from velo_payments.model.inline_response400 import InlineResponse400
 from velo_payments.model.inline_response404 import InlineResponse404
 from velo_payments.model.payee_type2 import PayeeType2
@@ -588,9 +588,9 @@ with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = payees_api.PayeesApi(api_client)
     payor_id = "payorId_example" # str | The account owner Payor ID
-    watchlist_status = WatchlistStatus("NONE") # WatchlistStatus | The watchlistStatus of the payees. (optional)
+    watchlist_status = WatchlistStatusV3("NONE") # WatchlistStatusV3 | The watchlistStatus of the payees. (optional)
     disabled = True # bool | Payee disabled (optional)
-    onboarded_status = OnboardedStatus("CREATED") # OnboardedStatus | The onboarded status of the payees. (optional)
+    onboarded_status = OnboardedStatusV4("CREATED") # OnboardedStatusV4 | The onboarded status of the payees. (optional)
     email = "bob@example.com" # str | Email address (optional)
     display_name = "Bob Smith" # str | The display name of the payees. (optional)
     remote_id = "remoteId123" # str | The remote id of the payees. (optional)
@@ -624,9 +624,9 @@ with velo_payments.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payor_id** | **str**| The account owner Payor ID |
- **watchlist_status** | **WatchlistStatus**| The watchlistStatus of the payees. | [optional]
+ **watchlist_status** | **WatchlistStatusV3**| The watchlistStatus of the payees. | [optional]
  **disabled** | **bool**| Payee disabled | [optional]
- **onboarded_status** | **OnboardedStatus**| The onboarded status of the payees. | [optional]
+ **onboarded_status** | **OnboardedStatusV4**| The onboarded status of the payees. | [optional]
  **email** | **str**| Email address | [optional]
  **display_name** | **str**| The display name of the payees. | [optional]
  **remote_id** | **str**| The remote id of the payees. | [optional]
@@ -638,7 +638,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PagedPayeeResponse**](PagedPayeeResponse.md)
+[**PagedPayeeResponseV3**](PagedPayeeResponseV3.md)
 
 ### Authorization
 
@@ -663,7 +663,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_payees_v4**
-> PagedPayeeResponse2 list_payees_v4(payor_id)
+> PagedPayeeResponseV4 list_payees_v4(payor_id)
 
 List Payees
 
@@ -677,13 +677,13 @@ Get a paginated response listing the payees for a payor.
 import time
 import velo_payments
 from velo_payments.api import payees_api
+from velo_payments.model.onboarded_status_v4 import OnboardedStatusV4
 from velo_payments.model.inline_response401 import InlineResponse401
-from velo_payments.model.paged_payee_response2 import PagedPayeeResponse2
 from velo_payments.model.inline_response403 import InlineResponse403
-from velo_payments.model.ofac_status import OfacStatus
-from velo_payments.model.watchlist_status import WatchlistStatus
-from velo_payments.model.onboarded_status import OnboardedStatus
+from velo_payments.model.ofac_status_v4 import OfacStatusV4
+from velo_payments.model.watchlist_status_v3 import WatchlistStatusV3
 from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.paged_payee_response_v4 import PagedPayeeResponseV4
 from velo_payments.model.inline_response404 import InlineResponse404
 from velo_payments.model.payee_type2 import PayeeType2
 from pprint import pprint
@@ -709,15 +709,15 @@ with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = payees_api.PayeesApi(api_client)
     payor_id = "payorId_example" # str | The account owner Payor ID
-    watchlist_status = WatchlistStatus("NONE") # WatchlistStatus | The watchlistStatus of the payees. (optional)
+    watchlist_status = WatchlistStatusV3("NONE") # WatchlistStatusV3 | The watchlistStatus of the payees. (optional)
     disabled = True # bool | Payee disabled (optional)
-    onboarded_status = OnboardedStatus("CREATED") # OnboardedStatus | The onboarded status of the payees. (optional)
+    onboarded_status = OnboardedStatusV4("CREATED") # OnboardedStatusV4 | The onboarded status of the payees. (optional)
     email = "bob@example.com" # str | Email address (optional)
     display_name = "Bob Smith" # str | The display name of the payees. (optional)
     remote_id = "remoteId123" # str | The remote id of the payees. (optional)
     payee_type = PayeeType2("Individual") # PayeeType2 | The onboarded status of the payees. (optional)
     payee_country = "US" # str | The country of the payee - 2 letter ISO 3166-1 country code (upper case) (optional)
-    ofac_status = OfacStatus("PENDING") # OfacStatus | The ofacStatus of the payees. (optional)
+    ofac_status = OfacStatusV4("PENDING") # OfacStatusV4 | The ofacStatus of the payees. (optional)
     page = 1 # int | Page number. Default is 1. (optional) if omitted the server will use the default value of 1
     page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) if omitted the server will use the default value of 25
     sort = "displayName:asc" # str | List of sort fields (e.g. ?sort=onboardedStatus:asc,name:asc) Default is name:asc 'name' is treated as company name for companies - last name + ',' + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.  (optional) if omitted the server will use the default value of "displayName:asc"
@@ -746,22 +746,22 @@ with velo_payments.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payor_id** | **str**| The account owner Payor ID |
- **watchlist_status** | **WatchlistStatus**| The watchlistStatus of the payees. | [optional]
+ **watchlist_status** | **WatchlistStatusV3**| The watchlistStatus of the payees. | [optional]
  **disabled** | **bool**| Payee disabled | [optional]
- **onboarded_status** | **OnboardedStatus**| The onboarded status of the payees. | [optional]
+ **onboarded_status** | **OnboardedStatusV4**| The onboarded status of the payees. | [optional]
  **email** | **str**| Email address | [optional]
  **display_name** | **str**| The display name of the payees. | [optional]
  **remote_id** | **str**| The remote id of the payees. | [optional]
  **payee_type** | **PayeeType2**| The onboarded status of the payees. | [optional]
  **payee_country** | **str**| The country of the payee - 2 letter ISO 3166-1 country code (upper case) | [optional]
- **ofac_status** | **OfacStatus**| The ofacStatus of the payees. | [optional]
+ **ofac_status** | **OfacStatusV4**| The ofacStatus of the payees. | [optional]
  **page** | **int**| Page number. Default is 1. | [optional] if omitted the server will use the default value of 1
  **page_size** | **int**| Page size. Default is 25. Max allowable is 100. | [optional] if omitted the server will use the default value of 25
  **sort** | **str**| List of sort fields (e.g. ?sort&#x3D;onboardedStatus:asc,name:asc) Default is name:asc &#39;name&#39; is treated as company name for companies - last name + &#39;,&#39; + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.  | [optional] if omitted the server will use the default value of "displayName:asc"
 
 ### Return type
 
-[**PagedPayeeResponse2**](PagedPayeeResponse2.md)
+[**PagedPayeeResponseV4**](PagedPayeeResponseV4.md)
 
 ### Authorization
 
@@ -786,7 +786,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payee_details_update_v3**
-> payee_details_update_v3(payee_id, update_payee_details_request)
+> payee_details_update_v3(payee_id, update_payee_details_request_v3)
 
 Update Payee Details
 
@@ -801,9 +801,9 @@ import time
 import velo_payments
 from velo_payments.api import payees_api
 from velo_payments.model.inline_response401 import InlineResponse401
-from velo_payments.model.update_payee_details_request import UpdatePayeeDetailsRequest
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.update_payee_details_request_v3 import UpdatePayeeDetailsRequestV3
 from velo_payments.model.inline_response404 import InlineResponse404
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.sandbox.velopayments.com
@@ -828,8 +828,8 @@ with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = payees_api.PayeesApi(api_client)
     payee_id = "2aa5d7e0-2ecb-403f-8494-1865ed0454e9" # str | The UUID of the payee.
-    update_payee_details_request = UpdatePayeeDetailsRequest(
-        address=PayeeAddress(
+    update_payee_details_request_v3 = UpdatePayeeDetailsRequestV3(
+        address=PayeeAddressV3(
             line1="500 Duval St",
             line2="line2_example",
             line3="line3_example",
@@ -839,27 +839,27 @@ with velo_payments.ApiClient(configuration) as api_client:
             zip_or_postcode="33945",
             country="US",
         ),
-        individual=Individual(
-            name=IndividualName(None),
+        individual=IndividualV3(
+            name=IndividualV3Name(None),
         ),
-        company=Company(
+        company=CompanyV3(
             name="ABC Group Plc",
             tax_id="123123123",
             operating_name="ABC Co",
         ),
         language="en-US",
         payee_type=PayeeType2("Individual"),
-        challenge=Challenge(
+        challenge=ChallengeV3(
             value="challenge test",
             description="challenge description",
         ),
         email="bob@example.com",
-    ) # UpdatePayeeDetailsRequest | Request to update payee details
+    ) # UpdatePayeeDetailsRequestV3 | Request to update payee details
 
     # example passing only required values which don't have defaults set
     try:
         # Update Payee Details
-        api_instance.payee_details_update_v3(payee_id, update_payee_details_request)
+        api_instance.payee_details_update_v3(payee_id, update_payee_details_request_v3)
     except velo_payments.ApiException as e:
         print("Exception when calling PayeesApi->payee_details_update_v3: %s\n" % e)
 ```
@@ -870,7 +870,7 @@ with velo_payments.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payee_id** | **str**| The UUID of the payee. |
- **update_payee_details_request** | [**UpdatePayeeDetailsRequest**](UpdatePayeeDetailsRequest.md)| Request to update payee details |
+ **update_payee_details_request_v3** | [**UpdatePayeeDetailsRequestV3**](UpdatePayeeDetailsRequestV3.md)| Request to update payee details |
 
 ### Return type
 
@@ -899,7 +899,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payee_details_update_v4**
-> payee_details_update_v4(payee_id, update_payee_details_request2)
+> payee_details_update_v4(payee_id, update_payee_details_request_v4)
 
 Update Payee Details
 
@@ -914,10 +914,10 @@ import time
 import velo_payments
 from velo_payments.api import payees_api
 from velo_payments.model.inline_response401 import InlineResponse401
-from velo_payments.model.update_payee_details_request2 import UpdatePayeeDetailsRequest2
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.inline_response400 import InlineResponse400
 from velo_payments.model.inline_response404 import InlineResponse404
+from velo_payments.model.update_payee_details_request_v4 import UpdatePayeeDetailsRequestV4
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.sandbox.velopayments.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -941,8 +941,8 @@ with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = payees_api.PayeesApi(api_client)
     payee_id = "2aa5d7e0-2ecb-403f-8494-1865ed0454e9" # str | The UUID of the payee.
-    update_payee_details_request2 = UpdatePayeeDetailsRequest2(
-        address=PayeeAddress2(
+    update_payee_details_request_v4 = UpdatePayeeDetailsRequestV4(
+        address=PayeeAddressV4(
             line1="500 Duval St",
             line2="line2_example",
             line3="line3_example",
@@ -952,28 +952,28 @@ with velo_payments.ApiClient(configuration) as api_client:
             zip_or_postcode="33945",
             country="US",
         ),
-        individual=Individual2(
-            name=IndividualName(None),
+        individual=IndividualV4(
+            name=IndividualV3Name(None),
         ),
-        company=Company2(
+        company=CompanyV4(
             name="ABC Group Plc",
             tax_id="123123123",
             operating_name="ABC Co",
         ),
         language="en-US",
         payee_type=PayeeType2("Individual"),
-        challenge=Challenge2(
+        challenge=ChallengeV4(
             value="11984567",
             description="challenge description",
         ),
         email="bob@example.com",
         contact_sms_number="11235555555",
-    ) # UpdatePayeeDetailsRequest2 | Request to update payee details
+    ) # UpdatePayeeDetailsRequestV4 | Request to update payee details
 
     # example passing only required values which don't have defaults set
     try:
         # Update Payee Details
-        api_instance.payee_details_update_v4(payee_id, update_payee_details_request2)
+        api_instance.payee_details_update_v4(payee_id, update_payee_details_request_v4)
     except velo_payments.ApiException as e:
         print("Exception when calling PayeesApi->payee_details_update_v4: %s\n" % e)
 ```
@@ -984,7 +984,7 @@ with velo_payments.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payee_id** | **str**| The UUID of the payee. |
- **update_payee_details_request2** | [**UpdatePayeeDetailsRequest2**](UpdatePayeeDetailsRequest2.md)| Request to update payee details |
+ **update_payee_details_request_v4** | [**UpdatePayeeDetailsRequestV4**](UpdatePayeeDetailsRequestV4.md)| Request to update payee details |
 
 ### Return type
 
@@ -1013,7 +1013,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v3_payees_payee_id_remote_id_update_post**
-> v3_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request)
+> v3_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request_v3)
 
 Update Payee Remote Id
 
@@ -1028,9 +1028,9 @@ import time
 import velo_payments
 from velo_payments.api import payees_api
 from velo_payments.model.inline_response401 import InlineResponse401
-from velo_payments.model.update_remote_id_request import UpdateRemoteIdRequest
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.update_remote_id_request_v3 import UpdateRemoteIdRequestV3
 from velo_payments.model.inline_response404 import InlineResponse404
 from velo_payments.model.inline_response409 import InlineResponse409
 from pprint import pprint
@@ -1056,15 +1056,15 @@ with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = payees_api.PayeesApi(api_client)
     payee_id = "2aa5d7e0-2ecb-403f-8494-1865ed0454e9" # str | The UUID of the payee.
-    update_remote_id_request = UpdateRemoteIdRequest(
+    update_remote_id_request_v3 = UpdateRemoteIdRequestV3(
         payor_id="9ac75325-5dcd-42d5-b992-175d7e0a035e",
         remote_id="remoteId123",
-    ) # UpdateRemoteIdRequest | Request to update payee remote id v3
+    ) # UpdateRemoteIdRequestV3 | Request to update payee remote id v3
 
     # example passing only required values which don't have defaults set
     try:
         # Update Payee Remote Id
-        api_instance.v3_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request)
+        api_instance.v3_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request_v3)
     except velo_payments.ApiException as e:
         print("Exception when calling PayeesApi->v3_payees_payee_id_remote_id_update_post: %s\n" % e)
 ```
@@ -1075,7 +1075,7 @@ with velo_payments.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payee_id** | **str**| The UUID of the payee. |
- **update_remote_id_request** | [**UpdateRemoteIdRequest**](UpdateRemoteIdRequest.md)| Request to update payee remote id v3 |
+ **update_remote_id_request_v3** | [**UpdateRemoteIdRequestV3**](UpdateRemoteIdRequestV3.md)| Request to update payee remote id v3 |
 
 ### Return type
 
@@ -1105,7 +1105,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v4_payees_payee_id_remote_id_update_post**
-> v4_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request2)
+> v4_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request_v4)
 
 Update Payee Remote Id
 
@@ -1122,7 +1122,7 @@ from velo_payments.api import payees_api
 from velo_payments.model.inline_response401 import InlineResponse401
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.inline_response400 import InlineResponse400
-from velo_payments.model.update_remote_id_request2 import UpdateRemoteIdRequest2
+from velo_payments.model.update_remote_id_request_v4 import UpdateRemoteIdRequestV4
 from velo_payments.model.inline_response404 import InlineResponse404
 from velo_payments.model.inline_response409 import InlineResponse409
 from pprint import pprint
@@ -1148,15 +1148,15 @@ with velo_payments.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = payees_api.PayeesApi(api_client)
     payee_id = "2aa5d7e0-2ecb-403f-8494-1865ed0454e9" # str | The UUID of the payee.
-    update_remote_id_request2 = UpdateRemoteIdRequest2(
+    update_remote_id_request_v4 = UpdateRemoteIdRequestV4(
         payor_id="9ac75325-5dcd-42d5-b992-175d7e0a035e",
         remote_id="remoteId123",
-    ) # UpdateRemoteIdRequest2 | Request to update payee remote id v4
+    ) # UpdateRemoteIdRequestV4 | Request to update payee remote id v4
 
     # example passing only required values which don't have defaults set
     try:
         # Update Payee Remote Id
-        api_instance.v4_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request2)
+        api_instance.v4_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request_v4)
     except velo_payments.ApiException as e:
         print("Exception when calling PayeesApi->v4_payees_payee_id_remote_id_update_post: %s\n" % e)
 ```
@@ -1167,7 +1167,7 @@ with velo_payments.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payee_id** | **str**| The UUID of the payee. |
- **update_remote_id_request2** | [**UpdateRemoteIdRequest2**](UpdateRemoteIdRequest2.md)| Request to update payee remote id v4 |
+ **update_remote_id_request_v4** | [**UpdateRemoteIdRequestV4**](UpdateRemoteIdRequestV4.md)| Request to update payee remote id v4 |
 
 ### Return type
 
