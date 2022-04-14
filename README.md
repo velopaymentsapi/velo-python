@@ -1,5 +1,5 @@
 # Python client for Velo
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![npm version](https://badge.fury.io/py/velo-python.svg)](https://badge.fury.io/py/velo-python) [![CircleCI](https://circleci.com/gh/velopaymentsapi/velo-python.svg?style=svg)](https://circleci.com/gh/velopaymentsapi/velo-python)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![npm version](https://badge.fury.io/py/velo-python.svg)](https://badge.fury.io/py/velo-python)\
 This library provides a Python client that simplifies interactions with the Velo Payments API. For full details covering the API visit our docs at [Velo Payments APIs](https://apidocs.velopayments.com). Note: some of the Velo API calls which require authorization via an access token, see the full docs on how to configure.
 Throughout this document and the Velo platform the following terms are used:
 

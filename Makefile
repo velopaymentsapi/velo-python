@@ -52,7 +52,7 @@ trim: ## Remove unused files that are auto geneated
 
 adjustments: ## Update the auto generated README.md with Velo info
 	sed -i.bak '1s/# velo-python/# Python client for Velo/' README.md && rm README.md.bak
-	sed -i.bak '2s/.*/[![License](https:\/\/img.shields.io\/badge\/License-Apache%202.0-blue.svg)](https:\/\/opensource.org\/licenses\/Apache-2.0) [![npm version](https:\/\/badge.fury.io\/py\/velo-python.svg)](https:\/\/badge.fury.io\/py\/velo-python) [![CircleCI](https:\/\/circleci.com\/gh\/velopaymentsapi\/velo-python.svg?style=svg)](https:\/\/circleci.com\/gh\/velopaymentsapi\/velo-python)/' README.md && rm README.md.bak
+	sed -i.bak '2s/.*/[![License](https:\/\/img.shields.io\/badge\/License-Apache%202.0-blue.svg)](https:\/\/opensource.org\/licenses\/Apache-2.0) [![npm version](https:\/\/badge.fury.io\/py\/velo-python.svg)](https:\/\/badge.fury.io\/py\/velo-python)\\/' README.md && rm README.md.bak
 	sed -i.bak '3s/.*/This library provides a Python client that simplifies interactions with the Velo Payments API. For full details covering the API visit our docs at [Velo Payments APIs](https:\/\/apidocs.velopayments.com). Note: some of the Velo API calls which require authorization via an access token, see the full docs on how to configure./' README.md && rm README.md.bak
 	# single quote syntax issue
 	sed -i.bak "s/'Payment cannot be processed because of the Payee's OFAC or Compliance Status'/'Payment cannot be processed because of the Payee OFAC or Compliance Status'/" test/test_rejected_payment_v3.py && rm test/test_rejected_payment_v3.py.bak
