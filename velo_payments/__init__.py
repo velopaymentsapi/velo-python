@@ -10,7 +10,7 @@
 """
 
 
-__version__ = "2.30.53-beta.1"
+__version__ = "2.30.53"
 
 # import ApiClient
 from velo_payments.api_client import ApiClient

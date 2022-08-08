@@ -27,6 +27,7 @@ from velo_payments.model.create_individual_v4 import CreateIndividualV4
 from velo_payments.model.create_payee_address_v3 import CreatePayeeAddressV3
 from velo_payments.model.create_payee_address_v4 import CreatePayeeAddressV4
 from velo_payments.model.create_payee_v3 import CreatePayeeV3
+from velo_payments.model.create_payee_v3_request import CreatePayeeV3Request
 from velo_payments.model.create_payee_v4 import CreatePayeeV4
 from velo_payments.model.create_payees_csv_request_v3 import CreatePayeesCSVRequestV3
 from velo_payments.model.create_payees_csv_request_v4 import CreatePayeesCSVRequestV4
@@ -119,6 +120,7 @@ from velo_payments.model.mfa_type import MFAType
 from velo_payments.model.name_v3 import NameV3
 from velo_payments.model.name_v4 import NameV4
 from velo_payments.model.notification import Notification
+from velo_payments.model.notification_source import NotificationSource
 from velo_payments.model.notifications import Notifications
 from velo_payments.model.notifications2 import Notifications2
 from velo_payments.model.ofac_status_v4 import OfacStatusV4
@@ -247,6 +249,7 @@ from velo_payments.model.source_account_summary_v3 import SourceAccountSummaryV3
 from velo_payments.model.source_account_type import SourceAccountType
 from velo_payments.model.source_account_v3 import SourceAccountV3
 from velo_payments.model.source_event import SourceEvent
+from velo_payments.model.submit_payout_v3_request import SubmitPayoutV3Request
 from velo_payments.model.supported_countries_response import SupportedCountriesResponse
 from velo_payments.model.supported_countries_response_v2 import SupportedCountriesResponseV2
 from velo_payments.model.supported_country import SupportedCountry
@@ -270,6 +273,7 @@ from velo_payments.model.user_response import UserResponse
 from velo_payments.model.user_status import UserStatus
 from velo_payments.model.user_type import UserType
 from velo_payments.model.user_type2 import UserType2
+from velo_payments.model.v4_create_payee_request import V4CreatePayeeRequest
 from velo_payments.model.validate_password_response import ValidatePasswordResponse
 from velo_payments.model.verification_code import VerificationCode
 from velo_payments.model.watchlist_status_v3 import WatchlistStatusV3

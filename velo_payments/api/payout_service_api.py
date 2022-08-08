@@ -29,10 +29,10 @@ from velo_payments.model.inline_response404 import InlineResponse404
 from velo_payments.model.inline_response409 import InlineResponse409
 from velo_payments.model.instruct_payout_request import InstructPayoutRequest
 from velo_payments.model.paged_payments_response_v3 import PagedPaymentsResponseV3
-from velo_payments.model.payment_instruction_v3 import PaymentInstructionV3
 from velo_payments.model.payout_summary_response_v3 import PayoutSummaryResponseV3
 from velo_payments.model.quote_response_v3 import QuoteResponseV3
 from velo_payments.model.schedule_payout_request import SchedulePayoutRequest
+from velo_payments.model.submit_payout_v3_request import SubmitPayoutV3Request
 from velo_payments.model.withdraw_payment_request import WithdrawPaymentRequest
 
 

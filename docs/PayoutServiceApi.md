@@ -585,10 +585,10 @@ import time
 import velo_payments
 from velo_payments.api import payout_service_api
 from velo_payments.model.inline_response401 import InlineResponse401
+from velo_payments.model.submit_payout_v3_request import SubmitPayoutV3Request
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.create_payout_request_v3 import CreatePayoutRequestV3
 from velo_payments.model.inline_response400 import InlineResponse400
-from velo_payments.model.payment_instruction_v3 import PaymentInstructionV3
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.sandbox.velopayments.com
 # See configuration.py for a list of all supported configuration parameters.

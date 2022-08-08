@@ -32,10 +32,10 @@ from velo_payments.api import payee_invitation_api
 from velo_payments.model.create_payees_request_v3 import CreatePayeesRequestV3
 from velo_payments.model.inline_response401 import InlineResponse401
 from velo_payments.model.inline_response403 import InlineResponse403
-from velo_payments.model.create_payees_csv_request_v3 import CreatePayeesCSVRequestV3
 from velo_payments.model.create_payees_csv_response_v3 import CreatePayeesCSVResponseV3
 from velo_payments.model.inline_response400 import InlineResponse400
 from velo_payments.model.inline_response404 import InlineResponse404
+from velo_payments.model.create_payee_v3_request import CreatePayeeV3Request
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.sandbox.velopayments.com
 # See configuration.py for a list of all supported configuration parameters.
@@ -724,11 +724,11 @@ import time
 import velo_payments
 from velo_payments.api import payee_invitation_api
 from velo_payments.model.inline_response401 import InlineResponse401
-from velo_payments.model.create_payees_csv_request_v4 import CreatePayeesCSVRequestV4
 from velo_payments.model.inline_response403 import InlineResponse403
 from velo_payments.model.create_payees_request_v4 import CreatePayeesRequestV4
 from velo_payments.model.create_payees_csv_response_v4 import CreatePayeesCSVResponseV4
 from velo_payments.model.inline_response400 import InlineResponse400
+from velo_payments.model.v4_create_payee_request import V4CreatePayeeRequest
 from velo_payments.model.inline_response404 import InlineResponse404
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.sandbox.velopayments.com

@@ -21,8 +21,7 @@ from velo_payments.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from velo_payments.model.create_payees_csv_request_v3 import CreatePayeesCSVRequestV3
-from velo_payments.model.create_payees_csv_request_v4 import CreatePayeesCSVRequestV4
+from velo_payments.model.create_payee_v3_request import CreatePayeeV3Request
 from velo_payments.model.create_payees_csv_response_v3 import CreatePayeesCSVResponseV3
 from velo_payments.model.create_payees_csv_response_v4 import CreatePayeesCSVResponseV4
 from velo_payments.model.create_payees_request_v3 import CreatePayeesRequestV3
@@ -39,6 +38,7 @@ from velo_payments.model.paged_payee_invitation_status_response_v3 import PagedP
 from velo_payments.model.paged_payee_invitation_status_response_v4 import PagedPayeeInvitationStatusResponseV4
 from velo_payments.model.query_batch_response_v3 import QueryBatchResponseV3
 from velo_payments.model.query_batch_response_v4 import QueryBatchResponseV4
+from velo_payments.model.v4_create_payee_request import V4CreatePayeeRequest
 
 
 class PayeeInvitationApi(object):
