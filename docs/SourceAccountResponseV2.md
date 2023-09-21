@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 **balance_visible** | **bool** |  | 
 **customer_id** | **str** |  | [optional] 
 **physical_account_id** | **str** |  | [optional] 
-**notifications** | [**Notifications**](Notifications.md) |  | [optional] 
+**notifications** | [**NotificationsV2**](NotificationsV2.md) |  | [optional] 
 **funding_account_id** | **str** |  | [optional] 
-**auto_top_up_config** | [**AutoTopUpConfig**](AutoTopUpConfig.md) |  | [optional] 
+**auto_top_up_config** | [**AutoTopUpConfigV2**](AutoTopUpConfigV2.md) |  | [optional] 
 **account_type** | **str** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

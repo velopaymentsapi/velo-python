@@ -141,7 +141,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_payee_by_id_v3**
-> PayeeDetailResponse get_payee_by_id_v3(payee_id, sensitive=sensitive)
+> PayeeDetailResponseV3 get_payee_by_id_v3(payee_id, sensitive=sensitive)
 
 Get Payee by Id
 
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PayeeDetailResponse**](PayeeDetailResponse.md)
+[**PayeeDetailResponseV3**](PayeeDetailResponseV3.md)
 
 ### Authorization
 
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_payee_by_id_v4**
-> PayeeDetailResponse2 get_payee_by_id_v4(payee_id, sensitive=sensitive)
+> PayeeDetailResponseV4 get_payee_by_id_v4(payee_id, sensitive=sensitive)
 
 Get Payee by Id
 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PayeeDetailResponse2**](PayeeDetailResponse2.md)
+[**PayeeDetailResponseV4**](PayeeDetailResponseV4.md)
 
 ### Authorization
 
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_payee_changes_v3**
-> PayeeDeltaResponse list_payee_changes_v3(payor_id, updated_since, page=page, page_size=page_size)
+> PayeeDeltaResponseV3 list_payee_changes_v3(payor_id, updated_since, page=page, page_size=page_size)
 
 List Payee Changes
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PayeeDeltaResponse**](PayeeDeltaResponse.md)
+[**PayeeDeltaResponseV3**](PayeeDeltaResponseV3.md)
 
 ### Authorization
 
@@ -334,7 +334,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_payee_changes_v4**
-> PayeeDeltaResponse2 list_payee_changes_v4(payor_id, updated_since, page=page, page_size=page_size)
+> PayeeDeltaResponseV4 list_payee_changes_v4(payor_id, updated_since, page=page, page_size=page_size)
 
 List Payee Changes
 
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PayeeDeltaResponse2**](PayeeDeltaResponse2.md)
+[**PayeeDeltaResponseV4**](PayeeDeltaResponseV4.md)
 
 ### Authorization
 
@@ -401,7 +401,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_payees_v3**
-> PagedPayeeResponse list_payees_v3(payor_id, watchlist_status=watchlist_status, disabled=disabled, onboarded_status=onboarded_status, email=email, display_name=display_name, remote_id=remote_id, payee_type=payee_type, payee_country=payee_country, page=page, page_size=page_size, sort=sort)
+> PagedPayeeResponseV3 list_payees_v3(payor_id, watchlist_status=watchlist_status, disabled=disabled, onboarded_status=onboarded_status, email=email, display_name=display_name, remote_id=remote_id, payee_type=payee_type, payee_country=payee_country, page=page, page_size=page_size, sort=sort)
 
 List Payees
 
@@ -425,13 +425,13 @@ configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
 payor_id = 'payor_id_example' # str | The account owner Payor ID
-watchlist_status = velo_payments.WatchlistStatus() # WatchlistStatus | The watchlistStatus of the payees. (optional)
+watchlist_status = 'watchlist_status_example' # str | The watchlistStatus of the payees. (optional)
 disabled = True # bool | Payee disabled (optional)
-onboarded_status = velo_payments.OnboardedStatus() # OnboardedStatus | The onboarded status of the payees. (optional)
+onboarded_status = 'onboarded_status_example' # str | The onboarded status of the payees. (optional)
 email = 'bob@example.com' # str | Email address (optional)
 display_name = 'Bob Smith' # str | The display name of the payees. (optional)
 remote_id = 'remoteId123' # str | The remote id of the payees. (optional)
-payee_type = velo_payments.PayeeType() # PayeeType | The onboarded status of the payees. (optional)
+payee_type = 'payee_type_example' # str | The onboarded status of the payees. (optional)
 payee_country = 'US' # str | The country of the payee - 2 letter ISO 3166-1 country code (upper case) (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
@@ -450,13 +450,13 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payor_id** | [**str**](.md)| The account owner Payor ID | 
- **watchlist_status** | [**WatchlistStatus**](.md)| The watchlistStatus of the payees. | [optional] 
+ **watchlist_status** | **str**| The watchlistStatus of the payees. | [optional] 
  **disabled** | **bool**| Payee disabled | [optional] 
- **onboarded_status** | [**OnboardedStatus**](.md)| The onboarded status of the payees. | [optional] 
+ **onboarded_status** | **str**| The onboarded status of the payees. | [optional] 
  **email** | [**str**](.md)| Email address | [optional] 
  **display_name** | **str**| The display name of the payees. | [optional] 
  **remote_id** | **str**| The remote id of the payees. | [optional] 
- **payee_type** | [**PayeeType**](.md)| The onboarded status of the payees. | [optional] 
+ **payee_type** | **str**| The onboarded status of the payees. | [optional] 
  **payee_country** | **str**| The country of the payee - 2 letter ISO 3166-1 country code (upper case) | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| Page size. Default is 25. Max allowable is 100. | [optional] [default to 25]
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PagedPayeeResponse**](PagedPayeeResponse.md)
+[**PagedPayeeResponseV3**](PagedPayeeResponseV3.md)
 
 ### Authorization
 
@@ -487,7 +487,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_payees_v4**
-> PagedPayeeResponse2 list_payees_v4(payor_id, watchlist_status=watchlist_status, disabled=disabled, onboarded_status=onboarded_status, email=email, display_name=display_name, remote_id=remote_id, payee_type=payee_type, payee_country=payee_country, ofac_status=ofac_status, page=page, page_size=page_size, sort=sort)
+> PagedPayeeResponseV4 list_payees_v4(payor_id, watchlist_status=watchlist_status, disabled=disabled, onboarded_status=onboarded_status, email=email, display_name=display_name, remote_id=remote_id, payee_type=payee_type, payee_country=payee_country, ofac_status=ofac_status, page=page, page_size=page_size, sort=sort)
 
 List Payees
 
@@ -511,15 +511,15 @@ configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
 payor_id = 'payor_id_example' # str | The account owner Payor ID
-watchlist_status = velo_payments.WatchlistStatus() # WatchlistStatus | The watchlistStatus of the payees. (optional)
+watchlist_status = 'watchlist_status_example' # str | The watchlistStatus of the payees. (optional)
 disabled = True # bool | Payee disabled (optional)
-onboarded_status = velo_payments.OnboardedStatus() # OnboardedStatus | The onboarded status of the payees. (optional)
+onboarded_status = 'onboarded_status_example' # str | The onboarded status of the payees. (optional)
 email = 'bob@example.com' # str | Email address (optional)
 display_name = 'Bob Smith' # str | The display name of the payees. (optional)
 remote_id = 'remoteId123' # str | The remote id of the payees. (optional)
-payee_type = velo_payments.PayeeType() # PayeeType | The onboarded status of the payees. (optional)
+payee_type = 'payee_type_example' # str | The onboarded status of the payees. (optional)
 payee_country = 'US' # str | The country of the payee - 2 letter ISO 3166-1 country code (upper case) (optional)
-ofac_status = velo_payments.OfacStatus() # OfacStatus | The ofacStatus of the payees. (optional)
+ofac_status = 'ofac_status_example' # str | The ofacStatus of the payees. (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
 sort = 'displayName:asc' # str | List of sort fields (e.g. ?sort=onboardedStatus:asc,name:asc) Default is name:asc 'name' is treated as company name for companies - last name + ',' + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.  (optional) (default to 'displayName:asc')
@@ -537,22 +537,22 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payor_id** | [**str**](.md)| The account owner Payor ID | 
- **watchlist_status** | [**WatchlistStatus**](.md)| The watchlistStatus of the payees. | [optional] 
+ **watchlist_status** | **str**| The watchlistStatus of the payees. | [optional] 
  **disabled** | **bool**| Payee disabled | [optional] 
- **onboarded_status** | [**OnboardedStatus**](.md)| The onboarded status of the payees. | [optional] 
+ **onboarded_status** | **str**| The onboarded status of the payees. | [optional] 
  **email** | [**str**](.md)| Email address | [optional] 
  **display_name** | **str**| The display name of the payees. | [optional] 
  **remote_id** | **str**| The remote id of the payees. | [optional] 
- **payee_type** | [**PayeeType**](.md)| The onboarded status of the payees. | [optional] 
+ **payee_type** | **str**| The onboarded status of the payees. | [optional] 
  **payee_country** | **str**| The country of the payee - 2 letter ISO 3166-1 country code (upper case) | [optional] 
- **ofac_status** | [**OfacStatus**](.md)| The ofacStatus of the payees. | [optional] 
+ **ofac_status** | **str**| The ofacStatus of the payees. | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| Page size. Default is 25. Max allowable is 100. | [optional] [default to 25]
  **sort** | **str**| List of sort fields (e.g. ?sort&#x3D;onboardedStatus:asc,name:asc) Default is name:asc &#39;name&#39; is treated as company name for companies - last name + &#39;,&#39; + firstName for individuals The supported sort fields are - payeeId, displayName, payoutStatus, onboardedStatus.  | [optional] [default to &#39;displayName:asc&#39;]
 
 ### Return type
 
-[**PagedPayeeResponse2**](PagedPayeeResponse2.md)
+[**PagedPayeeResponseV4**](PagedPayeeResponseV4.md)
 
 ### Authorization
 
@@ -575,7 +575,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payee_details_update_v3**
-> payee_details_update_v3(payee_id, update_payee_details_request)
+> payee_details_update_v3(payee_id, update_payee_details_request_v3)
 
 Update Payee Details
 
@@ -599,11 +599,11 @@ configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
 payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee.
-update_payee_details_request = velo_payments.UpdatePayeeDetailsRequest() # UpdatePayeeDetailsRequest | Request to update payee details
+update_payee_details_request_v3 = velo_payments.UpdatePayeeDetailsRequestV3() # UpdatePayeeDetailsRequestV3 | Request to update payee details
 
 try:
     # Update Payee Details
-    api_instance.payee_details_update_v3(payee_id, update_payee_details_request)
+    api_instance.payee_details_update_v3(payee_id, update_payee_details_request_v3)
 except ApiException as e:
     print("Exception when calling PayeesApi->payee_details_update_v3: %s\n" % e)
 ```
@@ -613,7 +613,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payee_id** | [**str**](.md)| The UUID of the payee. | 
- **update_payee_details_request** | [**UpdatePayeeDetailsRequest**](UpdatePayeeDetailsRequest.md)| Request to update payee details | 
+ **update_payee_details_request_v3** | [**UpdatePayeeDetailsRequestV3**](UpdatePayeeDetailsRequestV3.md)| Request to update payee details | 
 
 ### Return type
 
@@ -640,11 +640,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **payee_details_update_v4**
-> payee_details_update_v4(payee_id, update_payee_details_request2)
+> payee_details_update_v4(payee_id, update_payee_details_request_v4)
 
 Update Payee Details
 
-<p>Update payee details for the given Payee Id.<p> 
+<p>Update payee details for the given Payee Id.</p> <p>Payors may only update the payee details if the payee has not yet onboarded</p> 
 
 ### Example
 
@@ -664,11 +664,11 @@ configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
 payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee.
-update_payee_details_request2 = velo_payments.UpdatePayeeDetailsRequest2() # UpdatePayeeDetailsRequest2 | Request to update payee details
+update_payee_details_request_v4 = velo_payments.UpdatePayeeDetailsRequestV4() # UpdatePayeeDetailsRequestV4 | Request to update payee details
 
 try:
     # Update Payee Details
-    api_instance.payee_details_update_v4(payee_id, update_payee_details_request2)
+    api_instance.payee_details_update_v4(payee_id, update_payee_details_request_v4)
 except ApiException as e:
     print("Exception when calling PayeesApi->payee_details_update_v4: %s\n" % e)
 ```
@@ -678,7 +678,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payee_id** | [**str**](.md)| The UUID of the payee. | 
- **update_payee_details_request2** | [**UpdatePayeeDetailsRequest2**](UpdatePayeeDetailsRequest2.md)| Request to update payee details | 
+ **update_payee_details_request_v4** | [**UpdatePayeeDetailsRequestV4**](UpdatePayeeDetailsRequestV4.md)| Request to update payee details | 
 
 ### Return type
 
@@ -705,7 +705,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v3_payees_payee_id_remote_id_update_post**
-> v3_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request)
+> v3_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request_v3)
 
 Update Payee Remote Id
 
@@ -729,11 +729,11 @@ configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
 payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee.
-update_remote_id_request = velo_payments.UpdateRemoteIdRequest() # UpdateRemoteIdRequest | Request to update payee remote id v3
+update_remote_id_request_v3 = velo_payments.UpdateRemoteIdRequestV3() # UpdateRemoteIdRequestV3 | Request to update payee remote id v3
 
 try:
     # Update Payee Remote Id
-    api_instance.v3_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request)
+    api_instance.v3_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request_v3)
 except ApiException as e:
     print("Exception when calling PayeesApi->v3_payees_payee_id_remote_id_update_post: %s\n" % e)
 ```
@@ -743,7 +743,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payee_id** | [**str**](.md)| The UUID of the payee. | 
- **update_remote_id_request** | [**UpdateRemoteIdRequest**](UpdateRemoteIdRequest.md)| Request to update payee remote id v3 | 
+ **update_remote_id_request_v3** | [**UpdateRemoteIdRequestV3**](UpdateRemoteIdRequestV3.md)| Request to update payee remote id v3 | 
 
 ### Return type
 
@@ -771,7 +771,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v4_payees_payee_id_remote_id_update_post**
-> v4_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request2)
+> v4_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request_v4)
 
 Update Payee Remote Id
 
@@ -795,11 +795,11 @@ configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayeesApi(velo_payments.ApiClient(configuration))
 payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee.
-update_remote_id_request2 = velo_payments.UpdateRemoteIdRequest2() # UpdateRemoteIdRequest2 | Request to update payee remote id v4
+update_remote_id_request_v4 = velo_payments.UpdateRemoteIdRequestV4() # UpdateRemoteIdRequestV4 | Request to update payee remote id v4
 
 try:
     # Update Payee Remote Id
-    api_instance.v4_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request2)
+    api_instance.v4_payees_payee_id_remote_id_update_post(payee_id, update_remote_id_request_v4)
 except ApiException as e:
     print("Exception when calling PayeesApi->v4_payees_payee_id_remote_id_update_post: %s\n" % e)
 ```
@@ -809,7 +809,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payee_id** | [**str**](.md)| The UUID of the payee. | 
- **update_remote_id_request2** | [**UpdateRemoteIdRequest2**](UpdateRemoteIdRequest2.md)| Request to update payee remote id v4 | 
+ **update_remote_id_request_v4** | [**UpdateRemoteIdRequestV4**](UpdateRemoteIdRequestV4.md)| Request to update payee remote id v4 | 
 
 ### Return type
 

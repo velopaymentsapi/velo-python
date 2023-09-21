@@ -1,0 +1,16 @@
+# PayeeDeltaV3
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**remote_id** | **str** |  | 
+**payee_id** | **str** |  | 
+**display_name** | **str** |  | [optional] 
+**dba_name** | **str** |  | [optional] 
+**email** | **str** |  | [optional] 
+**payee_country** | **str** |  | [optional] 
+**onboarded_status** | **str** | Onboarded status. One of the following values: CREATED, INVITED, REGISTERED, ONBOARDED | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

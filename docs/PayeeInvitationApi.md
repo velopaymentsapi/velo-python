@@ -4,18 +4,82 @@ All URIs are relative to *https://api.sandbox.velopayments.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create_payee_v3**](PayeeInvitationApi.md#create_payee_v3) | **POST** /v3/payees | Initiate Payee Creation
 [**get_payees_invitation_status_v3**](PayeeInvitationApi.md#get_payees_invitation_status_v3) | **GET** /v3/payees/payors/{payorId}/invitationStatus | Get Payee Invitation Status
 [**get_payees_invitation_status_v4**](PayeeInvitationApi.md#get_payees_invitation_status_v4) | **GET** /v4/payees/payors/{payorId}/invitationStatus | Get Payee Invitation Status
 [**query_batch_status_v3**](PayeeInvitationApi.md#query_batch_status_v3) | **GET** /v3/payees/batch/{batchId} | Query Batch Status
 [**query_batch_status_v4**](PayeeInvitationApi.md#query_batch_status_v4) | **GET** /v4/payees/batch/{batchId} | Query Batch Status
 [**resend_payee_invite_v3**](PayeeInvitationApi.md#resend_payee_invite_v3) | **POST** /v3/payees/{payeeId}/invite | Resend Payee Invite
 [**resend_payee_invite_v4**](PayeeInvitationApi.md#resend_payee_invite_v4) | **POST** /v4/payees/{payeeId}/invite | Resend Payee Invite
-[**v3_create_payee**](PayeeInvitationApi.md#v3_create_payee) | **POST** /v3/payees | Initiate Payee Creation
 [**v4_create_payee**](PayeeInvitationApi.md#v4_create_payee) | **POST** /v4/payees | Initiate Payee Creation
 
 
+# **create_payee_v3**
+> CreatePayeesCSVResponseV3 create_payee_v3(create_payees_request_v3=create_payees_request_v3)
+
+Initiate Payee Creation
+
+<p>Use v4 instead</p> Initiate the process of creating 1 to 2000 payees in a batch Use the response location header to query for status (201 - Created, 400 - invalid request body. In addition to standard semantic validations, a 400 will also result if there is a duplicate remote id within the batch / if there is a duplicate email within the batch, i.e. if there is a conflict between the data provided for one payee within the batch and that provided for another payee within the same batch). The validation at this stage is intra-batch only. Validation against payees who have already been invited occurs subsequently during processing of the batch. 
+
+### Example
+
+* OAuth Authentication (OAuth2):
+```python
+from __future__ import print_function
+import time
+import velo_payments
+from velo_payments.rest import ApiException
+from pprint import pprint
+configuration = velo_payments.Configuration()
+# Configure OAuth2 access token for authorization: OAuth2
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Defining host is optional and default to https://api.sandbox.velopayments.com
+configuration.host = "https://api.sandbox.velopayments.com"
+# Create an instance of the API class
+api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
+create_payees_request_v3 = velo_payments.CreatePayeesRequestV3() # CreatePayeesRequestV3 | Post payees to create. (optional)
+
+try:
+    # Initiate Payee Creation
+    api_response = api_instance.create_payee_v3(create_payees_request_v3=create_payees_request_v3)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PayeeInvitationApi->create_payee_v3: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_payees_request_v3** | [**CreatePayeesRequestV3**](CreatePayeesRequestV3.md)| Post payees to create. | [optional] 
+
+### Return type
+
+[**CreatePayeesCSVResponseV3**](CreatePayeesCSVResponseV3.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | HTTP Created. Body created only on CSV requests |  -  |
+**404** | The resource was not found or is no longer available  |  -  |
+**400** | Invalid request. See Error message payload for details of failure |  -  |
+**401** | Invalid access token. May be expired or invalid |  -  |
+**403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_payees_invitation_status_v3**
-> PagedPayeeInvitationStatusResponse get_payees_invitation_status_v3(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
+> PagedPayeeInvitationStatusResponseV3 get_payees_invitation_status_v3(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
 
 Get Payee Invitation Status
 
@@ -40,7 +104,7 @@ configuration.host = "https://api.sandbox.velopayments.com"
 api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
 payor_id = '9ac75325-5dcd-42d5-b992-175d7e0a035e' # str | The account owner Payor ID
 payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee. (optional)
-invitation_status = velo_payments.InvitationStatus() # InvitationStatus | The invitation status of the payees. (optional)
+invitation_status = 'invitation_status_example' # str | The invitation status of the payees. (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
 
@@ -58,13 +122,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payor_id** | [**str**](.md)| The account owner Payor ID | 
  **payee_id** | [**str**](.md)| The UUID of the payee. | [optional] 
- **invitation_status** | [**InvitationStatus**](.md)| The invitation status of the payees. | [optional] 
+ **invitation_status** | **str**| The invitation status of the payees. | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| Page size. Default is 25. Max allowable is 100. | [optional] [default to 25]
 
 ### Return type
 
-[**PagedPayeeInvitationStatusResponse**](PagedPayeeInvitationStatusResponse.md)
+[**PagedPayeeInvitationStatusResponseV3**](PagedPayeeInvitationStatusResponseV3.md)
 
 ### Authorization
 
@@ -87,7 +151,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_payees_invitation_status_v4**
-> PagedPayeeInvitationStatusResponse2 get_payees_invitation_status_v4(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
+> PagedPayeeInvitationStatusResponseV4 get_payees_invitation_status_v4(payor_id, payee_id=payee_id, invitation_status=invitation_status, page=page, page_size=page_size)
 
 Get Payee Invitation Status
 
@@ -112,7 +176,7 @@ configuration.host = "https://api.sandbox.velopayments.com"
 api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
 payor_id = '9ac75325-5dcd-42d5-b992-175d7e0a035e' # str | The account owner Payor ID
 payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee. (optional)
-invitation_status = velo_payments.InvitationStatus() # InvitationStatus | The invitation status of the payees. (optional)
+invitation_status = 'invitation_status_example' # str | The invitation status of the payees. (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | Page size. Default is 25. Max allowable is 100. (optional) (default to 25)
 
@@ -130,13 +194,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payor_id** | [**str**](.md)| The account owner Payor ID | 
  **payee_id** | [**str**](.md)| The UUID of the payee. | [optional] 
- **invitation_status** | [**InvitationStatus**](.md)| The invitation status of the payees. | [optional] 
+ **invitation_status** | **str**| The invitation status of the payees. | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| Page size. Default is 25. Max allowable is 100. | [optional] [default to 25]
 
 ### Return type
 
-[**PagedPayeeInvitationStatusResponse2**](PagedPayeeInvitationStatusResponse2.md)
+[**PagedPayeeInvitationStatusResponseV4**](PagedPayeeInvitationStatusResponseV4.md)
 
 ### Authorization
 
@@ -159,7 +223,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **query_batch_status_v3**
-> QueryBatchResponse query_batch_status_v3(batch_id)
+> QueryBatchResponseV3 query_batch_status_v3(batch_id)
 
 Query Batch Status
 
@@ -200,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**QueryBatchResponse**](QueryBatchResponse.md)
+[**QueryBatchResponseV3**](QueryBatchResponseV3.md)
 
 ### Authorization
 
@@ -223,7 +287,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **query_batch_status_v4**
-> QueryBatchResponse2 query_batch_status_v4(batch_id)
+> QueryBatchResponseV4 query_batch_status_v4(batch_id)
 
 Query Batch Status
 
@@ -264,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**QueryBatchResponse2**](QueryBatchResponse2.md)
+[**QueryBatchResponseV4**](QueryBatchResponseV4.md)
 
 ### Authorization
 
@@ -287,7 +351,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resend_payee_invite_v3**
-> resend_payee_invite_v3(payee_id, invite_payee_request)
+> resend_payee_invite_v3(payee_id, invite_payee_request_v3)
 
 Resend Payee Invite
 
@@ -311,11 +375,11 @@ configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
 payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee.
-invite_payee_request = velo_payments.InvitePayeeRequest() # InvitePayeeRequest | Provide Payor Id in body of request
+invite_payee_request_v3 = velo_payments.InvitePayeeRequestV3() # InvitePayeeRequestV3 | Provide Payor Id in body of request
 
 try:
     # Resend Payee Invite
-    api_instance.resend_payee_invite_v3(payee_id, invite_payee_request)
+    api_instance.resend_payee_invite_v3(payee_id, invite_payee_request_v3)
 except ApiException as e:
     print("Exception when calling PayeeInvitationApi->resend_payee_invite_v3: %s\n" % e)
 ```
@@ -325,7 +389,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payee_id** | [**str**](.md)| The UUID of the payee. | 
- **invite_payee_request** | [**InvitePayeeRequest**](InvitePayeeRequest.md)| Provide Payor Id in body of request | 
+ **invite_payee_request_v3** | [**InvitePayeeRequestV3**](InvitePayeeRequestV3.md)| Provide Payor Id in body of request | 
 
 ### Return type
 
@@ -353,7 +417,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resend_payee_invite_v4**
-> resend_payee_invite_v4(payee_id, invite_payee_request2)
+> resend_payee_invite_v4(payee_id, invite_payee_request_v4)
 
 Resend Payee Invite
 
@@ -377,11 +441,11 @@ configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
 payee_id = '2aa5d7e0-2ecb-403f-8494-1865ed0454e9' # str | The UUID of the payee.
-invite_payee_request2 = velo_payments.InvitePayeeRequest2() # InvitePayeeRequest2 | Provide Payor Id in body of request
+invite_payee_request_v4 = velo_payments.InvitePayeeRequestV4() # InvitePayeeRequestV4 | Provide Payor Id in body of request
 
 try:
     # Resend Payee Invite
-    api_instance.resend_payee_invite_v4(payee_id, invite_payee_request2)
+    api_instance.resend_payee_invite_v4(payee_id, invite_payee_request_v4)
 except ApiException as e:
     print("Exception when calling PayeeInvitationApi->resend_payee_invite_v4: %s\n" % e)
 ```
@@ -391,7 +455,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payee_id** | [**str**](.md)| The UUID of the payee. | 
- **invite_payee_request2** | [**InvitePayeeRequest2**](InvitePayeeRequest2.md)| Provide Payor Id in body of request | 
+ **invite_payee_request_v4** | [**InvitePayeeRequestV4**](InvitePayeeRequestV4.md)| Provide Payor Id in body of request | 
 
 ### Return type
 
@@ -418,76 +482,12 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v3_create_payee**
-> CreatePayeesCSVResponse v3_create_payee(create_payees_request=create_payees_request)
-
-Initiate Payee Creation
-
-<p>Use v4 instead</p> Initiate the process of creating 1 to 2000 payees in a batch Use the response location header to query for status (201 - Created, 400 - invalid request body. In addition to standard semantic validations, a 400 will also result if there is a duplicate remote id within the batch / if there is a duplicate email within the batch, i.e. if there is a conflict between the data provided for one payee within the batch and that provided for another payee within the same batch). The validation at this stage is intra-batch only. Validation against payees who have already been invited occurs subsequently during processing of the batch. 
-
-### Example
-
-* OAuth Authentication (OAuth2):
-```python
-from __future__ import print_function
-import time
-import velo_payments
-from velo_payments.rest import ApiException
-from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-create_payees_request = velo_payments.CreatePayeesRequest() # CreatePayeesRequest | Post payees to create. (optional)
-
-try:
-    # Initiate Payee Creation
-    api_response = api_instance.v3_create_payee(create_payees_request=create_payees_request)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayeeInvitationApi->v3_create_payee: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **create_payees_request** | [**CreatePayeesRequest**](CreatePayeesRequest.md)| Post payees to create. | [optional] 
-
-### Return type
-
-[**CreatePayeesCSVResponse**](CreatePayeesCSVResponse.md)
-
-### Authorization
-
-[OAuth2](../README.md#OAuth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, multipart/form-data
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | HTTP Created. Body created only on CSV requests |  -  |
-**404** | The resource was not found or is no longer available  |  -  |
-**400** | Invalid request. See Error message payload for details of failure |  -  |
-**401** | Invalid access token. May be expired or invalid |  -  |
-**403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **v4_create_payee**
-> CreatePayeesCSVResponse2 v4_create_payee(create_payees_request2=create_payees_request2)
+> CreatePayeesCSVResponseV4 v4_create_payee(create_payees_request_v4=create_payees_request_v4)
 
 Initiate Payee Creation
 
-Initiate the process of creating 1 to 2000 payees in a batch Use the response location header to query for status (201 - Created, 400 - invalid request body. In addition to standard semantic validations, a 400 will also result if there is a duplicate remote id within the batch / if there is a duplicate email within the batch, i.e. if there is a conflict between the data provided for one payee within the batch and that provided for another payee within the same batch). The validation at this stage is intra-batch only. Validation against payees who have already been invited occurs subsequently during processing of the batch. 
+<p>Initiate the process of creating 1 to 2000 payees in a batch</p> <p>Use the batchId in the response to query for status.</p> <p>In addition to standard semantic validations, a 400 will also result if: </p> <ul> <li>there is a duplicate remote id within the batch</li> <li>there is a duplicate email within the batch, i.e. if there is a conflict between the data provided for one payee within the batch and that provided for another payee within the same batch).</li> </ul> <p>The validation at this stage is intra-batch only.</p> <p>Validation against payees who have already been invited occurs subsequently during processing of the batch.</p> 
 
 ### Example
 
@@ -506,11 +506,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayeeInvitationApi(velo_payments.ApiClient(configuration))
-create_payees_request2 = velo_payments.CreatePayeesRequest2() # CreatePayeesRequest2 | Post payees to create. (optional)
+create_payees_request_v4 = velo_payments.CreatePayeesRequestV4() # CreatePayeesRequestV4 | Post payees to create. (optional)
 
 try:
     # Initiate Payee Creation
-    api_response = api_instance.v4_create_payee(create_payees_request2=create_payees_request2)
+    api_response = api_instance.v4_create_payee(create_payees_request_v4=create_payees_request_v4)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PayeeInvitationApi->v4_create_payee: %s\n" % e)
@@ -520,11 +520,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_payees_request2** | [**CreatePayeesRequest2**](CreatePayeesRequest2.md)| Post payees to create. | [optional] 
+ **create_payees_request_v4** | [**CreatePayeesRequestV4**](CreatePayeesRequestV4.md)| Post payees to create. | [optional] 
 
 ### Return type
 
-[**CreatePayeesCSVResponse2**](CreatePayeesCSVResponse2.md)
+[**CreatePayeesCSVResponseV4**](CreatePayeesCSVResponseV4.md)
 
 ### Authorization
 
@@ -538,7 +538,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | HTTP Created. Body created only on CSV requests |  -  |
+**201** | HTTP Created. Body created only on CSV requests |  * Location -  <br>  |
 **404** | The resource was not found or is no longer available  |  -  |
 **400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Invalid access token. May be expired or invalid |  -  |

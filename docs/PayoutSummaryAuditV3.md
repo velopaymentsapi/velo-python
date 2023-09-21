@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payout_id** | **str** |  | 
 **payor_id** | **str** |  | [optional] 
-**status** | [**PayoutStatusV3**](PayoutStatusV3.md) |  | 
+**status** | **str** | Current status of the payout. One of the following values: ACCEPTED, REJECTED, SUBMITTED, QUOTED, INSTRUCTED, COMPLETED, INCOMPLETE, CONFIRMED, WITHDRAWN | 
 **submitted_date_time** | **str** |  | 
 **instructed_date_time** | **str** |  | [optional] 
 **withdrawn_date_time** | **str** |  | [optional] 

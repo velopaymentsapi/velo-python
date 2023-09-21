@@ -397,7 +397,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_users**
-> PagedUserResponse list_users(type=type, status=status, entity_id=entity_id, page=page, page_size=page_size, sort=sort)
+> PagedUserResponse list_users(type=type, status=status, entity_id=entity_id, payee_type=payee_type, page=page, page_size=page_size, sort=sort)
 
 List Users
 
@@ -423,13 +423,14 @@ api_instance = velo_payments.UsersApi(velo_payments.ApiClient(configuration))
 type = velo_payments.UserType() # UserType | The Type of the User. (optional)
 status = velo_payments.UserStatus() # UserStatus | The status of the User. (optional)
 entity_id = 'entity_id_example' # str | The entityId of the User. (optional)
+payee_type = velo_payments.PayeeType() # PayeeType | The Type of the Payee entity. Either COMPANY or INDIVIDUAL. (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 sort = 'email:asc' # str | List of sort fields (e.g. ?sort=email:asc,lastName:asc) Default is email:asc 'name' The supported sort fields are - email, lastNmae.  (optional) (default to 'email:asc')
 
 try:
     # List Users
-    api_response = api_instance.list_users(type=type, status=status, entity_id=entity_id, page=page, page_size=page_size, sort=sort)
+    api_response = api_instance.list_users(type=type, status=status, entity_id=entity_id, payee_type=payee_type, page=page, page_size=page_size, sort=sort)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UsersApi->list_users: %s\n" % e)
@@ -442,6 +443,7 @@ Name | Type | Description  | Notes
  **type** | [**UserType**](.md)| The Type of the User. | [optional] 
  **status** | [**UserStatus**](.md)| The status of the User. | [optional] 
  **entity_id** | [**str**](.md)| The entityId of the User. | [optional] 
+ **payee_type** | [**PayeeType**](.md)| The Type of the Payee entity. Either COMPANY or INDIVIDUAL. | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| The number of results to return in a page | [optional] [default to 25]
  **sort** | **str**| List of sort fields (e.g. ?sort&#x3D;email:asc,lastName:asc) Default is email:asc &#39;name&#39; The supported sort fields are - email, lastNmae.  | [optional] [default to &#39;email:asc&#39;]

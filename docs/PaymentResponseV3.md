@@ -12,14 +12,14 @@ Name | Type | Description | Notes
 **source_account_name** | **str** | The name of the source account from which the payment was taken | [optional] 
 **remote_id** | **str** | The remote id by which the payor refers to the payee. Only populated once payment is confirmed | [optional] 
 **source_amount** | **int** | The source amount for the payment (amount debited to make the payment) | [optional] 
-**source_currency** | [**PaymentAuditCurrencyV3**](PaymentAuditCurrencyV3.md) |  | [optional] 
+**source_currency** | **str** | ISO 3 character currency code | [optional] 
 **payment_amount** | **int** | The amount which the payee will receive | 
-**payment_currency** | [**PaymentAuditCurrencyV3**](PaymentAuditCurrencyV3.md) |  | [optional] 
+**payment_currency** | **str** | ISO 3 character currency code | [optional] 
 **rate** | **float** | The FX rate for the payment, if FX was involved. **Note** that (depending on the role of the caller) this information may not be displayed | [optional] 
 **inverted_rate** | **float** | The inverted FX rate for the payment, if FX was involved. **Note** that (depending on the role of the caller) this information may not be displayed | [optional] 
 **submitted_date_time** | **datetime** |  | 
-**status** | **str** |  | 
-**funding_status** | **str** | The funding status of the payment | 
+**status** | **str** | Current status of the payment. One of the following values: ACCEPTED, AWAITING_FUNDS, FUNDED, UNFUNDED, BANK_PAYMENT_REQUESTED, REJECTED, ACCEPTED_BY_RAILS, CONFIRMED, FAILED, WITHDRAWN | 
+**funding_status** | **str** | The funding status of the payment. One of the following values: [FUNDED, INSTRUCTED, UNFUNDED | 
 **routing_number** | **str** | The routing number for the payment. | [optional] 
 **account_number** | **str** | The account number for the account which will receive the payment. | [optional] 
 **iban** | **str** | The iban for the payment. | [optional] 
@@ -38,6 +38,7 @@ Name | Type | Description | Notes
 **return_reason** | **str** |  | [optional] 
 **rails_payment_id** | **str** |  | [optional] 
 **rails_batch_id** | **str** |  | [optional] 
+**payment_scheme** | **str** |  | [optional] 
 **rejection_reason** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

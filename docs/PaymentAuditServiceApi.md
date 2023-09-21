@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_fundings_v4**
-> GetFundingsResponse get_fundings_v4(payor_id, page=page, page_size=page_size, sort=sort)
+> GetFundingsResponse get_fundings_v4(payor_id, source_account_name=source_account_name, page=page, page_size=page_size, sort=sort)
 
 Get Fundings for Payor
 
@@ -108,13 +108,14 @@ configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
 payor_id = 'payor_id_example' # str | The account owner Payor ID
+source_account_name = 'source_account_name_example' # str | The source account name (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 sort = 'sort_example' # str | List of sort fields. Example: ```?sort=destinationCurrency:asc,destinationAmount:asc``` Default is no sort. The supported sort fields are: dateTime and amount.  (optional)
 
 try:
     # Get Fundings for Payor
-    api_response = api_instance.get_fundings_v4(payor_id, page=page, page_size=page_size, sort=sort)
+    api_response = api_instance.get_fundings_v4(payor_id, source_account_name=source_account_name, page=page, page_size=page_size, sort=sort)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PaymentAuditServiceApi->get_fundings_v4: %s\n" % e)
@@ -125,6 +126,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payor_id** | [**str**](.md)| The account owner Payor ID | 
+ **source_account_name** | **str**| The source account name | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| The number of results to return in a page | [optional] [default to 25]
  **sort** | **str**| List of sort fields. Example: &#x60;&#x60;&#x60;?sort&#x3D;destinationCurrency:asc,destinationAmount:asc&#x60;&#x60;&#x60; Default is no sort. The supported sort fields are: dateTime and amount.  | [optional] 
@@ -220,7 +222,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_payments_for_payout_v4**
-> GetPaymentsForPayoutResponseV4 get_payments_for_payout_v4(payout_id, remote_id=remote_id, remote_system_id=remote_system_id, status=status, source_amount_from=source_amount_from, source_amount_to=source_amount_to, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, transmission_type=transmission_type, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
+> GetPaymentsForPayoutResponseV4 get_payments_for_payout_v4(payout_id, rails_id=rails_id, remote_id=remote_id, remote_system_id=remote_system_id, status=status, source_amount_from=source_amount_from, source_amount_to=source_amount_to, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, transmission_type=transmission_type, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
 
 Get Payments for Payout
 
@@ -244,6 +246,7 @@ configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PaymentAuditServiceApi(velo_payments.ApiClient(configuration))
 payout_id = 'payout_id_example' # str | The id (UUID) of the payout.
+rails_id = 'rails_id_example' # str | Payout Rails ID filter - case insensitive match. Any value is allowed, but you should use one of the supported railsId values. To get this list of values, you should call the 'Get Supported Rails' endpoint.  (optional)
 remote_id = 'remote_id_example' # str | The remote id of the payees. (optional)
 remote_system_id = 'remote_system_id_example' # str | The id of the remote system that is orchestrating payments (optional)
 status = 'status_example' # str | Payment Status (optional)
@@ -253,7 +256,7 @@ payment_amount_from = 56 # int | The payment amount from range filter. Filters f
 payment_amount_to = 56 # int | The payment amount to range filter. Filters for paymentAmount ⇐ paymentAmountTo (optional)
 submitted_date_from = '2013-10-20' # date | The submitted date from range filter. Format is yyyy-MM-dd. (optional)
 submitted_date_to = '2013-10-20' # date | The submitted date to range filter. Format is yyyy-MM-dd. (optional)
-transmission_type = 'transmission_type_example' # str | Transmission Type * ACH * SAME_DAY_ACH * WIRE  (optional)
+transmission_type = 'transmission_type_example' # str | Transmission Type * ACH * SAME_DAY_ACH * WIRE * GACHO  (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 sort = 'sort_example' # str | List of sort fields (e.g. ?sort=submittedDateTime:asc,status:asc). Default is sort by remoteId The supported sort fields are: sourceAmount, sourceCurrency, paymentAmount, paymentCurrency, routingNumber, accountNumber, remoteId, submittedDateTime and status  (optional)
@@ -261,7 +264,7 @@ sensitive = True # bool | Optional. If omitted or set to false, any Personal Ide
 
 try:
     # Get Payments for Payout
-    api_response = api_instance.get_payments_for_payout_v4(payout_id, remote_id=remote_id, remote_system_id=remote_system_id, status=status, source_amount_from=source_amount_from, source_amount_to=source_amount_to, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, transmission_type=transmission_type, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
+    api_response = api_instance.get_payments_for_payout_v4(payout_id, rails_id=rails_id, remote_id=remote_id, remote_system_id=remote_system_id, status=status, source_amount_from=source_amount_from, source_amount_to=source_amount_to, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, transmission_type=transmission_type, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PaymentAuditServiceApi->get_payments_for_payout_v4: %s\n" % e)
@@ -272,6 +275,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payout_id** | [**str**](.md)| The id (UUID) of the payout. | 
+ **rails_id** | **str**| Payout Rails ID filter - case insensitive match. Any value is allowed, but you should use one of the supported railsId values. To get this list of values, you should call the &#39;Get Supported Rails&#39; endpoint.  | [optional] 
  **remote_id** | **str**| The remote id of the payees. | [optional] 
  **remote_system_id** | **str**| The id of the remote system that is orchestrating payments | [optional] 
  **status** | **str**| Payment Status | [optional] 
@@ -281,7 +285,7 @@ Name | Type | Description  | Notes
  **payment_amount_to** | **int**| The payment amount to range filter. Filters for paymentAmount ⇐ paymentAmountTo | [optional] 
  **submitted_date_from** | **date**| The submitted date from range filter. Format is yyyy-MM-dd. | [optional] 
  **submitted_date_to** | **date**| The submitted date to range filter. Format is yyyy-MM-dd. | [optional] 
- **transmission_type** | **str**| Transmission Type * ACH * SAME_DAY_ACH * WIRE  | [optional] 
+ **transmission_type** | **str**| Transmission Type * ACH * SAME_DAY_ACH * WIRE * GACHO  | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| The number of results to return in a page | [optional] [default to 25]
  **sort** | **str**| List of sort fields (e.g. ?sort&#x3D;submittedDateTime:asc,status:asc). Default is sort by remoteId The supported sort fields are: sourceAmount, sourceCurrency, paymentAmount, paymentCurrency, routingNumber, accountNumber, remoteId, submittedDateTime and status  | [optional] 
@@ -376,7 +380,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_payouts_for_payor_v4**
-> GetPayoutsResponse get_payouts_for_payor_v4(payor_id=payor_id, payout_memo=payout_memo, status=status, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, from_payor_name=from_payor_name, page=page, page_size=page_size, sort=sort)
+> GetPayoutsResponse get_payouts_for_payor_v4(payor_id=payor_id, payout_memo=payout_memo, status=status, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, from_payor_name=from_payor_name, scheduled_for_date_from=scheduled_for_date_from, scheduled_for_date_to=scheduled_for_date_to, schedule_status=schedule_status, page=page, page_size=page_size, sort=sort)
 
 Get Payouts for Payor
 
@@ -405,13 +409,16 @@ status = 'status_example' # str | Payout Status (optional)
 submitted_date_from = '2013-10-20' # date | The submitted date from range filter. Format is yyyy-MM-dd. (optional)
 submitted_date_to = '2013-10-20' # date | The submitted date to range filter. Format is yyyy-MM-dd. (optional)
 from_payor_name = 'from_payor_name_example' # str | The name of the payor whose payees are being paid. This filters via a case insensitive substring match. (optional)
+scheduled_for_date_from = '2013-10-20' # date | Filter payouts scheduled to run on or after the given date. Format is yyyy-MM-dd. (optional)
+scheduled_for_date_to = '2013-10-20' # date | Filter payouts scheduled to run on or before the given date. Format is yyyy-MM-dd. (optional)
+schedule_status = 'schedule_status_example' # str | Payout Schedule Status (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
-sort = 'sort_example' # str | List of sort fields (e.g. ?sort=submittedDateTime:asc,instructedDateTime:asc,status:asc) Default is submittedDateTime:asc The supported sort fields are: submittedDateTime, instructedDateTime, status, totalPayments, payoutId  (optional)
+sort = 'sort_example' # str | List of sort fields (e.g. ?sort=submittedDateTime:asc,instructedDateTime:asc,status:asc) Default is submittedDateTime:asc The supported sort fields are: submittedDateTime, instructedDateTime, status, totalPayments, payoutId, scheduledFor  (optional)
 
 try:
     # Get Payouts for Payor
-    api_response = api_instance.get_payouts_for_payor_v4(payor_id=payor_id, payout_memo=payout_memo, status=status, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, from_payor_name=from_payor_name, page=page, page_size=page_size, sort=sort)
+    api_response = api_instance.get_payouts_for_payor_v4(payor_id=payor_id, payout_memo=payout_memo, status=status, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, from_payor_name=from_payor_name, scheduled_for_date_from=scheduled_for_date_from, scheduled_for_date_to=scheduled_for_date_to, schedule_status=schedule_status, page=page, page_size=page_size, sort=sort)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PaymentAuditServiceApi->get_payouts_for_payor_v4: %s\n" % e)
@@ -427,9 +434,12 @@ Name | Type | Description  | Notes
  **submitted_date_from** | **date**| The submitted date from range filter. Format is yyyy-MM-dd. | [optional] 
  **submitted_date_to** | **date**| The submitted date to range filter. Format is yyyy-MM-dd. | [optional] 
  **from_payor_name** | **str**| The name of the payor whose payees are being paid. This filters via a case insensitive substring match. | [optional] 
+ **scheduled_for_date_from** | **date**| Filter payouts scheduled to run on or after the given date. Format is yyyy-MM-dd. | [optional] 
+ **scheduled_for_date_to** | **date**| Filter payouts scheduled to run on or before the given date. Format is yyyy-MM-dd. | [optional] 
+ **schedule_status** | **str**| Payout Schedule Status | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| The number of results to return in a page | [optional] [default to 25]
- **sort** | **str**| List of sort fields (e.g. ?sort&#x3D;submittedDateTime:asc,instructedDateTime:asc,status:asc) Default is submittedDateTime:asc The supported sort fields are: submittedDateTime, instructedDateTime, status, totalPayments, payoutId  | [optional] 
+ **sort** | **str**| List of sort fields (e.g. ?sort&#x3D;submittedDateTime:asc,instructedDateTime:asc,status:asc) Default is submittedDateTime:asc The supported sort fields are: submittedDateTime, instructedDateTime, status, totalPayments, payoutId, scheduledFor  | [optional] 
 
 ### Return type
 
@@ -523,7 +533,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_payments_audit_v4**
-> ListPaymentsResponseV4 list_payments_audit_v4(payee_id=payee_id, payor_id=payor_id, payor_name=payor_name, remote_id=remote_id, remote_system_id=remote_system_id, status=status, transmission_type=transmission_type, source_account_name=source_account_name, source_amount_from=source_amount_from, source_amount_to=source_amount_to, source_currency=source_currency, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, payment_currency=payment_currency, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, payment_memo=payment_memo, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
+> ListPaymentsResponseV4 list_payments_audit_v4(payee_id=payee_id, payor_id=payor_id, payor_name=payor_name, remote_id=remote_id, remote_system_id=remote_system_id, status=status, transmission_type=transmission_type, source_account_name=source_account_name, source_amount_from=source_amount_from, source_amount_to=source_amount_to, source_currency=source_currency, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, payment_currency=payment_currency, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, payment_memo=payment_memo, rails_id=rails_id, scheduled_for_date_from=scheduled_for_date_from, scheduled_for_date_to=scheduled_for_date_to, schedule_status=schedule_status, post_instruct_fx_status=post_instruct_fx_status, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
 
 Get List of Payments
 
@@ -552,7 +562,7 @@ payor_name = 'payor_name_example' # str | The payor’s name. This filters via a
 remote_id = 'remote_id_example' # str | The remote id of the payees. (optional)
 remote_system_id = 'remote_system_id_example' # str | The id of the remote system that is orchestrating payments (optional)
 status = 'status_example' # str | Payment Status (optional)
-transmission_type = 'transmission_type_example' # str | Transmission Type * ACH * SAME_DAY_ACH * WIRE  (optional)
+transmission_type = 'transmission_type_example' # str | Transmission Type * ACH * SAME_DAY_ACH * WIRE * GACHO  (optional)
 source_account_name = 'source_account_name_example' # str | The source account name filter. This filters via a case insensitive substring match. (optional)
 source_amount_from = 56 # int | The source amount from range filter. Filters for sourceAmount >= sourceAmountFrom (optional)
 source_amount_to = 56 # int | The source amount to range filter. Filters for sourceAmount ⇐ sourceAmountTo (optional)
@@ -563,6 +573,11 @@ payment_currency = 'payment_currency_example' # str | The payment currency filte
 submitted_date_from = '2013-10-20' # date | The submitted date from range filter. Format is yyyy-MM-dd. (optional)
 submitted_date_to = '2013-10-20' # date | The submitted date to range filter. Format is yyyy-MM-dd. (optional)
 payment_memo = 'payment_memo_example' # str | The payment memo filter. This filters via a case insensitive substring match. (optional)
+rails_id = 'rails_id_example' # str | Payout Rails ID filter - case insensitive match. Any value is allowed, but you should use one of the supported railsId values. To get this list of values, you should call the 'Get Supported Rails' endpoint.  (optional)
+scheduled_for_date_from = '2013-10-20' # date | Filter payouts scheduled to run on or after the given date. Format is yyyy-MM-dd. (optional)
+scheduled_for_date_to = '2013-10-20' # date | Filter payouts scheduled to run on or before the given date. Format is yyyy-MM-dd. (optional)
+schedule_status = 'schedule_status_example' # str | Payout Schedule Status (optional)
+post_instruct_fx_status = 'post_instruct_fx_status_example' # str | The status of the post instruct FX step if one was required for the payment (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 sort = 'sort_example' # str | List of sort fields (e.g. ?sort=submittedDateTime:asc,status:asc). Default is sort by submittedDateTime:desc,paymentId:asc The supported sort fields are: sourceAmount, sourceCurrency, paymentAmount, paymentCurrency, routingNumber, accountNumber, remoteId, submittedDateTime, status and paymentId  (optional)
@@ -570,7 +585,7 @@ sensitive = True # bool | Optional. If omitted or set to false, any Personal Ide
 
 try:
     # Get List of Payments
-    api_response = api_instance.list_payments_audit_v4(payee_id=payee_id, payor_id=payor_id, payor_name=payor_name, remote_id=remote_id, remote_system_id=remote_system_id, status=status, transmission_type=transmission_type, source_account_name=source_account_name, source_amount_from=source_amount_from, source_amount_to=source_amount_to, source_currency=source_currency, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, payment_currency=payment_currency, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, payment_memo=payment_memo, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
+    api_response = api_instance.list_payments_audit_v4(payee_id=payee_id, payor_id=payor_id, payor_name=payor_name, remote_id=remote_id, remote_system_id=remote_system_id, status=status, transmission_type=transmission_type, source_account_name=source_account_name, source_amount_from=source_amount_from, source_amount_to=source_amount_to, source_currency=source_currency, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, payment_currency=payment_currency, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, payment_memo=payment_memo, rails_id=rails_id, scheduled_for_date_from=scheduled_for_date_from, scheduled_for_date_to=scheduled_for_date_to, schedule_status=schedule_status, post_instruct_fx_status=post_instruct_fx_status, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PaymentAuditServiceApi->list_payments_audit_v4: %s\n" % e)
@@ -586,7 +601,7 @@ Name | Type | Description  | Notes
  **remote_id** | **str**| The remote id of the payees. | [optional] 
  **remote_system_id** | **str**| The id of the remote system that is orchestrating payments | [optional] 
  **status** | **str**| Payment Status | [optional] 
- **transmission_type** | **str**| Transmission Type * ACH * SAME_DAY_ACH * WIRE  | [optional] 
+ **transmission_type** | **str**| Transmission Type * ACH * SAME_DAY_ACH * WIRE * GACHO  | [optional] 
  **source_account_name** | **str**| The source account name filter. This filters via a case insensitive substring match. | [optional] 
  **source_amount_from** | **int**| The source amount from range filter. Filters for sourceAmount &gt;&#x3D; sourceAmountFrom | [optional] 
  **source_amount_to** | **int**| The source amount to range filter. Filters for sourceAmount ⇐ sourceAmountTo | [optional] 
@@ -597,6 +612,11 @@ Name | Type | Description  | Notes
  **submitted_date_from** | **date**| The submitted date from range filter. Format is yyyy-MM-dd. | [optional] 
  **submitted_date_to** | **date**| The submitted date to range filter. Format is yyyy-MM-dd. | [optional] 
  **payment_memo** | **str**| The payment memo filter. This filters via a case insensitive substring match. | [optional] 
+ **rails_id** | **str**| Payout Rails ID filter - case insensitive match. Any value is allowed, but you should use one of the supported railsId values. To get this list of values, you should call the &#39;Get Supported Rails&#39; endpoint.  | [optional] 
+ **scheduled_for_date_from** | **date**| Filter payouts scheduled to run on or after the given date. Format is yyyy-MM-dd. | [optional] 
+ **scheduled_for_date_to** | **date**| Filter payouts scheduled to run on or before the given date. Format is yyyy-MM-dd. | [optional] 
+ **schedule_status** | **str**| Payout Schedule Status | [optional] 
+ **post_instruct_fx_status** | **str**| The status of the post instruct FX step if one was required for the payment | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| The number of results to return in a page | [optional] [default to 25]
  **sort** | **str**| List of sort fields (e.g. ?sort&#x3D;submittedDateTime:asc,status:asc). Default is sort by submittedDateTime:desc,paymentId:asc The supported sort fields are: sourceAmount, sourceCurrency, paymentAmount, paymentCurrency, routingNumber, accountNumber, remoteId, submittedDateTime, status and paymentId  | [optional] 
