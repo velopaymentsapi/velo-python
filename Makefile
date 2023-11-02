@@ -16,6 +16,9 @@ version:
 oa3config:
 	sed -i.bak 's/"packageVersion": ".*"/"packageVersion": "${VERSION}"/g' oa3-config.json && rm oa3-config.json.bak
 
+sdkversion:
+	@docker run -i stedolan/jq <oa3-config.json -r '.packageVersion'
+
 clean:
 	rm -Rf docs
 	rm -Rf velo_payments
@@ -42,7 +45,7 @@ trim:
 	- rm .travis.yml
 	- rm git_push.sh
 
-info:
+adjustments:
 	# wget https://raw.githubusercontent.com/velopaymentsapi/changelog/main/README.md -O CHANGELOG.md
 	sed -i.bak '1s/# velo-python/# Python client for Velo/' README.md && rm README.md.bak
 	sed -i.bak '2s/.*/[![License](https:\/\/img.shields.io\/badge\/License-Apache%202.0-blue.svg)](https:\/\/opensource.org\/licenses\/Apache-2.0) [![npm version](https:\/\/badge.fury.io\/py\/velo-python.svg)](https:\/\/badge.fury.io\/py\/velo-python) [![CircleCI](https:\/\/circleci.com\/gh\/velopaymentsapi\/velo-python.svg?style=svg)](https:\/\/circleci.com\/gh\/velopaymentsapi\/velo-python)/' README.md && rm README.md.bak
@@ -122,10 +125,11 @@ info:
 	sed -i.bak 's/\[\]/-w .\/tests -s/' tox.ini && rm tox.ini.bak
 	echo "passenv = *" >> tox.ini
 
-build_client:
-	# skip
+rcnaming: ## 
+	$(eval RC_REVISION="$(shell make WORKING_SPEC=${WORKING_SPEC} version)")
+	@echo "${RC_REVISION}-beta${RC_BUILD}"
 
-client: clean generate trim info build_client
+client: clean generate trim adjustments
 
 tests:
 	# overwrite the generated test stubs _api.py tests only
@@ -133,18 +137,3 @@ tests:
 	cp -Rf tests/ test/
 	docker build -t=client-python-tests .
 	docker run -t -v $(PWD):/usr/src/app -e KEY=${KEY} -e SECRET=${SECRET} -e PAYOR=${PAYOR} -e APIURL=${APIURL} -e APITOKEN="" client-python-tests tox
-
-commit:
-	git add --all
-	git commit -am 'bump version to ${VERSION}'
-	git push --set-upstream origin master
-
-build:
-	docker build -t=client-python-tests .
-	sed -i.bak 's/VERSION = ".*"/VERSION = "${VERSION}"/g' setup.py && rm setup.py.bak
-	docker run -v $(PWD):/usr/src/app client-python-tests python setup.py sdist
-
-publish:
-	git tag $(VERSION)
-	git push origin tag $(VERSION)
-	docker run -v $(PWD):/usr/src/app client-python-tests twine upload --verbose --config-file=.pypirc dist/*

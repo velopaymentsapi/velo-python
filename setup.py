@@ -13,7 +13,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "velo-python"
-VERSION = ""
+VERSION = "2.35.58-beta1"
 # To install the library, run the following
 #
 # python setup.py install
