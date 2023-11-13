@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "2.35.58-beta1"
+__version__ = "2.35.58"
 
 # import apis into sdk package
 from velo_payments.api.countries_api import CountriesApi
