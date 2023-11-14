@@ -71,13 +71,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/csv
+ - **Accept**: application/csv, application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Export Transactions response |  -  |
-**400** | invalid Request |  -  |
+**400** | Invalid request. See Error message payload for details of failure |  -  |
 **401** | Not Authorized |  -  |
 **403** | Forbidden |  -  |
 
@@ -528,12 +528,12 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Details of Payment Changes |  -  |
-**400** | Bad Request |  -  |
+**400** | Invalid request. See Error message payload for details of failure |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_payments_audit_v4**
-> ListPaymentsResponseV4 list_payments_audit_v4(payee_id=payee_id, payor_id=payor_id, payor_name=payor_name, remote_id=remote_id, remote_system_id=remote_system_id, status=status, transmission_type=transmission_type, source_account_name=source_account_name, source_amount_from=source_amount_from, source_amount_to=source_amount_to, source_currency=source_currency, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, payment_currency=payment_currency, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, payment_memo=payment_memo, rails_id=rails_id, scheduled_for_date_from=scheduled_for_date_from, scheduled_for_date_to=scheduled_for_date_to, schedule_status=schedule_status, post_instruct_fx_status=post_instruct_fx_status, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
+> ListPaymentsResponseV4 list_payments_audit_v4(payee_id=payee_id, payor_id=payor_id, payor_name=payor_name, remote_id=remote_id, remote_system_id=remote_system_id, status=status, transmission_type=transmission_type, source_account_name=source_account_name, source_amount_from=source_amount_from, source_amount_to=source_amount_to, source_currency=source_currency, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, payment_currency=payment_currency, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, payment_memo=payment_memo, payor_payment_id=payor_payment_id, rails_id=rails_id, scheduled_for_date_from=scheduled_for_date_from, scheduled_for_date_to=scheduled_for_date_to, schedule_status=schedule_status, post_instruct_fx_status=post_instruct_fx_status, transaction_reference=transaction_reference, transaction_id=transaction_id, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
 
 Get List of Payments
 
@@ -573,11 +573,14 @@ payment_currency = 'payment_currency_example' # str | The payment currency filte
 submitted_date_from = '2013-10-20' # date | The submitted date from range filter. Format is yyyy-MM-dd. (optional)
 submitted_date_to = '2013-10-20' # date | The submitted date to range filter. Format is yyyy-MM-dd. (optional)
 payment_memo = 'payment_memo_example' # str | The payment memo filter. This filters via a case insensitive substring match. (optional)
+payor_payment_id = 'payor_payment_id_example' # str | Payor's Id of the Payment (optional)
 rails_id = 'rails_id_example' # str | Payout Rails ID filter - case insensitive match. Any value is allowed, but you should use one of the supported railsId values. To get this list of values, you should call the 'Get Supported Rails' endpoint.  (optional)
 scheduled_for_date_from = '2013-10-20' # date | Filter payouts scheduled to run on or after the given date. Format is yyyy-MM-dd. (optional)
 scheduled_for_date_to = '2013-10-20' # date | Filter payouts scheduled to run on or before the given date. Format is yyyy-MM-dd. (optional)
 schedule_status = 'schedule_status_example' # str | Payout Schedule Status (optional)
 post_instruct_fx_status = 'post_instruct_fx_status_example' # str | The status of the post instruct FX step if one was required for the payment (optional)
+transaction_reference = 'transaction_reference_example' # str | Query for all payments associated with a specific transaction reference (optional)
+transaction_id = 'transaction_id_example' # str | Query for all payments associated with a specific transaction id (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
 page_size = 25 # int | The number of results to return in a page (optional) (default to 25)
 sort = 'sort_example' # str | List of sort fields (e.g. ?sort=submittedDateTime:asc,status:asc). Default is sort by submittedDateTime:desc,paymentId:asc The supported sort fields are: sourceAmount, sourceCurrency, paymentAmount, paymentCurrency, routingNumber, accountNumber, remoteId, submittedDateTime, status and paymentId  (optional)
@@ -585,7 +588,7 @@ sensitive = True # bool | Optional. If omitted or set to false, any Personal Ide
 
 try:
     # Get List of Payments
-    api_response = api_instance.list_payments_audit_v4(payee_id=payee_id, payor_id=payor_id, payor_name=payor_name, remote_id=remote_id, remote_system_id=remote_system_id, status=status, transmission_type=transmission_type, source_account_name=source_account_name, source_amount_from=source_amount_from, source_amount_to=source_amount_to, source_currency=source_currency, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, payment_currency=payment_currency, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, payment_memo=payment_memo, rails_id=rails_id, scheduled_for_date_from=scheduled_for_date_from, scheduled_for_date_to=scheduled_for_date_to, schedule_status=schedule_status, post_instruct_fx_status=post_instruct_fx_status, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
+    api_response = api_instance.list_payments_audit_v4(payee_id=payee_id, payor_id=payor_id, payor_name=payor_name, remote_id=remote_id, remote_system_id=remote_system_id, status=status, transmission_type=transmission_type, source_account_name=source_account_name, source_amount_from=source_amount_from, source_amount_to=source_amount_to, source_currency=source_currency, payment_amount_from=payment_amount_from, payment_amount_to=payment_amount_to, payment_currency=payment_currency, submitted_date_from=submitted_date_from, submitted_date_to=submitted_date_to, payment_memo=payment_memo, payor_payment_id=payor_payment_id, rails_id=rails_id, scheduled_for_date_from=scheduled_for_date_from, scheduled_for_date_to=scheduled_for_date_to, schedule_status=schedule_status, post_instruct_fx_status=post_instruct_fx_status, transaction_reference=transaction_reference, transaction_id=transaction_id, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PaymentAuditServiceApi->list_payments_audit_v4: %s\n" % e)
@@ -612,11 +615,14 @@ Name | Type | Description  | Notes
  **submitted_date_from** | **date**| The submitted date from range filter. Format is yyyy-MM-dd. | [optional] 
  **submitted_date_to** | **date**| The submitted date to range filter. Format is yyyy-MM-dd. | [optional] 
  **payment_memo** | **str**| The payment memo filter. This filters via a case insensitive substring match. | [optional] 
+ **payor_payment_id** | **str**| Payor&#39;s Id of the Payment | [optional] 
  **rails_id** | **str**| Payout Rails ID filter - case insensitive match. Any value is allowed, but you should use one of the supported railsId values. To get this list of values, you should call the &#39;Get Supported Rails&#39; endpoint.  | [optional] 
  **scheduled_for_date_from** | **date**| Filter payouts scheduled to run on or after the given date. Format is yyyy-MM-dd. | [optional] 
  **scheduled_for_date_to** | **date**| Filter payouts scheduled to run on or before the given date. Format is yyyy-MM-dd. | [optional] 
  **schedule_status** | **str**| Payout Schedule Status | [optional] 
  **post_instruct_fx_status** | **str**| The status of the post instruct FX step if one was required for the payment | [optional] 
+ **transaction_reference** | **str**| Query for all payments associated with a specific transaction reference | [optional] 
+ **transaction_id** | [**str**](.md)| Query for all payments associated with a specific transaction id | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]
  **page_size** | **int**| The number of results to return in a page | [optional] [default to 25]
  **sort** | **str**| List of sort fields (e.g. ?sort&#x3D;submittedDateTime:asc,status:asc). Default is sort by submittedDateTime:desc,paymentId:asc The supported sort fields are: sourceAmount, sourceCurrency, paymentAmount, paymentCurrency, routingNumber, accountNumber, remoteId, submittedDateTime, status and paymentId  | [optional] 

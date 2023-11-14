@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **payee_id** | **str** |  | [optional] 
 **payor_refs** | [**list[PayeePayorRefV4]**](PayeePayorRefV4.md) |  | [optional] 
+**payment_channels** | [**list[PaymentChannelSummaryV4]**](PaymentChannelSummaryV4.md) | A list of the Payee&#39;s payment channels in their preferred order | [optional] 
 **email** | **str** |  | [optional] 
 **onboarded_status** | **str** | Payee onboarded status. One of the following values: CREATED, INVITED, REGISTERED, ONBOARDED | [optional] 
 **watchlist_status** | **str** | Current watchlist status. One of the following values: NONE, PENDING, REVIEW, PASSED, FAILED | [optional] 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 **individual** | [**IndividualV4**](IndividualV4.md) |  | [optional] 
 **company** | [**CompanyV4**](CompanyV4.md) |  | [optional] 
 **cellphone_number** | **str** |  | [optional] 
+**managed_by_payor_id** | **str** | The id of the payor if the payee is managed | [optional] 
 **watchlist_status_updated_timestamp** | **str** |  | [optional] 
 **grace_period_end_date** | **date** |  | [optional] 
 **enhanced_kyc_completed** | **bool** |  | [optional] 

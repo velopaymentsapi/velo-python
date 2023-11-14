@@ -3,9 +3,9 @@
 """
     Velo Payments APIs
 
-    ## Terms and Definitions  Throughout this document and the Velo platform the following terms are used:  * **Payor.** An entity (typically a corporation) which wishes to pay funds to one or more payees via a payout. * **Payee.** The recipient of funds paid out by a payor. * **Payment.** A single transfer of funds from a payor to a payee. * **Payout.** A batch of Payments, typically used by a payor to logically group payments (e.g. by business day). Technically there need be no relationship between the payments in a payout - a single payout can contain payments to multiple payees and/or multiple payments to a single payee. * **Sandbox.** An integration environment provided by Velo Payments which offers a similar API experience to the production environment, but all funding and payment events are simulated, along with many other services such as OFAC sanctions list checking.  ## Overview  The Velo Payments API allows a payor to perform a number of operations. The following is a list of the main capabilities in a natural order of execution:  * Authenticate with the Velo platform * Maintain a collection of payees * Query the payor’s current balance of funds within the platform and perform additional funding * Issue payments to payees * Query the platform for a history of those payments  This document describes the main concepts and APIs required to get up and running with the Velo Payments platform. It is not an exhaustive API reference. For that, please see the separate Velo Payments API Reference.  ## API Considerations  The Velo Payments API is REST based and uses the JSON format for requests and responses.  Most calls are secured using OAuth 2 security and require a valid authentication access token for successful operation. See the Authentication section for details.  Where a dynamic value is required in the examples below, the {token} format is used, suggesting that the caller needs to supply the appropriate value of the token in question (without including the { or } characters).  Where curl examples are given, the –d @filename.json approach is used, indicating that the request body should be placed into a file named filename.json in the current directory. Each of the curl examples in this document should be considered a single line on the command-line, regardless of how they appear in print.  ## Authenticating with the Velo Platform  Once Velo backoffice staff have added your organization as a payor within the Velo platform sandbox, they will create you a payor Id, an API key and an API secret and share these with you in a secure manner.  You will need to use these values to authenticate with the Velo platform in order to gain access to the APIs. The steps to take are explained in the following:  create a string comprising the API key (e.g. 44a9537d-d55d-4b47-8082-14061c2bcdd8) and API secret (e.g. c396b26b-137a-44fd-87f5-34631f8fd529) with a colon between them. E.g. 44a9537d-d55d-4b47-8082-14061c2bcdd8:c396b26b-137a-44fd-87f5-34631f8fd529  base64 encode this string. E.g.: NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==  create an HTTP **Authorization** header with the value set to e.g. Basic NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==  perform the Velo authentication REST call using the HTTP header created above e.g. via curl:  ```   curl -X POST \\   -H \"Content-Type: application/json\" \\   -H \"Authorization: Basic NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==\" \\   'https://api.sandbox.velopayments.com/v1/authenticate?grant_type=client_credentials' ```  If successful, this call will result in a **200** HTTP status code and a response body such as:  ```   {     \"access_token\":\"19f6bafd-93fd-4747-b229-00507bbc991f\",     \"token_type\":\"bearer\",     \"expires_in\":1799,     \"scope\":\"...\"   } ``` ## API access following authentication Following successful authentication, the value of the access_token field in the response (indicated in green above) should then be presented with all subsequent API calls to allow the Velo platform to validate that the caller is authenticated.  This is achieved by setting the HTTP Authorization header with the value set to e.g. Bearer 19f6bafd-93fd-4747-b229-00507bbc991f such as the curl example below:  ```   -H \"Authorization: Bearer 19f6bafd-93fd-4747-b229-00507bbc991f \" ```  If you make other Velo API calls which require authorization but the Authorization header is missing or invalid then you will get a **401** HTTP status response.   # noqa: E501
+    ## Terms and Definitions  Throughout this document and the Velo platform the following terms are used:  * **Payor.** An entity (typically a corporation) which wishes to pay funds to one or more payees via a payout. * **Payee.** The recipient of funds paid out by a payor. * **Payment.** A single transfer of funds from a payor to a payee. * **Payout.** A batch of Payments, typically used by a payor to logically group payments (e.g. by business day). Technically there need be no relationship between the payments in a payout - a single payout can contain payments to multiple payees and/or multiple payments to a single payee. * **Sandbox.** An integration environment provided by Velo Payments which offers a similar API experience to the production environment, but all funding and payment events are simulated, along with many other services such as OFAC sanctions list checking.  ## Overview  The Velo Payments API allows a payor to perform a number of operations. The following is a list of the main capabilities in a natural order of execution:  * Authenticate with the Velo platform * Maintain a collection of payees * Query the payor’s current balance of funds within the platform and perform additional funding * Issue payments to payees * Query the platform for a history of those payments  This document describes the main concepts and APIs required to get up and running with the Velo Payments platform. It is not an exhaustive API reference. For that, please see the separate Velo Payments API Reference.  ## API Considerations  The Velo Payments API is REST based and uses the JSON format for requests and responses.  Most calls are secured using OAuth 2 security and require a valid authentication access token for successful operation. See the Authentication section for details.  Where a dynamic value is required in the examples below, the {token} format is used, suggesting that the caller needs to supply the appropriate value of the token in question (without including the { or } characters).  Where curl examples are given, the –d @filename.json approach is used, indicating that the request body should be placed into a file named filename.json in the current directory. Each of the curl examples in this document should be considered a single line on the command-line, regardless of how they appear in print.  ## Authenticating with the Velo Platform  Once Velo backoffice staff have added your organization as a payor within the Velo platform sandbox, they will create you a payor Id, an API key and an API secret and share these with you in a secure manner.  You will need to use these values to authenticate with the Velo platform in order to gain access to the APIs. The steps to take are explained in the following:  create a string comprising the API key (e.g. 44a9537d-d55d-4b47-8082-14061c2bcdd8) and API secret (e.g. c396b26b-137a-44fd-87f5-34631f8fd529) with a colon between them. E.g. 44a9537d-d55d-4b47-8082-14061c2bcdd8:c396b26b-137a-44fd-87f5-34631f8fd529  base64 encode this string. E.g.: NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==  create an HTTP **Authorization** header with the value set to e.g. Basic NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==  perform the Velo authentication REST call using the HTTP header created above e.g. via curl:  ```   curl -X POST \\   -H \"Content-Type: application/json\" \\   -H \"Authorization: Basic NDRhOTUzN2QtZDU1ZC00YjQ3LTgwODItMTQwNjFjMmJjZGQ4OmMzOTZiMjZiLTEzN2EtNDRmZC04N2Y1LTM0NjMxZjhmZDUyOQ==\" \\   'https://api.sandbox.velopayments.com/v1/authenticate?grant_type=client_credentials' ```  If successful, this call will result in a **200** HTTP status code and a response body such as:  ```   {     \"access_token\":\"19f6bafd-93fd-4747-b229-00507bbc991f\",     \"token_type\":\"bearer\",     \"expires_in\":1799,     \"scope\":\"...\"   } ``` ## API access following authentication Following successful authentication, the value of the access_token field in the response (indicated in green above) should then be presented with all subsequent API calls to allow the Velo platform to validate that the caller is authenticated.  This is achieved by setting the HTTP Authorization header with the value set to e.g. Bearer 19f6bafd-93fd-4747-b229-00507bbc991f such as the curl example below:  ```   -H \"Authorization: Bearer 19f6bafd-93fd-4747-b229-00507bbc991f \" ```  If you make other Velo API calls which require authorization but the Authorization header is missing or invalid then you will get a **401** HTTP status response.   ## Http Status Codes Following is a list of Http Status codes that could be returned by the platform      | Status Code            | Description                                                                          |     | -----------------------| -------------------------------------------------------------------------------------|     | 200 OK                 | The request was successfully processed and usually returns a json response           |     | 201 Created            | A resource was created and a Location header is returned linking to the new resource |     | 202 Accepted           | The request has been accepted for processing                                         |     | 204 No Content         | The request has been processed and there is no response (usually deletes and updates)|     | 400 Bad Request        | The request is invalid and should be fixed before retrying                           |     | 401 Unauthorized       | Authentication has failed, usually means the token has expired                       |     | 403 Forbidden          | The user does not have permissions for the request                                   |     | 404 Not Found          | The resource was not found                                                           |     | 409 Conflict           | The resource already exists and there is a conflict                                  |     | 429 Too Many Requests  | The user has submitted too many requests in a given amount of time                   |     | 5xx Server Error       | Platform internal error (should rarely happen)                                       |   # noqa: E501
 
-    The version of the OpenAPI document: 2.35.58
+    The version of the OpenAPI document: 2.37.148
     Generated by: https://openapi-generator.tech
 """
 
@@ -70,14 +70,19 @@ class PaymentResponseV4(object):
         'return_reason': 'str',
         'rails_payment_id': 'str',
         'rails_batch_id': 'str',
+        'rails_account_id': 'str',
         'payment_scheme': 'str',
         'rejection_reason': 'str',
+        'rails_rejection_information': 'str',
         'withdrawn_reason': 'str',
         'withdrawable': 'bool',
         'auto_withdrawn_reason_code': 'str',
         'transmission_type': 'str',
+        'transmission_type_requested': 'str',
         'payment_tracking_reference': 'str',
         'payment_metadata': 'str',
+        'transaction_id': 'str',
+        'transaction_reference': 'str',
         'schedule': 'PayoutSchedule',
         'post_instruct_fx_info': 'PostInstructFxInfo',
         'payout': 'PaymentResponseV4Payout'
@@ -123,20 +128,25 @@ class PaymentResponseV4(object):
         'return_reason': 'returnReason',
         'rails_payment_id': 'railsPaymentId',
         'rails_batch_id': 'railsBatchId',
+        'rails_account_id': 'railsAccountId',
         'payment_scheme': 'paymentScheme',
         'rejection_reason': 'rejectionReason',
+        'rails_rejection_information': 'railsRejectionInformation',
         'withdrawn_reason': 'withdrawnReason',
         'withdrawable': 'withdrawable',
         'auto_withdrawn_reason_code': 'autoWithdrawnReasonCode',
         'transmission_type': 'transmissionType',
+        'transmission_type_requested': 'transmissionTypeRequested',
         'payment_tracking_reference': 'paymentTrackingReference',
         'payment_metadata': 'paymentMetadata',
+        'transaction_id': 'transactionId',
+        'transaction_reference': 'transactionReference',
         'schedule': 'schedule',
         'post_instruct_fx_info': 'postInstructFxInfo',
         'payout': 'payout'
     }
 
-    def __init__(self, payment_id=None, payee_id=None, payor_id=None, payor_name=None, quote_id=None, source_account_id=None, source_account_name=None, remote_id=None, remote_system_id=None, remote_system_payment_id=None, source_amount=None, source_currency=None, payment_amount=None, payment_currency=None, rate=None, inverted_rate=None, is_payment_ccy_base_ccy=None, submitted_date_time=None, status=None, funding_status=None, routing_number=None, account_number=None, iban=None, payment_memo=None, filename_reference=None, individual_identification_number=None, trace_number=None, payor_payment_id=None, payment_channel_id=None, payment_channel_name=None, account_name=None, rails_id='RAILS ID UNAVAILABLE', country_code=None, payee_address_country_code=None, events=None, return_cost=None, return_reason=None, rails_payment_id=None, rails_batch_id=None, payment_scheme=None, rejection_reason=None, withdrawn_reason=None, withdrawable=None, auto_withdrawn_reason_code=None, transmission_type=None, payment_tracking_reference=None, payment_metadata=None, schedule=None, post_instruct_fx_info=None, payout=None):  # noqa: E501
+    def __init__(self, payment_id=None, payee_id=None, payor_id=None, payor_name=None, quote_id=None, source_account_id=None, source_account_name=None, remote_id=None, remote_system_id=None, remote_system_payment_id=None, source_amount=None, source_currency=None, payment_amount=None, payment_currency=None, rate=None, inverted_rate=None, is_payment_ccy_base_ccy=None, submitted_date_time=None, status=None, funding_status=None, routing_number=None, account_number=None, iban=None, payment_memo=None, filename_reference=None, individual_identification_number=None, trace_number=None, payor_payment_id=None, payment_channel_id=None, payment_channel_name=None, account_name=None, rails_id='RAILS ID UNAVAILABLE', country_code=None, payee_address_country_code=None, events=None, return_cost=None, return_reason=None, rails_payment_id=None, rails_batch_id=None, rails_account_id=None, payment_scheme=None, rejection_reason=None, rails_rejection_information=None, withdrawn_reason=None, withdrawable=None, auto_withdrawn_reason_code=None, transmission_type=None, transmission_type_requested=None, payment_tracking_reference=None, payment_metadata=None, transaction_id=None, transaction_reference=None, schedule=None, post_instruct_fx_info=None, payout=None):  # noqa: E501
         """PaymentResponseV4 - a model defined in OpenAPI"""  # noqa: E501
 
         self._payment_id = None
@@ -178,14 +188,19 @@ class PaymentResponseV4(object):
         self._return_reason = None
         self._rails_payment_id = None
         self._rails_batch_id = None
+        self._rails_account_id = None
         self._payment_scheme = None
         self._rejection_reason = None
+        self._rails_rejection_information = None
         self._withdrawn_reason = None
         self._withdrawable = None
         self._auto_withdrawn_reason_code = None
         self._transmission_type = None
+        self._transmission_type_requested = None
         self._payment_tracking_reference = None
         self._payment_metadata = None
+        self._transaction_id = None
+        self._transaction_reference = None
         self._schedule = None
         self._post_instruct_fx_info = None
         self._payout = None
@@ -258,10 +273,14 @@ class PaymentResponseV4(object):
             self.rails_payment_id = rails_payment_id
         if rails_batch_id is not None:
             self.rails_batch_id = rails_batch_id
+        if rails_account_id is not None:
+            self.rails_account_id = rails_account_id
         if payment_scheme is not None:
             self.payment_scheme = payment_scheme
         if rejection_reason is not None:
             self.rejection_reason = rejection_reason
+        if rails_rejection_information is not None:
+            self.rails_rejection_information = rails_rejection_information
         if withdrawn_reason is not None:
             self.withdrawn_reason = withdrawn_reason
         if withdrawable is not None:
@@ -270,10 +289,16 @@ class PaymentResponseV4(object):
             self.auto_withdrawn_reason_code = auto_withdrawn_reason_code
         if transmission_type is not None:
             self.transmission_type = transmission_type
+        if transmission_type_requested is not None:
+            self.transmission_type_requested = transmission_type_requested
         if payment_tracking_reference is not None:
             self.payment_tracking_reference = payment_tracking_reference
         if payment_metadata is not None:
             self.payment_metadata = payment_metadata
+        if transaction_id is not None:
+            self.transaction_id = transaction_id
+        if transaction_reference is not None:
+            self.transaction_reference = transaction_reference
         if schedule is not None:
             self.schedule = schedule
         if post_instruct_fx_info is not None:
@@ -1189,6 +1214,27 @@ class PaymentResponseV4(object):
         self._rails_batch_id = rails_batch_id
 
     @property
+    def rails_account_id(self):
+        """Gets the rails_account_id of this PaymentResponseV4.  # noqa: E501
+
+
+        :return: The rails_account_id of this PaymentResponseV4.  # noqa: E501
+        :rtype: str
+        """
+        return self._rails_account_id
+
+    @rails_account_id.setter
+    def rails_account_id(self, rails_account_id):
+        """Sets the rails_account_id of this PaymentResponseV4.
+
+
+        :param rails_account_id: The rails_account_id of this PaymentResponseV4.  # noqa: E501
+        :type: str
+        """
+
+        self._rails_account_id = rails_account_id
+
+    @property
     def payment_scheme(self):
         """Gets the payment_scheme of this PaymentResponseV4.  # noqa: E501
 
@@ -1229,6 +1275,29 @@ class PaymentResponseV4(object):
         """
 
         self._rejection_reason = rejection_reason
+
+    @property
+    def rails_rejection_information(self):
+        """Gets the rails_rejection_information of this PaymentResponseV4.  # noqa: E501
+
+        The original reason that the payment was rejected. This can be third party rails specific if rejected by the underlying third party rails logic.  # noqa: E501
+
+        :return: The rails_rejection_information of this PaymentResponseV4.  # noqa: E501
+        :rtype: str
+        """
+        return self._rails_rejection_information
+
+    @rails_rejection_information.setter
+    def rails_rejection_information(self, rails_rejection_information):
+        """Sets the rails_rejection_information of this PaymentResponseV4.
+
+        The original reason that the payment was rejected. This can be third party rails specific if rejected by the underlying third party rails logic.  # noqa: E501
+
+        :param rails_rejection_information: The rails_rejection_information of this PaymentResponseV4.  # noqa: E501
+        :type: str
+        """
+
+        self._rails_rejection_information = rails_rejection_information
 
     @property
     def withdrawn_reason(self):
@@ -1319,6 +1388,29 @@ class PaymentResponseV4(object):
         self._transmission_type = transmission_type
 
     @property
+    def transmission_type_requested(self):
+        """Gets the transmission_type_requested of this PaymentResponseV4.  # noqa: E501
+
+        The transmission type of the payment requested by the payor  # noqa: E501
+
+        :return: The transmission_type_requested of this PaymentResponseV4.  # noqa: E501
+        :rtype: str
+        """
+        return self._transmission_type_requested
+
+    @transmission_type_requested.setter
+    def transmission_type_requested(self, transmission_type_requested):
+        """Sets the transmission_type_requested of this PaymentResponseV4.
+
+        The transmission type of the payment requested by the payor  # noqa: E501
+
+        :param transmission_type_requested: The transmission_type_requested of this PaymentResponseV4.  # noqa: E501
+        :type: str
+        """
+
+        self._transmission_type_requested = transmission_type_requested
+
+    @property
     def payment_tracking_reference(self):
         """Gets the payment_tracking_reference of this PaymentResponseV4.  # noqa: E501
 
@@ -1361,6 +1453,48 @@ class PaymentResponseV4(object):
         """
 
         self._payment_metadata = payment_metadata
+
+    @property
+    def transaction_id(self):
+        """Gets the transaction_id of this PaymentResponseV4.  # noqa: E501
+
+
+        :return: The transaction_id of this PaymentResponseV4.  # noqa: E501
+        :rtype: str
+        """
+        return self._transaction_id
+
+    @transaction_id.setter
+    def transaction_id(self, transaction_id):
+        """Sets the transaction_id of this PaymentResponseV4.
+
+
+        :param transaction_id: The transaction_id of this PaymentResponseV4.  # noqa: E501
+        :type: str
+        """
+
+        self._transaction_id = transaction_id
+
+    @property
+    def transaction_reference(self):
+        """Gets the transaction_reference of this PaymentResponseV4.  # noqa: E501
+
+
+        :return: The transaction_reference of this PaymentResponseV4.  # noqa: E501
+        :rtype: str
+        """
+        return self._transaction_reference
+
+    @transaction_reference.setter
+    def transaction_reference(self, transaction_reference):
+        """Sets the transaction_reference of this PaymentResponseV4.
+
+
+        :param transaction_reference: The transaction_reference of this PaymentResponseV4.  # noqa: E501
+        :type: str
+        """
+
+        self._transaction_reference = transaction_reference
 
     @property
     def schedule(self):

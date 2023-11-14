@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_funding_accounts_v2**
-> ListFundingAccountsResponseV2 get_funding_accounts_v2(payor_id=payor_id, name=name, country=country, currency=currency, type=type, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
+> ListFundingAccountsResponseV2 get_funding_accounts_v2(payor_id=payor_id, name=name, country_code=country_code, currency=currency, type=type, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
 
 Get Funding Accounts
 
@@ -234,7 +234,7 @@ configuration.host = "https://api.sandbox.velopayments.com"
 api_instance = velo_payments.FundingApi(velo_payments.ApiClient(configuration))
 payor_id = 'payor_id_example' # str |  (optional)
 name = 'name_example' # str | The descriptive funding account name (optional)
-country = 'US' # str | The 2 letter ISO 3166-1 country code (upper case) (optional)
+country_code = 'US' # str | The 2 letter ISO 3166-1 country code (upper case) (optional)
 currency = 'USD' # str | The ISO 4217 currency code (optional)
 type = 'type_example' # str | The type of funding account. (optional)
 page = 1 # int | Page number. Default is 1. (optional) (default to 1)
@@ -244,7 +244,7 @@ sensitive = False # bool |  (optional) (default to False)
 
 try:
     # Get Funding Accounts
-    api_response = api_instance.get_funding_accounts_v2(payor_id=payor_id, name=name, country=country, currency=currency, type=type, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
+    api_response = api_instance.get_funding_accounts_v2(payor_id=payor_id, name=name, country_code=country_code, currency=currency, type=type, page=page, page_size=page_size, sort=sort, sensitive=sensitive)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling FundingApi->get_funding_accounts_v2: %s\n" % e)
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payor_id** | [**str**](.md)|  | [optional] 
  **name** | **str**| The descriptive funding account name | [optional] 
- **country** | **str**| The 2 letter ISO 3166-1 country code (upper case) | [optional] 
+ **country_code** | **str**| The 2 letter ISO 3166-1 country code (upper case) | [optional] 
  **currency** | **str**| The ISO 4217 currency code | [optional] 
  **type** | **str**| The type of funding account. | [optional] 
  **page** | **int**| Page number. Default is 1. | [optional] [default to 1]

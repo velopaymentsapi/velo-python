@@ -4,7 +4,6 @@ All URIs are relative to *https://api.sandbox.velopayments.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_payor_by_id_v1**](PayorsApi.md#get_payor_by_id_v1) | **GET** /v1/payors/{payorId} | Get Payor
 [**get_payor_by_id_v2**](PayorsApi.md#get_payor_by_id_v2) | **GET** /v2/payors/{payorId} | Get Payor
 [**payor_add_payor_logo_v1**](PayorsApi.md#payor_add_payor_logo_v1) | **POST** /v1/payors/{payorId}/branding/logos | Add Logo
 [**payor_create_api_key_v1**](PayorsApi.md#payor_create_api_key_v1) | **POST** /v1/payors/{payorId}/applications/{applicationId}/keys | Create API Key
@@ -12,68 +11,6 @@ Method | HTTP request | Description
 [**payor_email_opt_out**](PayorsApi.md#payor_email_opt_out) | **POST** /v1/payors/{payorId}/reminderEmailsUpdate | Reminder Email Opt-Out
 [**payor_get_branding**](PayorsApi.md#payor_get_branding) | **GET** /v1/payors/{payorId}/branding | Get Branding
 
-
-# **get_payor_by_id_v1**
-> PayorV1 get_payor_by_id_v1(payor_id)
-
-Get Payor
-
-<p>Get a Single Payor by Id.</p> <p>deprecated since v2.10 - Use /v2/payors 
-
-### Example
-
-* OAuth Authentication (OAuth2):
-```python
-from __future__ import print_function
-import time
-import velo_payments
-from velo_payments.rest import ApiException
-from pprint import pprint
-configuration = velo_payments.Configuration()
-# Configure OAuth2 access token for authorization: OAuth2
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Defining host is optional and default to https://api.sandbox.velopayments.com
-configuration.host = "https://api.sandbox.velopayments.com"
-# Create an instance of the API class
-api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
-
-try:
-    # Get Payor
-    api_response = api_instance.get_payor_by_id_v1(payor_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PayorsApi->get_payor_by_id_v1: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
-
-### Return type
-
-[**PayorV1**](PayorV1.md)
-
-### Authorization
-
-[OAuth2](../README.md#OAuth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Get Payor Details |  -  |
-**404** | Payor Id Not Found |  -  |
-**403** | The authentication does not have permissions to access the resource This usually occurs when there is a valid authentication instance (client or user) but they do not have the required permissions  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_payor_by_id_v2**
 > PayorV2 get_payor_by_id_v2(payor_id)
@@ -99,7 +36,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
+payor_id = 'payor_id_example' # str | The account owner Payor ID
 
 try:
     # Get Payor
@@ -113,7 +50,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
+ **payor_id** | [**str**](.md)| The account owner Payor ID | 
 
 ### Return type
 
@@ -162,7 +99,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
+payor_id = 'payor_id_example' # str | The account owner Payor ID
 logo = '/path/to/file' # file |  (optional)
 
 try:
@@ -176,7 +113,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
+ **payor_id** | [**str**](.md)| The account owner Payor ID | 
  **logo** | **file**|  | [optional] 
 
 ### Return type
@@ -207,7 +144,7 @@ void (empty response body)
 
 Create API Key
 
-<p>Create an an API key for the given payor Id and application Id</p> <p>You can create multiple API Keys for a given application</p> <p>API Keys are programmatic users for integrating your application with the Velo platform</p> 
+<p>Create an an API key for the given payor Id and application Id</p> <p>You can create multiple API Keys for a given application</p> <p>API Keys are programmatic users for integrating your application with the Velo platform</p> <p>The response will return the API Key and the secret. This is the only time you will be able to see the secret</p> 
 
 ### Example
 
@@ -226,7 +163,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
+payor_id = 'payor_id_example' # str | The account owner Payor ID
 application_id = 'application_id_example' # str | Application ID
 payor_create_api_key_request = velo_payments.PayorCreateApiKeyRequest() # PayorCreateApiKeyRequest | Details of application API key to create
 
@@ -242,7 +179,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
+ **payor_id** | [**str**](.md)| The account owner Payor ID | 
  **application_id** | [**str**](.md)| Application ID | 
  **payor_create_api_key_request** | [**PayorCreateApiKeyRequest**](PayorCreateApiKeyRequest.md)| Details of application API key to create | 
 
@@ -293,7 +230,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
+payor_id = 'payor_id_example' # str | The account owner Payor ID
 payor_create_application_request = velo_payments.PayorCreateApplicationRequest() # PayorCreateApplicationRequest | Details of application to create
 
 try:
@@ -307,7 +244,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
+ **payor_id** | [**str**](.md)| The account owner Payor ID | 
  **payor_create_application_request** | [**PayorCreateApplicationRequest**](PayorCreateApplicationRequest.md)| Details of application to create | 
 
 ### Return type
@@ -358,7 +295,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
+payor_id = 'payor_id_example' # str | The account owner Payor ID
 payor_email_opt_out_request = velo_payments.PayorEmailOptOutRequest() # PayorEmailOptOutRequest | Reminder Emails Opt-Out Request
 
 try:
@@ -372,7 +309,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
+ **payor_id** | [**str**](.md)| The account owner Payor ID | 
  **payor_email_opt_out_request** | [**PayorEmailOptOutRequest**](PayorEmailOptOutRequest.md)| Reminder Emails Opt-Out Request | 
 
 ### Return type
@@ -422,7 +359,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.PayorsApi(velo_payments.ApiClient(configuration))
-payor_id = 'payor_id_example' # str | The Payor Id
+payor_id = 'payor_id_example' # str | The account owner Payor ID
 
 try:
     # Get Branding
@@ -436,7 +373,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payor_id** | [**str**](.md)| The Payor Id | 
+ **payor_id** | [**str**](.md)| The account owner Payor ID | 
 
 ### Return type
 

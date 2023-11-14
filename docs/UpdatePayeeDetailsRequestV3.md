@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **payee_type** | [**PayeeTypeEnum**](PayeeTypeEnum.md) |  | [optional] 
 **challenge** | [**ChallengeV3**](ChallengeV3.md) |  | [optional] 
 **email** | **str** |  | [optional] 
+**contact_sms_number** | **str** | The phone number of a device that the payee wishes to receive sms messages on  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

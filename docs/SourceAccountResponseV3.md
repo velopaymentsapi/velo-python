@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **deleted** | **bool** | An optional flag for whether the source account has been deleted. Only present in the response if true. | [optional] 
 **user_deleted** | **bool** | An optional flag for whether the source account has been deleted by a user. Only present in the response if true. | [optional] 
 **deleted_at** | **datetime** | An optional timestamp when the source account has been deleted. Only present in the response if deleted. | [optional] 
+**transmission_types** | **list[str]** | List of supported transmission types. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

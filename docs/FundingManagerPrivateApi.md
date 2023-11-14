@@ -32,7 +32,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 configuration.host = "https://api.sandbox.velopayments.com"
 # Create an instance of the API class
 api_instance = velo_payments.FundingManagerPrivateApi(velo_payments.ApiClient(configuration))
-create_funding_account_request_v2 = {"type":"FBO","name":"My FBO Account","payorId":"ee53e01d-c078-43fd-abd4-47e92f4a06cf","accountName":"My Account Name","accountNumber":1231231234556,"routingNumber":123456789} # CreateFundingAccountRequestV2 |  (optional)
+create_funding_account_request_v2 = {"type":"FBO","name":"My FBO Account","payorId":"ee53e01d-c078-43fd-abd4-47e92f4a06cf","accountName":"My Account Name","accountNumber":1231231234556,"routingNumber":123456789,"countryCode":"US"} # CreateFundingAccountRequestV2 |  (optional)
 
 try:
     # Create Funding Account

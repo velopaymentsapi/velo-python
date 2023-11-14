@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**payor_id** | **str** |  | 
-**payor_name** | **str** | The name of the payor. | 
+**payor_id** | **str** | The Payor Id | 
+**payor_name** | **str** | The name of the payor | 
 **payor_xid** | **str** | A unique identifier that an external system uses to reference the payor in their system | [optional] 
 **provider** | **str** | The source of the payorXid, default is null which means Velo | [optional] 
 **address** | [**PayorAddressV2**](PayorAddressV2.md) |  | [optional] 
@@ -15,21 +15,21 @@ Name | Type | Description | Notes
 **manual_lockout** | **bool** | Whether or not the payor has been manually locked by the backoffice. | [optional] 
 **open_banking_enabled** | **bool** | Is Open Banking supported for this payor | [optional] 
 **payee_grace_period_processing_enabled** | **bool** | Whether grace period processing is enabled. | [optional] 
-**payee_grace_period_days** | **int** | The grace period for paying payees in days. | [optional] 
+**payee_grace_period_days** | **int** | The grace period for paying payees in days before the payee must be onboarded. | [optional] 
 **collective_alias** | **str** | How the payor has chosen to refer to payees. | [optional] 
 **support_contact** | **str** | The payor’s support contact email address. | [optional] 
 **dba_name** | **str** | The payor’s &#39;Doing Business As&#39; name. | [optional] 
 **allows_language_choice** | **bool** | Whether or not the payor allows language choice in the UI. | [optional] 
 **reminder_emails_opt_out** | **bool** | Whether or not the payor has opted-out of reminder emails being sent. | [optional] 
 **language** | **str** | The payor’s language preference. Must be one of [EN, FR] | [optional] 
-**includes_reports** | **bool** |  | [optional] 
-**wu_customer_id** | **str** |  | [optional] 
-**max_master_payor_admins** | **int** |  | [optional] 
-**payment_rails** | **str** | The id of the payment rails | [optional] 
-**transmission_types** | [**TransmissionTypes2**](TransmissionTypes2.md) |  | [optional] 
-**remote_system_ids** | **list[str]** | The payor’s supported remote systems by id | [optional] 
-**usd_txn_value_reporting_threshold** | **int** | USD in minor units | [optional] 
-**managing_payees** | **bool** |  | [optional] 
+**includes_reports** | **bool** | For internal use only (will be removed in a later version) | [optional] 
+**wu_customer_id** | **str** | For internal use only (will be removed in a later version) | [optional] 
+**max_master_payor_admins** | **int** | The maximum number of payor users with the master admin role | [optional] 
+**payment_rails** | **str** | For internal use only (will be removed in a later version) | [optional] 
+**remote_system_ids** | **list[str]** | For internal use only (will be removed in a later version) | [optional] 
+**usd_txn_value_reporting_threshold** | **int** | USD in minor units. For internal use only (will be removed in a later version) | [optional] 
+**managing_payees** | **bool** | Does this payor manage their own payees (payees are not invited but managed by the payor) | [optional] 
+**created_at** | **datetime** | The date of creation of the payor | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

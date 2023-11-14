@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **disabled** | **bool** |  | [optional] 
 **disabled_comment** | **str** |  | [optional] 
 **disabled_updated_timestamp** | **datetime** |  | [optional] 
+**managed_by_payor_id** | **str** | The id of the payor if the payee is managed | [optional] 
 **individual** | [**GetPayeeListResponseIndividualV4**](GetPayeeListResponseIndividualV4.md) |  | [optional] 
 **company** | [**GetPayeeListResponseCompanyV4**](GetPayeeListResponseCompanyV4.md) |  | [optional] 
 
